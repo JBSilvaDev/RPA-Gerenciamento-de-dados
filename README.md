@@ -1,20 +1,39 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+### Documentation is included in the Documentation folder ###
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+### REFrameWork Template ###
+**Robotic Enterprise Framework**
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+* Built on top of *Transactional Business Process* template
+* Uses *State Machine* layout for the phases of automation project
+* Offers high level logging, exception handling and recovery
+* Keeps external settings in *Config.xlsx* file and Orchestrator assets
+* Pulls credentials from Orchestrator assets and *Windows Credential Manager*
+* Gets transaction data from Orchestrator queue and updates back status
+* Takes screenshots in case of system exceptions
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+
+### How It Works ###
+
+1. **INITIALIZE PROCESS**
+ + ./Framework/*InitiAllSettings* - Load configuration data from Config.xlsx file and from assets
+ + ./Framework/*GetAppCredential* - Retrieve credentials from Orchestrator assets or local Windows Credential Manager
+ + ./Framework/*InitiAllApplications* - Open and login to applications used throughout the process
+
+2. **GET TRANSACTION DATA**
+ + ./Framework/*GetTransactionData* - Fetches transactions from an Orchestrator queue defined by Config("OrchestratorQueueName") or any other configured data source
+
+3. **PROCESS TRANSACTION**
+ + *Process* - Process trasaction and invoke other workflows related to the process being automated 
+ + ./Framework/*SetTransactionStatus* - Updates the status of the processed transaction (Orchestrator transactions by default): Success, Business Rule Exception or System Exception
+
+4. **END PROCESS**
+ + ./Framework/*CloseAllApplications* - Logs out and closes applications used throughout the process
+
+
+### For New Project ###
+
+1. Check the Config.xlsx file and add/customize any required fields and values
+2. Implement InitiAllApplications.xaml and CloseAllApplicatoins.xaml workflows, linking them in the Config.xlsx fields
+3. Implement GetTransactionData.xaml and SetTransactionStatus.xaml according to the transaction type being used (Orchestrator queues by default)
+4. Implement Process.xaml workflow and invoke other workflows related to the process being automated
