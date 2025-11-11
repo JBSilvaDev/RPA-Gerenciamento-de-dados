@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="KillAllProcesses" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property sap2010:Annotation.AnnotationText="Array of String with Processes Name to be killed. You can pass processess name just typing: {&quot;saplogon&quot;,&quot;excel&quot;,&quot;notepad&quot;}" Name="in_ProcessesNamesWithoutExtension" Type="InArgument(s:String[])" />
+    <x:Property sap2010:Annotation.AnnotationText="Matriz de String com nomes de processos a serem encerrados. Você pode passar nomes de processos digitando: {&quot;saplogon&quot;,&quot;excel&quot;,&quot;notepad&quot;}" Name="in_ProcessesNamesWithoutExtension" Type="InArgument(s:String[])" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -87,7 +87,7 @@
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Use the Kill Process activity to force the termination of the Windows processes representing applications used in the business process being automated.&#xA;Note that killing processes might have undesirable outcomes, such as losing unsaved changes to files." DisplayName="Kill All Processes" sap:VirtualizedContainerService.HintSize="550.4,1287.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="Mate todos os processos Windows fornecidos. Esse workflow é invocado quando há uma exceção de sistema e o framework tenta reiniciar as aplicações. Se o fechamento gracioso não funcionar, o processo é encerrado à força." DisplayName="Kill All Processes" sap:VirtualizedContainerService.HintSize="400,279.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
