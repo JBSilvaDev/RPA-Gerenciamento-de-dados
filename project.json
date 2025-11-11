@@ -5,6 +5,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "DesktopVideoRecorder.Activities": "[2.0.2]",
+    "UiPath.Database.Activities": "2.0.0",
     "UiPath.Excel.Activities": "[2.20.2]",
     "UiPath.System.Activities": "[23.4.4]",
     "UiPath.Testing.Activities": "[23.4.1]",
@@ -87,7 +88,6 @@
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
       }
     ],
-    "modernBehavior": true,
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",

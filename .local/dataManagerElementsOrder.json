@@ -24,12 +24,54 @@
         "dt_TransactionData&StateMachine_1",
         "ConsecutiveSystemExceptions&StateMachine_1",
         "FFmpegProcess&StateMachine_1",
+        "BigQueryDatabaseConnection&StateMachine_1",
         "ShouldStop&Sequence_25"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
         "in_OrchestratorQueueFolder",
         "in_MaxDurationVideoRecorder"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/AUTENTICACOES/CredenciaisGoogle.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "out_BigQueryDatabaseConnection",
+        "in_config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/StartStopScreenRecorder.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "RecorderProcessName&Sequence_1",
+        "RecordingFilePath&Sequence_14",
+        "RecorderResolution&Sequence_14"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "output_process_FFmpegProcess",
+        "in_bool_StopRecorderScreen",
+        "in_Bool_FirstRun",
+        "in_MaxDurationVideoRecorder",
+        "in_process_FFmpegProcess"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/AUTENTICACOES/CredenciaisOfficeAzure.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "out_Tenant",
+        "in_config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
