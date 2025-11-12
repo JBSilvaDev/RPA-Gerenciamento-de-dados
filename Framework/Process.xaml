@@ -118,7 +118,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1135,2413" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1135,2291" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dict_fatura_fields" />
       <Variable x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" Default="[New List(Of Dictionary(Of String, Object))()]" Name="list_dict_fatura_table" />
@@ -186,7 +186,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
     </Sequence>
-    <Sequence DisplayName="Sequence -Leitura e conversao do Json para dicionarios (fields e table)" sap:VirtualizedContainerService.HintSize="536,1160" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Sequence -Leitura e conversao do Json para dicionarios (fields e table)" sap:VirtualizedContainerService.HintSize="536,1038" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="njl:JObject" Name="jsonObj_fatura" />
         <Variable x:TypeArguments="x:String" Name="json_str" />
@@ -212,7 +212,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="502,526" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonObj_fatura(&quot;TableFields&quot;)]">
+      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="502,517" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonObj_fatura(&quot;TableFields&quot;)]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -237,12 +237,18 @@
           </ActivityAction>
         </ui:ForEach.Body>
       </ui:ForEach>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="502,113" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
     </Sequence>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\SalvaPDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="536,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessBox\Office\SalvaPDF.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
+          <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="in_TransactionItem" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">
+          <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dict_fatura_fields" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="536,79" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
