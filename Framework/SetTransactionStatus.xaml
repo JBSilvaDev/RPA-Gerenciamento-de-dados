@@ -51,7 +51,6 @@
     <scg:List x:TypeArguments="AssemblyReference" Capacity="42">
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
-      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
@@ -65,11 +64,12 @@
       <AssemblyReference>System.Console</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Drawing</AssemblyReference>
       <AssemblyReference>System.Linq</AssemblyReference>
-      <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
@@ -81,13 +81,13 @@
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
       <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Define e registra o status da transação junto com campos de log extras. &#xA;Pode haver três possíveis status: Sucesso, Exceção de Negócio e Exceção de Sistema.&#xA;&#xA;Exceção de Regra de Negócio caracteriza uma situação irregular de acordo com as regras do processo e impede que a transação seja processada. A transação não é retentada neste caso, pois o resultado será o mesmo até que o problema que causa a exceção seja resolvido.&#xA;Por exemplo, pode ser considerada uma BusinessRuleException se um processo espera ler um anexo de e-mail, mas o remetente não anexou arquivo algum. Neste caso, tentativas imediatas de reprocessamento da transação não produzirão um resultado diferente.&#xA;&#xA;Por outro lado, exceções de sistema são caracterizadas por exceções cujos tipos são diferentes de BusinessRuleException. Quando este tipo de exceção acontece, o item de transação pode ser retentado após fechar e reabrir as aplicações envolvidas no processo. A lógica por trás disso é que a exceção foi causada por um problema nas aplicações, que pode ser resolvido reiniciando-as.&#xA;&#xA;Se filas do Orquestrador são a fonte de transações, a atividade Definir Status de Transação é usada para atualizar o status. Além disso, o mecanismo de retentativa também é implementado pelo Orquestrador.&#xA;&#xA;Se filas do Orquestrador não forem usadas, o status pode ser definido, por exemplo, escrevendo em uma coluna específica em uma planilha. Nesses casos, o mecanismo de retentativa é coberto pelo framework e o número de retentativas é definido no arquivo de configuração.&#xA;&#xA;No final, io_TransactionNumber é incrementado, o que faz o framework obter a próxima transação a ser processada." DisplayName="Set Transaction Status" sap:VirtualizedContainerService.HintSize="721.6,1225.6" sap2010:WorkflowViewState.IdRef="Flowchart_2">
