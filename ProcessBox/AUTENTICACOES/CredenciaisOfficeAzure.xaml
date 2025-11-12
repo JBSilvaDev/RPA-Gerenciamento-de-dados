@@ -83,29 +83,30 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CredenciaisOfficeAzure" sap:VirtualizedContainerService.HintSize="1135.2,600.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CredenciaisOfficeAzure" sap:VirtualizedContainerService.HintSize="1135,712" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="449.6,577.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap:VirtualizedContainerService.HintSize="450,552" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Obtendo Credenciais office 365&quot;]" />
-      <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Obtem as credenciais de usuario do Azure" AssetName="[in_Config(&quot;AzureApp_Secret_Credential&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="416,206.4" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_senha]" Username="[out_user]">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Obtendo Credenciais office 365&quot;]" />
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Obtem as credenciais de usuario do Azure" AssetName="[in_Config(&quot;AzureApp_Secret_Credential&quot;).ToString]" CacheStrategy="None" DisplayName="Get Credential" FolderPath="[in_Config(&quot;OrchestratorQueueFolder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="416,206" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[out_senha]" Username="[out_user]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:GetRobotCredential>
-      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,113.6" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Credenciais de usuario obtidas" />
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Credenciais de usuario obtidas" />
     </Sequence>
   </Sequence>
 </Activity>

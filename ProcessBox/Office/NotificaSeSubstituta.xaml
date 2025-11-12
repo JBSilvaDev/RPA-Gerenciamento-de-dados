@@ -1,0 +1,205 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="NotificaSeSubstituta" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.C5C242BF262_normalisedminus_signteams_channels_messagesminus_signv2.Bundle;assembly=C5C242BF262_normalis.kchg1oU0kE1umTrt3J8iB64" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dict_fatura_fields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>NotificaSeSubstituta_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Helpers.TypeDetailsCustomization</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>C5C242BF262_normalis.kchg1oU0kE1umTrt3J8iB64</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="NotificaSeSubstituta" sap:VirtualizedContainerService.HintSize="1135,470" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <isactr:ConnectorActivity Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,447" sap2010:WorkflowViewState.IdRef="ConnectorActivity_1" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+      <isactr:ConnectorActivity.FieldObjects>
+        <isactr:FieldObject Name="team_id" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="channel_id" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+&lt;html lang='pt-BR'&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F4F4F4;
+      margin: 0;
+      padding: 20px;
+      color: #333; 
+    }
+
+    .container {
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      border-left: 8px solid #005B7F; /* Azul Suzano */
+    }
+
+    h1 {
+      color: #005B7F; /* Azul Suzano */
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #7A5C3D; /* Tom terroso */
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div Class='container'&gt;
+    &lt;h1&gt;Fatura com possivel aviso de substituição&lt;/h1&gt;
+ &lt;br&gt;
+    &lt;div Class='info'&gt;" +
+      "&lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Distribuidora: &lt;/span&gt;&lt;/b&gt;"  &amp;  in_dict_fatura_fields("nome-fornecedor").ToString &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Instalação: &lt;/span&gt;&lt;/b&gt;"  &amp;  in_dict_fatura_fields("numero-instalacao").ToString &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Link PDF: &lt;/span&gt;&lt;/b&gt; &lt;a href="&amp;  in_dict_fatura_fields("uri").ToString &amp;"&gt;Click aqui&lt;/a&gt; &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div Class='footer'&gt;
+      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180. &lt;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"]</InArgument>
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="out_id" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="x:String" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="x:String" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+        <isactr:FieldObject Name="Jit_normalisedminus_signteams_channels_messagesminus_signv2" Type="FieldArgument">
+          <isactr:FieldObject.Value>
+            <OutArgument x:TypeArguments="uiascb:normalisedminus_signteams_channels_messagesminus_signv2" />
+          </isactr:FieldObject.Value>
+        </isactr:FieldObject>
+      </isactr:ConnectorActivity.FieldObjects>
+    </isactr:ConnectorActivity>
+  </Sequence>
+</Activity>

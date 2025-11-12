@@ -2,9 +2,9 @@
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_dict_fatura_fields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_varUser" Type="InArgument(x:String)" />
     <x:Property Name="in_varSenha" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="io_dict_fatura_fields" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -76,6 +76,8 @@
       <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
       <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
       <x:String>UiPath.MicrosoftOffice365</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Text</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -157,12 +159,15 @@
       <AssemblyReference>System.Net.Requests</AssemblyReference>
       <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
       <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1209,482" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1152,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="str_caminho_fatura" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="iLocalResource_caminho" />
+      <Variable x:TypeArguments="x:Boolean" Name="varFileExist" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -173,9 +178,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID6</x:Reference>
+      <x:Reference>__ReferenceID7</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+    <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">525,145</av:Point>
@@ -196,7 +201,7 @@
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">525,255</av:Point>
               <av:Size x:Key="ShapeSize">110,70</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">580,325 580,410</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">580,325 580,365</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Sequence DisplayName="Download PDF" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -249,198 +254,233 @@
             </ucas:DownloadStorageFile>
           </Sequence>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID3" Condition="[String.IsNullOrEmpty(str_caminho_fatura)]" DisplayName="arquivo &lt;&gt; de vazio" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+            <FlowStep x:Name="__ReferenceID6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <av:Point x:Key="ShapeLocation">550,410</av:Point>
-                  <av:Size x:Key="ShapeSize">60,60</av:Size>
-                  <av:PointCollection x:Key="FalseConnector">610,440 740,440 740,475</av:PointCollection>
-                  <av:PointCollection x:Key="TrueConnector">550,440 430,440 430,475</av:PointCollection>
+                  <av:Point x:Key="ShapeLocation">525,365</av:Point>
+                  <av:Size x:Key="ShapeSize">110,70</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">580,435 580,490</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <FlowDecision.True>
-                <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+              <ui:FileExistsX DisplayName="Verifica se PDF existe" Exists="[varFileExist]" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="FileExistsX_1" Path="[str_caminho_fatura]">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:FileExistsX>
+              <FlowStep.Next>
+                <FlowDecision x:Name="__ReferenceID3" DisplayName="Se Arquivo Existe" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                  <FlowDecision.Condition>
+                    <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="varFileExist" />
+                  </FlowDecision.Condition>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">375,475</av:Point>
-                      <av:Size x:Key="ShapeSize">110,70</av:Size>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">550,490</av:Point>
+                      <av:Size x:Key="ShapeSize">60,60</av:Size>
+                      <av:PointCollection x:Key="TrueConnector">610,520 740,520 740,555</av:PointCollection>
+                      <av:PointCollection x:Key="FalseConnector">550,520 430,520 430,555</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Throw Exception="[New BusinessRuleException(&quot;Não localizado arquivo PDF local&quot;)]" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Throw_1">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </Throw>
-                </FlowStep>
-              </FlowDecision.True>
-              <FlowDecision.False>
-                <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">685,475</av:Point>
-                      <av:Size x:Key="ShapeSize">110,70</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">740,545 740,585</av:PointCollection>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Sequence sap:VirtualizedContainerService.HintSize="536,1329" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Tentando conexão com MS365 - Sharepoint&quot;]" />
-                    <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" EmailAddress="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_varUser]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="502,1096" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[in_varSenha]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
-                      <uma:Office365ApplicationScope.AuthenticationScopes>
-                        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
-                      </uma:Office365ApplicationScope.AuthenticationScopes>
-                      <uma:Office365ApplicationScope.Body>
-                        <ActivityAction x:TypeArguments="x:Object">
-                          <ActivityAction.Argument>
-                            <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
-                          </ActivityAction.Argument>
-                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,859" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                            <Sequence.Variables>
-                              <Variable x:TypeArguments="umfm:O365DriveRemoteItem" Name="varArquivoOndrive" />
-                              <Variable x:TypeArguments="x:String" Name="mes_ref" />
-                              <Variable x:TypeArguments="x:String" Name="distribuidora" />
-                              <Variable x:TypeArguments="x:String" Name="instalacao" />
-                            </Sequence.Variables>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <umaf:UploadFilesConnections AllResults="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserSiteUrl="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" FilesList="{x:Null}" ItemIdBackup="{x:Reference __ReferenceID0}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntrySiteUrl="{x:Null}" Metadata="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" ConflictResolution="[UiPath.MicrosoftOffice365.Enums.ConflictBehavior.Rename]" DisplayName="Upload Files" FilesInputMode="MultipleByVariable" FirstResult="[varArquivoOndrive]" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_2" ItemSelectionMode="ItemUrl" ManualEntryItemUrl="https://suzano.sharepoint.com/sites/GernciadeEnergia/Documentos%20Compartilhados/Forms/AllItems.aspx?id=%2Fsites%2FGernciadeEnergia%2FDocumentos%20Compartilhados%2FGeneral%2F02%5FBack%20Office%2F03%2E%20NOTAS%20FISCAIS%2F10%2E%20FATURAS%20ENERGIA%20RPA" MultipleFilesToUpload="[System.Linq.Enumerable.Repeat(iLocalResource_caminho, 1)]" UseConnectionService="False">
-                              <umaf:UploadFilesConnections.DriveItemArgument>
-                                <umafm:DriveItemArgument BrowserDriveId="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentDriveId="{x:Null}" BrowserParentDriveName="{x:Null}" BrowserParentItemFriendlyName="{x:Null}" BrowserParentItemId="{x:Null}" BrowserParentPath="{x:Null}" BrowserSiteUrl="{x:Null}" BrowserSpecificUrl="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" Item="{x:Null}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntrySiteUrl="{x:Null}" ReferenceId="{x:Null}" FullPathHint="" ItemSelectionMode="ItemUrl" ManualEntryItemUrl="https://suzano.sharepoint.com/sites/GernciadeEnergia/Documentos%20Compartilhados/Forms/AllItems.aspx?id=%2Fsites%2FGernciadeEnergia%2FDocumentos%20Compartilhados%2FGeneral%2F02%5FBack%20Office%2F03%2E%20NOTAS%20FISCAIS%2F10%2E%20FATURAS%20ENERGIA%20RPA" ParentFullPathHint="">
-                                  <umafm:DriveItemArgument.ItemIdBackup>
-                                    <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="ItemUrl">
-                                      <usau:BackupSlot.BackupValues>
-                                        <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="6">
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                        </scg:List>
-                                      </usau:BackupSlot.BackupValues>
-                                    </usau:BackupSlot>
-                                  </umafm:DriveItemArgument.ItemIdBackup>
-                                </umafm:DriveItemArgument>
-                              </umaf:UploadFilesConnections.DriveItemArgument>
-                              <umaf:UploadFilesConnections.FilesBackup>
-                                <usau:BackupSlot x:TypeArguments="umafe:FilesInputMode" StoredValue="MultipleByVariable">
-                                  <usau:BackupSlot.BackupValues>
-                                    <scg:List x:TypeArguments="x:Object" x:Key="MultipleByVariable" Capacity="1">
-                                      <x:Null />
-                                    </scg:List>
-                                    <scg:List x:TypeArguments="x:Object" x:Key="MultipleByBuilder" Capacity="1">
-                                      <x:Null />
-                                    </scg:List>
-                                  </usau:BackupSlot.BackupValues>
-                                </usau:BackupSlot>
-                              </umaf:UploadFilesConnections.FilesBackup>
-                            </umaf:UploadFilesConnections>
-                            <Assign sap2010:Annotation.AnnotationText="Troca &quot;/&quot; por &quot;_&quot; no mes referencia" sap:VirtualizedContainerService.HintSize="434,145" sap2010:WorkflowViewState.IdRef="Assign_2">
-                              <Assign.To>
-                                <OutArgument x:TypeArguments="x:String">[mes_ref]</OutArgument>
-                              </Assign.To>
-                              <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[in_dict_fatura_fields("mes-referencia").ToString.Replace("/", "_").ToString]</InArgument>
-                              </Assign.Value>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                            </Assign>
-                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,195" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
-                              <ui:MultipleAssign.AssignOperations>
-                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
-                                    <ui:AssignOperation.To>
-                                      <OutArgument x:TypeArguments="x:String">[mes_ref]</OutArgument>
-                                    </ui:AssignOperation.To>
-                                    <ui:AssignOperation.Value>
-                                      <InArgument x:TypeArguments="x:String">[If(mes_ref.Contains("\"), in_dict_fatura_fields("mes-referencia").ToString().Replace("\", "_").ToString(), mes_ref)]</InArgument>
-                                    </ui:AssignOperation.Value>
-                                  </ui:AssignOperation>
-                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
-                                    <ui:AssignOperation.To>
-                                      <OutArgument x:TypeArguments="x:String">[distribuidora]</OutArgument>
-                                    </ui:AssignOperation.To>
-                                    <ui:AssignOperation.Value>
-                                      <InArgument x:TypeArguments="x:String">[in_dict_fatura_fields("nome-fornecedor").ToString]</InArgument>
-                                    </ui:AssignOperation.Value>
-                                  </ui:AssignOperation>
-                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
-                                    <ui:AssignOperation.To>
-                                      <OutArgument x:TypeArguments="x:String">[instalacao]</OutArgument>
-                                    </ui:AssignOperation.To>
-                                    <ui:AssignOperation.Value>
-                                      <InArgument x:TypeArguments="x:String">[in_dict_fatura_fields("numero-instalacao").ToString]</InArgument>
-                                    </ui:AssignOperation.Value>
-                                  </ui:AssignOperation>
-                                </scg:List>
-                              </ui:MultipleAssign.AssignOperations>
-                            </ui:MultipleAssign>
-                            <umaf:RenameItemConnections ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" AuthScopesInvalid="False" DisplayName="Rename file or folder" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="RenameItemConnections_1" NewName="[mes_ref + &quot; - &quot; + distribuidora + &quot; - &quot; + instalacao + &quot;.&quot; + varArquivoOndrive.Extension]" UseConnectionService="False">
-                              <umaf:RenameItemConnections.Item>
-                                <umafm:DriveItemArgument BrowserDriveId="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentDriveId="{x:Null}" BrowserParentDriveName="{x:Null}" BrowserParentItemFriendlyName="{x:Null}" BrowserParentItemId="{x:Null}" BrowserParentPath="{x:Null}" BrowserSiteUrl="{x:Null}" BrowserSpecificUrl="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" ReferenceId="{x:Null}" FullPathHint="" Item="[varArquivoOndrive]" ItemSelectionMode="UseExisting" ParentFullPathHint="">
-                                  <umafm:DriveItemArgument.ItemIdBackup>
-                                    <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="UseExisting">
-                                      <usau:BackupSlot.BackupValues>
-                                        <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="6">
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                          <x:Null />
-                                        </scg:List>
-                                      </usau:BackupSlot.BackupValues>
-                                    </usau:BackupSlot>
-                                  </umafm:DriveItemArgument.ItemIdBackup>
-                                </umafm:DriveItemArgument>
-                              </umaf:RenameItemConnections.Item>
-                            </umaf:RenameItemConnections>
-                            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
-                          </Sequence>
-                        </ActivityAction>
-                      </uma:Office365ApplicationScope.Body>
-                      <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
-                        <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
-                          <usau:BackupSlot.BackupValues>
-                            <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
-                          </usau:BackupSlot.BackupValues>
-                        </usau:BackupSlot>
-                      </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
-                    </uma:Office365ApplicationScope>
-                  </Sequence>
-                  <FlowStep.Next>
-                    <FlowStep x:Name="__ReferenceID5">
+                  <FlowDecision.True>
+                    <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">685,585</av:Point>
+                          <av:Point x:Key="ShapeLocation">685,555</av:Point>
                           <av:Size x:Key="ShapeSize">110,70</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">740,625 740,675</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:DeleteFileX DisplayName="Delete Local file" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[str_caminho_fatura]">
+                      <Sequence DisplayName="Salvar PDf no Sharepoint" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                      </ui:DeleteFileX>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Tentando conexão com MS365 - Sharepoint&quot;]" />
+                        <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" EmailAddress="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_varUser]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="502,1252" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[in_varSenha]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
+                          <uma:Office365ApplicationScope.AuthenticationScopes>
+                            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                          </uma:Office365ApplicationScope.AuthenticationScopes>
+                          <uma:Office365ApplicationScope.Body>
+                            <ActivityAction x:TypeArguments="x:Object">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,1015" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="umfm:O365DriveRemoteItem" Name="varArquivoOndrive" />
+                                  <Variable x:TypeArguments="x:String" Name="mes_ref" />
+                                  <Variable x:TypeArguments="x:String" Name="distribuidora" />
+                                  <Variable x:TypeArguments="x:String" Name="instalacao" />
+                                  <Variable x:TypeArguments="umfm:O365DriveRemoteItem" Name="out_renameFile" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <umaf:UploadFilesConnections AllResults="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserSiteUrl="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" FilesList="{x:Null}" ItemIdBackup="{x:Reference __ReferenceID0}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntrySiteUrl="{x:Null}" Metadata="{x:Null}" SingleFileToUpload="{x:Null}" AuthScopesInvalid="False" ConflictResolution="[UiPath.MicrosoftOffice365.Enums.ConflictBehavior.Rename]" DisplayName="Upload Files" FilesInputMode="MultipleByVariable" FirstResult="[varArquivoOndrive]" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="UploadFilesConnections_2" ItemSelectionMode="ItemUrl" ManualEntryItemUrl="https://suzano.sharepoint.com/sites/GernciadeEnergia/Documentos%20Compartilhados/Forms/AllItems.aspx?id=%2Fsites%2FGernciadeEnergia%2FDocumentos%20Compartilhados%2FGeneral%2F02%5FBack%20Office%2F03%2E%20NOTAS%20FISCAIS%2F10%2E%20FATURAS%20ENERGIA%20RPA" MultipleFilesToUpload="[System.Linq.Enumerable.Repeat(iLocalResource_caminho, 1)]" UseConnectionService="False">
+                                  <umaf:UploadFilesConnections.DriveItemArgument>
+                                    <umafm:DriveItemArgument BrowserDriveId="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentDriveId="{x:Null}" BrowserParentDriveName="{x:Null}" BrowserParentItemFriendlyName="{x:Null}" BrowserParentItemId="{x:Null}" BrowserParentPath="{x:Null}" BrowserSiteUrl="{x:Null}" BrowserSpecificUrl="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" Item="{x:Null}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntrySiteUrl="{x:Null}" ReferenceId="{x:Null}" FullPathHint="" ItemSelectionMode="ItemUrl" ManualEntryItemUrl="https://suzano.sharepoint.com/sites/GernciadeEnergia/Documentos%20Compartilhados/Forms/AllItems.aspx?id=%2Fsites%2FGernciadeEnergia%2FDocumentos%20Compartilhados%2FGeneral%2F02%5FBack%20Office%2F03%2E%20NOTAS%20FISCAIS%2F10%2E%20FATURAS%20ENERGIA%20RPA" ParentFullPathHint="">
+                                      <umafm:DriveItemArgument.ItemIdBackup>
+                                        <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="ItemUrl">
+                                          <usau:BackupSlot.BackupValues>
+                                            <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="6">
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                            </scg:List>
+                                          </usau:BackupSlot.BackupValues>
+                                        </usau:BackupSlot>
+                                      </umafm:DriveItemArgument.ItemIdBackup>
+                                    </umafm:DriveItemArgument>
+                                  </umaf:UploadFilesConnections.DriveItemArgument>
+                                  <umaf:UploadFilesConnections.FilesBackup>
+                                    <usau:BackupSlot x:TypeArguments="umafe:FilesInputMode" StoredValue="MultipleByVariable">
+                                      <usau:BackupSlot.BackupValues>
+                                        <scg:List x:TypeArguments="x:Object" x:Key="MultipleByVariable" Capacity="1">
+                                          <x:Null />
+                                        </scg:List>
+                                        <scg:List x:TypeArguments="x:Object" x:Key="MultipleByBuilder" Capacity="1">
+                                          <x:Null />
+                                        </scg:List>
+                                      </usau:BackupSlot.BackupValues>
+                                    </usau:BackupSlot>
+                                  </umaf:UploadFilesConnections.FilesBackup>
+                                </umaf:UploadFilesConnections>
+                                <ui:MultipleAssign sap2010:Annotation.AnnotationText="Seta as demais variaveis para renomear o arquivo, e faz replace de separadores no mes referencia" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,237" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                                  <ui:MultipleAssign.AssignOperations>
+                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[mes_ref]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">[io_dict_fatura_fields("mes-referencia").ToString.Replace("/", "_").Replace("\", "_").Replace("-", "_").Replace(".", "_").Replace(" ", "_").Trim()]</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[distribuidora]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">[io_dict_fatura_fields("nome-fornecedor").ToString.ToLower]</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                                        <ui:AssignOperation.To>
+                                          <OutArgument x:TypeArguments="x:String">[instalacao]</OutArgument>
+                                        </ui:AssignOperation.To>
+                                        <ui:AssignOperation.Value>
+                                          <InArgument x:TypeArguments="x:String">[io_dict_fatura_fields("numero-instalacao").ToString.ToLower]</InArgument>
+                                        </ui:AssignOperation.Value>
+                                      </ui:AssignOperation>
+                                    </scg:List>
+                                  </ui:MultipleAssign.AssignOperations>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:MultipleAssign>
+                                <Assign sap2010:Annotation.AnnotationText="Remove possiveis caracteres especiais nas letras (acentuação)" sap:VirtualizedContainerService.HintSize="434,145" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[mes_ref]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(mes_ref.Normalize(System.Text.NormalizationForm.FormD), "\p{IsCombiningDiacriticalMarks}+", "").ToLower]</InArgument>
+                                  </Assign.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Assign>
+                                <umaf:RenameItemConnections ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" AuthScopesInvalid="False" DisplayName="Rename file or folder" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="RenameItemConnections_1" NewName="[mes_ref + &quot; - &quot; + distribuidora + &quot; - &quot; + instalacao + &quot;.&quot; + varArquivoOndrive.Extension]" Result="[out_renameFile]" UseConnectionService="False">
+                                  <umaf:RenameItemConnections.Item>
+                                    <umafm:DriveItemArgument BrowserDriveId="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentDriveId="{x:Null}" BrowserParentDriveName="{x:Null}" BrowserParentItemFriendlyName="{x:Null}" BrowserParentItemId="{x:Null}" BrowserParentPath="{x:Null}" BrowserSiteUrl="{x:Null}" BrowserSpecificUrl="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" ReferenceId="{x:Null}" FullPathHint="" Item="[varArquivoOndrive]" ItemSelectionMode="UseExisting" ParentFullPathHint="">
+                                      <umafm:DriveItemArgument.ItemIdBackup>
+                                        <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="UseExisting">
+                                          <usau:BackupSlot.BackupValues>
+                                            <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="6">
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                              <x:Null />
+                                            </scg:List>
+                                          </usau:BackupSlot.BackupValues>
+                                        </usau:BackupSlot>
+                                      </umafm:DriveItemArgument.ItemIdBackup>
+                                    </umafm:DriveItemArgument>
+                                  </umaf:RenameItemConnections.Item>
+                                </umaf:RenameItemConnections>
+                                <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Object">[io_dict_fatura_fields("uri")]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Object">[out_renameFile.Uri]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="WriteLine_1" />
+                              </Sequence>
+                            </ActivityAction>
+                          </uma:Office365ApplicationScope.Body>
+                          <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                            <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+                              <usau:BackupSlot.BackupValues>
+                                <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+                              </usau:BackupSlot.BackupValues>
+                            </usau:BackupSlot>
+                          </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+                        </uma:Office365ApplicationScope>
+                      </Sequence>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">685,675</av:Point>
+                              <av:Size x:Key="ShapeSize">110,70</av:Size>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:DeleteFileX DisplayName="Delete Local file" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[str_caminho_fatura]">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:DeleteFileX>
+                        </FlowStep>
+                      </FlowStep.Next>
                     </FlowStep>
-                  </FlowStep.Next>
-                </FlowStep>
-              </FlowDecision.False>
-            </FlowDecision>
+                  </FlowDecision.True>
+                  <FlowDecision.False>
+                    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">375,555</av:Point>
+                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Throw Exception="[New BusinessRuleException(&quot;Não localizado arquivo PDF local&quot;)]" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Throw_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Throw>
+                    </FlowStep>
+                  </FlowDecision.False>
+                </FlowDecision>
+              </FlowStep.Next>
+            </FlowStep>
           </FlowStep.Next>
         </FlowStep>
       </FlowStep.Next>
@@ -450,5 +490,6 @@
     <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
   </Flowchart>
 </Activity>

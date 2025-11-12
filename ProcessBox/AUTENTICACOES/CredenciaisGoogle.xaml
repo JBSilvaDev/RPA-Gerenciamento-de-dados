@@ -89,40 +89,40 @@
       <AssemblyReference>System.Memory.Data</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CredenciaisOfficeAzure" sap:VirtualizedContainerService.HintSize="751.2,938.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CredenciaisOfficeAzure" sap:VirtualizedContainerService.HintSize="1135,982" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap:VirtualizedContainerService.HintSize="486.4,915.2" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence sap:VirtualizedContainerService.HintSize="488,959" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="452.8,832" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="454,876" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <TryCatch.Try>
-          <Sequence sap:VirtualizedContainerService.HintSize="416,577.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence sap:VirtualizedContainerService.HintSize="416,625" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382.4,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Tentando conexão com GCP" />
-            <ui:DatabaseConnect sap2010:Annotation.AnnotationText="Faz a conexao com GCP trazendo a base de dados&#xA;" DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="382.4,136" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="[&quot;Dsn=&quot;+ in_Config(&quot;GCPDataSet&quot;).ToString]" DatabaseConnection="[out_BigQueryDatabaseConnection]">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Realizando conexão com GCP&quot;]" />
+            <ui:DatabaseConnect sap2010:Annotation.AnnotationText="Faz a conexao com GCP trazendo a base de dados&#xA;" DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="382,134" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="[&quot;Dsn=&quot;+ in_Config(&quot;GCPDataSet&quot;).ToString]" DatabaseConnection="[out_BigQueryDatabaseConnection]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:DatabaseConnect>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382.4,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Conexão realizada" />
-            <ui:Comment sap:VirtualizedContainerService.HintSize="382.4,136.8" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Passa o BD de conexão para argumento de saida out_BigQueryDatabaseConnection, que é rebido pelo Main o salvando numa variavel e no Config" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="382,122" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Conexão realizada" />
+            <ui:Comment sap:VirtualizedContainerService.HintSize="382,136" sap2010:WorkflowViewState.IdRef="Comment_1" Text="Passa o BD de conexão para argumento de saida out_BigQueryDatabaseConnection, que é rebido pelo Main o salvando numa variavel e no Config" />
           </Sequence>
         </TryCatch.Try>
         <TryCatch.Catches>
-          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="419.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="420,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>

@@ -123,7 +123,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1192,2569" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1135,2569" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="varPath" />
       <Variable x:TypeArguments="x:String" Name="str_caminho_json" />
@@ -166,7 +166,7 @@
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Baixando arquivo Json&quot;]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Baixando arquivo Json&quot;]" />
       <Assign sap2010:Annotation.AnnotationText="Define caminho e nome do arquivo a ser salvo" sap:VirtualizedContainerService.HintSize="434,145" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[str_caminho_json]</OutArgument>
