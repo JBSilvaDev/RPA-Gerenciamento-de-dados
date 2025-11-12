@@ -12,6 +12,10 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varTenant&StateMachine_1",
+        "varAppID&StateMachine_1",
+        "varSenha&StateMachine_1",
+        "varUser&StateMachine_1",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -25,10 +29,6 @@
         "ConsecutiveSystemExceptions&StateMachine_1",
         "FFmpegProcess&StateMachine_1",
         "BigQueryDatabaseConnection&StateMachine_1",
-        "varUser&Sequence_40",
-        "varSenha&Sequence_40",
-        "varAppID&Sequence_40",
-        "varTenant&Sequence_40",
         "ShouldStop&Sequence_25"
       ],
       "ArgumentsSectionElementsOrder": [
@@ -114,13 +114,20 @@
       "Path": "Framework/Process.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "json_str&Sequence_3",
-        "json_fatura&Sequence_3",
-        "str_caminho&Sequence_3",
-        "varPath&Sequence_3",
-        "varBname&Sequence_3"
+        "str_caminho_json&Sequence_1",
+        "dict_fatura_fields&Sequence_1",
+        "list_dict_fatura_table&Sequence_1",
+        "varPath&Sequence_1",
+        "varBname&Sequence_5",
+        "jsonObj_fatura&Sequence_3",
+        "dict_Item&Sequence_3",
+        "json_str&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_varAppID",
+        "in_varTenant",
+        "in_varSenha",
+        "in_varUser",
         "in_TransactionItem",
         "in_Config"
       ],
@@ -131,11 +138,16 @@
       "Path": "ProcessBox/Office/SalvaPDF.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "str_caminho&Sequence_1",
+        "str_caminho_fatura&Flowchart_1",
         "varBname&Sequence_1",
         "varPath&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_varSenha",
+        "in_varTenant",
+        "in_varAppID",
+        "in_varUser",
+        "in_dict_fatura_fields",
         "in_Config",
         "in_TransactionItem"
       ],
