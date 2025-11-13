@@ -1,0 +1,1 @@
+SELECT * FROM `sz-00009-ws.pagamento_faturas_energia_qa.master_data_fio` LIMIT 1000

@@ -3,6 +3,7 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_dict_fatura_fields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_list_dict_fatura_table" Type="InArgument(scg:List(scg:Dictionary(x:String, x:Object)))" />
+    <x:Property Name="in_BigQueryDatabaseConnection" Type="InArgument(ui:DatabaseConnection)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -128,7 +129,7 @@
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Workflow Used to Send Data to BigQuery in RPA0088 DataSet" DisplayName="SendExtractDataToBigQuery" sap:VirtualizedContainerService.HintSize="1135,1720" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Workflow Used to Send Data to BigQuery in RPA0088 DataSet" DisplayName="SendExtractDataToBigQuery" sap:VirtualizedContainerService.HintSize="1152,778.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="insertCommand" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="ExtractionResultsFile" />
@@ -146,7 +147,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap2010:Annotation.AnnotationText="Cria GUID que sera o identificador para linkas as tabelas no GCP" sap:VirtualizedContainerService.HintSize="484,145" sap2010:WorkflowViewState.IdRef="Assign_20">
+    <Assign sap2010:Annotation.AnnotationText="Cria GUID que sera o identificador para linkas as tabelas no GCP" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="Assign_20">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varGuid]</OutArgument>
       </Assign.To>
@@ -159,8 +160,8 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,173" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Iniciando processo de upload de dados no BQuery&quot;]" />
-    <Sequence DisplayName="Sequence - Inserindo dados fatura" sap:VirtualizedContainerService.HintSize="484,57" sap2010:WorkflowViewState.IdRef="Sequence_20">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_32" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Iniciando processo de upload de dados no BQuery&quot;]" />
+    <Sequence DisplayName="Sequence - Inserindo dados fatura" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_20">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -171,7 +172,7 @@
       <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\insert_faturas.sql" sap:VirtualizedContainerService.HintSize="416,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_9" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Leitura arquivo de comando SQL realizada" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Tentando executar comando SQL para insersão de dados" />
-      <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" ConnectionString="Dsn=RPA0180_ODBC" ContinueOnError="False" DisplayName="Run command - Inset Into" sap:VirtualizedContainerService.HintSize="416,146" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_5" ProviderName="System.Data.Odbc" Sql="[SQLCommand]">
+      <ui:ExecuteNonQuery AffectedRecords="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Run command - Inset Into" ExistingDbConnection="[in_BigQueryDatabaseConnection]" sap:VirtualizedContainerService.HintSize="416,146" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_5" Sql="[SQLCommand]">
         <ui:ExecuteNonQuery.Parameters>
           <InArgument x:TypeArguments="x:String" x:Key="GUID">[varGuid]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="nome_cliente">[If(in_dict_fatura_fields.ContainsKey("nome-cliente"), If(in_dict_fatura_fields("nome-cliente") Is Nothing OrElse String.IsNullOrEmpty(in_dict_fatura_fields("nome-cliente").ToString()), "N/A", in_dict_fatura_fields("nome-cliente").ToString()), "N/A")]</InArgument>
@@ -211,10 +212,11 @@
       </ui:ExecuteNonQuery>
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="Dados inseridos - Tabela principal" />
     </Sequence>
-    <Sequence DisplayName="Sequence - Inserindo dados tabela serviços" sap:VirtualizedContainerService.HintSize="484,1127" sap2010:WorkflowViewState.IdRef="Sequence_21">
+    <Sequence DisplayName="Sequence - Inserindo dados tabela serviços" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_21">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Salvando dados da tabela de serviços&quot;]" />
@@ -233,7 +235,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ExistingDbConnection="{x:Null}" TimeoutMS="{x:Null}" ConnectionString="Dsn=RPA0180_ODBC" ContinueOnError="False" DisplayName="Run command - Inset Into" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_6" ProviderName="System.Data.Odbc" Sql="[SQLCommand]">
+              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Run command - Inset Into" ExistingDbConnection="[in_BigQueryDatabaseConnection]" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_6" Sql="[SQLCommand]">
                 <ui:ExecuteNonQuery.Parameters>
                   <InArgument x:TypeArguments="x:String" x:Key="GUID">
                     <VisualBasicValue x:TypeArguments="x:String" ExpressionText="varGuid" />
@@ -297,6 +299,6 @@
       </ui:ForEach>
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="Dados inseridos - Tabela serviços" />
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Finalizando processo de upload de dados no BQuery&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Finalizando processo de upload de dados no BQuery&quot;]" />
   </Sequence>
 </Activity>
