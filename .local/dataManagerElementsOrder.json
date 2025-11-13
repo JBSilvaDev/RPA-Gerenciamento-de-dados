@@ -12,10 +12,6 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "varTenant&StateMachine_1",
-        "varAppID&StateMachine_1",
-        "varSenha&StateMachine_1",
-        "varUser&StateMachine_1",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -29,7 +25,13 @@
         "ConsecutiveSystemExceptions&StateMachine_1",
         "FFmpegProcess&StateMachine_1",
         "BigQueryDatabaseConnection&StateMachine_1",
-        "ShouldStop&Sequence_25"
+        "varUser&StateMachine_1",
+        "varSenha&StateMachine_1",
+        "ShouldStop&Sequence_25",
+        "dict_fatura_fields&Sequence_28",
+        "list_dict_fatura_table&Sequence_28",
+        "varResFisco&Sequence_28",
+        "varMsgAviso&Sequence_28"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -54,11 +56,36 @@
       "Path": "Framework/StartStopScreenRecorder.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "TransactionField2&StateMachine_1",
+        "TransactionField1&StateMachine_1",
+        "TransactionID&StateMachine_1",
+        "dt_TransactionData&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "FFmpegProcess&StateMachine_1",
+        "BigQueryDatabaseConnection&StateMachine_1",
+        "varUser&StateMachine_1",
+        "varSenha&StateMachine_1",
+        "ShouldStop&Sequence_25",
+        "dict_fatura_fields&Sequence_28",
+        "list_dict_fatura_table&Sequence_28",
+        "varResFisco&Sequence_28",
+        "varMsgAviso&Sequence_28",
         "RecorderProcessName&Sequence_1",
         "RecordingFilePath&Sequence_14",
         "RecorderResolution&Sequence_14"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "output_process_FFmpegProcess",
+        "in_bool_StopRecorderScreen",
+        "in_Bool_FirstRun",
+        "in_process_FFmpegProcess",
         "in_OrchestratorQueueName",
         "in_OrchestratorQueueFolder",
         "in_MaxDurationVideoRecorder"
@@ -71,6 +98,9 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
+        "in_OrchestratorQueueName",
+        "in_OrchestratorQueueFolder",
+        "in_MaxDurationVideoRecorder",
         "in_Config",
         "out_user",
         "out_senha"
@@ -99,13 +129,9 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
-        "in_TransactionNumber",
-        "in_Config",
-        "out_TransactionItem",
-        "out_TransactionField1",
-        "out_TransactionField2",
-        "out_TransactionID",
-        "io_dt_TransactionData"
+        "in_OrchestratorQueueName",
+        "in_OrchestratorQueueFolder",
+        "in_MaxDurationVideoRecorder"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -115,8 +141,6 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "str_caminho_json&Sequence_1",
-        "dict_fatura_fields&Sequence_1",
-        "list_dict_fatura_table&Sequence_1",
         "varPath&Sequence_1",
         "varBname&Sequence_5",
         "jsonObj_fatura&Sequence_3",
@@ -124,10 +148,8 @@
         "json_str&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_varAppID",
-        "in_varTenant",
-        "in_varSenha",
-        "in_varUser",
+        "out_dict_fatura_fields",
+        "out_list_dict_fatura_table",
         "in_TransactionItem",
         "in_Config"
       ],
@@ -138,18 +160,23 @@
       "Path": "ProcessBox/Office/SalvaPDF.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varFileExist&Flowchart_1",
+        "iLocalResource_caminho&Flowchart_1",
+        "varArquivoOndrive&Sequence_3",
+        "mes_ref&Sequence_3",
+        "distribuidora&Sequence_3",
+        "instalacao&Sequence_3",
+        "out_renameFile&Sequence_3",
         "str_caminho_fatura&Flowchart_1",
         "varBname&Sequence_1",
         "varPath&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_varSenha",
-        "in_varTenant",
-        "in_varAppID",
-        "in_varUser",
-        "in_dict_fatura_fields",
+        "in_TransactionItem",
         "in_Config",
-        "in_TransactionItem"
+        "in_varUser",
+        "in_varSenha",
+        "io_dict_fatura_fields"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -181,7 +208,10 @@
         "in_TransactionItem",
         "io_RetryNumber",
         "io_TransactionNumber",
-        "io_ConsecutiveSystemExceptions"
+        "io_ConsecutiveSystemExceptions",
+        "in_OrchestratorQueueName",
+        "in_OrchestratorQueueFolder",
+        "in_MaxDurationVideoRecorder"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -189,35 +219,8 @@
     {
       "Path": "Framework/CloseAllApplications.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "TransactionItem&StateMachine_1",
-        "SystemException&StateMachine_1",
-        "BusinessException&StateMachine_1",
-        "TransactionNumber&StateMachine_1",
-        "Config&StateMachine_1",
-        "RetryNumber&StateMachine_1",
-        "TransactionField2&StateMachine_1",
-        "TransactionField1&StateMachine_1",
-        "TransactionID&StateMachine_1",
-        "dt_TransactionData&StateMachine_1",
-        "ConsecutiveSystemExceptions&StateMachine_1",
-        "FFmpegProcess&StateMachine_1",
-        "BigQueryDatabaseConnection&StateMachine_1",
-        "varUser&Sequence_40",
-        "varSenha&Sequence_40",
-        "varAppID&Sequence_40",
-        "varTenant&Sequence_40",
-        "ShouldStop&Sequence_25"
-      ],
-      "ArgumentsSectionElementsOrder": [
-        "in_TransactionNumber",
-        "in_Config",
-        "out_TransactionItem",
-        "out_TransactionField1",
-        "out_TransactionField2",
-        "out_TransactionID",
-        "io_dt_TransactionData"
-      ],
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     },
@@ -256,6 +259,57 @@
         "Age&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Office/NotificaSeSubstituta.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_dict_fatura_fields"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "rascunhos/rascunhos.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "jsontxt&Sequence_1",
+        "JsonObject&Sequence_1",
+        "vardict&Sequence_1",
+        "VARDICTABLE&Sequence_1",
+        "dictItem&Sequence_1",
+        "btn&Sequence_1",
+        "nome&Sequence_5",
+        "texto&Sequence_8",
+        "existe&Sequence_10"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/EnviaExtrasaoBQuery.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "varGuid&Sequence_1",
+        "insertCommand&Sequence_1",
+        "ExtractionResultsFile&Sequence_1",
+        "JsonString&Sequence_1",
+        "SQLCommand&Sequence_1",
+        "ExtractionResults&Sequence_1",
+        "JsonStringCostType&Sequence_1",
+        "CostTypeJson&Sequence_1",
+        "AddItemToQueue&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_dict_fatura_fields",
+        "in_list_dict_fatura_table"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }

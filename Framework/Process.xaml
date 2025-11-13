@@ -54,6 +54,7 @@
       <x:String>System.Numerics</x:String>
       <x:String>UiPath.Activities.System.Arrays</x:String>
       <x:String>System.Security</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -121,9 +122,14 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1135,2569" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1135,3170" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="varPath" />
       <Variable x:TypeArguments="x:String" Name="str_caminho_json" />
@@ -135,7 +141,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <Sequence DisplayName="Sequence - Json download" sap:VirtualizedContainerService.HintSize="536,730" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Sequence - Json download" sap:VirtualizedContainerService.HintSize="536,903" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="varBname" />
       </Sequence.Variables>
@@ -180,7 +186,8 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ucas:DownloadStorageFile TimeoutMS="{x:Null}" ContinueOnError="False" Destination="[str_caminho_json]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="434,156" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath.Substring(0, Math.Min(100, varPath.Length)) + &quot;_Fields.json&quot;]" StorageBucketName="[varBname]" />
+      <ucas:DownloadStorageFile TimeoutMS="{x:Null}" ContinueOnError="False" Destination="[str_caminho_json]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath.Substring(0, Math.Min(100, varPath.Length)) + &quot;_Fields.json&quot;]" StorageBucketName="[varBname]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Arquivo Json baixado&quot;]" />
     </Sequence>
     <Sequence sap2010:Annotation.AnnotationText="Inicializando argumentos que irão armazenar os dados do Json" sap:VirtualizedContainerService.HintSize="536,342" sap2010:WorkflowViewState.IdRef="Sequence_8">
       <sap:WorkflowViewStateService.ViewState>
@@ -207,7 +214,7 @@
         </Assign.Value>
       </Assign>
     </Sequence>
-    <Sequence DisplayName="Sequence -Leitura e conversao do Json para dicionarios (fields e table)" sap:VirtualizedContainerService.HintSize="536,1150" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence DisplayName="Sequence -Leitura e conversao do Json para dicionarios (fields e table)" sap:VirtualizedContainerService.HintSize="536,1577" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
         <Variable x:TypeArguments="njl:JObject" Name="jsonObj_fatura" />
         <Variable x:TypeArguments="x:String" Name="json_str" />
@@ -233,6 +240,46 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
+      <Sequence DisplayName="Sequence - Incluindo valores para tipo fatura, layout e cliente" sap:VirtualizedContainerService.HintSize="502,427" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Object">[out_dict_fatura_fields("tipo-layout")]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Object">[jsonObj_fatura("DocumentType").ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Object">[out_dict_fatura_fields("tipo-fatura")]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Object" xml:space="preserve">[If(
+    out_dict_fatura_fields.ContainsKey("codigo-barras") AndAlso out_dict_fatura_fields("codigo-barras") _
+	IsNot Nothing,
+    If(String.IsNullOrEmpty(out_dict_fatura_fields("codigo-barras").ToString()), "Escritura", "Comum"),
+    "Escritura"
+)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Object">[out_dict_fatura_fields("tipo-cliente")]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Object" xml:space="preserve">[If(
+    System.Text.RegularExpressions.Regex.IsMatch(out_dict_fatura_fields("nome-cliente").ToString.ToLower, in_Config("WordsKeys_Titular").ToString),
+    "Proprio",
+    "Terceiro"
+)]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
       <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="502,629" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonObj_fatura(&quot;TableFields&quot;)]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:Object">
@@ -260,6 +307,6 @@
         </ui:ForEach.Body>
       </ui:ForEach>
     </Sequence>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="536,79" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="536,80" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
   </Sequence>
 </Activity>
