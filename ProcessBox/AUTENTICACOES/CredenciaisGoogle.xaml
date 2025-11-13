@@ -109,7 +109,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Realizando conexão com GCP&quot;]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Realizando conexão com GCP&quot;]" />
             <ui:DatabaseConnect sap2010:Annotation.AnnotationText="Faz a conexao com GCP trazendo a base de dados&#xA;" DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="382,134" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="[&quot;Dsn=&quot;+ in_Config(&quot;GCPDataSet&quot;).ToString]" DatabaseConnection="[out_BigQueryDatabaseConnection]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
