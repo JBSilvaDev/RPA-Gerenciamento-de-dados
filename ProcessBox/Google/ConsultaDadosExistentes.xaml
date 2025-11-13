@@ -4,6 +4,7 @@
     <x:Property Name="out_Item_Existe" Type="OutArgument(x:Boolean)" />
     <x:Property Name="in_dict_fatura_fields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_dict_master_data" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -98,7 +99,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1209,482" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1152,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="varNumID" />
     </Flowchart.Variables>
@@ -142,7 +143,7 @@
                   </Sequence>
                 </ui:IfElseIfBlock.Then>
               </ui:IfElseIfBlock>
-              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_dt_Bquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dict_fatura_fields(&quot;numero-instalacao&quot;).ToString))]">
+              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_dt_Bquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dict_fatura_fields(&quot;numero-instalacao&quot;).ToString.TrimStart(&quot;0&quot;c)))]">
                 <ui:IfElseIfBlock.Then>
                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,279" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
@@ -198,10 +199,7 @@
         </ui:IfElseIf>
       </Sequence>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID2" DisplayName="Existe?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-          <FlowDecision.Condition>
-            <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="out_Item_Existe" />
-          </FlowDecision.Condition>
+        <FlowDecision x:Name="__ReferenceID2" Condition="[out_Item_Existe]" DisplayName="Existe?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -220,31 +218,31 @@
                   <av:PointCollection x:Key="ConnectorLocation">165,290 140,290 140,485</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Obtem dados da Master Data" sap:VirtualizedContainerService.HintSize="621,1061" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="Obtem dados da Master Data" sap:VirtualizedContainerService.HintSize="774,1220" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="587,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Obtendo linha correspondente&quot;]" />
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Bquery]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="587,715" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="740,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Obtendo linha correspondente&quot;]" />
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_Bquery]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="740,823" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="553,566" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="706,674" sap2010:WorkflowViewState.IdRef="Sequence_15">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="519,506" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
+                        <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="672,614" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
                           <ui:IfElseIf.ConditionBlocks>
                             <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                               <ui:IfElseIfBlock BlockType="If" Condition="[CurrentRow(&quot;inst_cont&quot;).ToString.ToLower.Contains(varNumID)]">
                                 <ui:IfElseIfBlock.Then>
-                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,287" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="621,395" sap2010:WorkflowViewState.IdRef="Sequence_16">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -258,7 +256,8 @@
                                         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[CurrentRow.Table.Columns.Cast(Of DataColumn).ToDictionary(Function(c) c.ColumnName, Function(c) CurrentRow(c))]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="WriteLine_3" />
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Dados da master data encontrados correspondente ao identificador &quot; + varNumID]" />
+                                    <ui:Continue sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Continue_1" />
                                   </Sequence>
                                 </ui:IfElseIfBlock.Then>
                               </ui:IfElseIfBlock>
@@ -269,7 +268,7 @@
                     </ActivityAction>
                   </ui:ForEachRow.Body>
                 </ui:ForEachRow>
-                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="587,113" sap2010:WorkflowViewState.IdRef="WriteLine_4" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="740,164" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Saindo da consulta, dados salvos&quot;]" />
               </Sequence>
               <FlowStep.Next>
                 <FlowStep x:Name="__ReferenceID6">
@@ -320,7 +319,7 @@
                           </Sequence>
                         </ui:IfElseIfBlock.Then>
                       </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_dt_Bquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dict_fatura_fields(&quot;numero-cliente&quot;).ToString))]">
+                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_dt_Bquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dict_fatura_fields(&quot;numero-cliente&quot;).ToString.TrimStart(&quot;0&quot;c)))]">
                         <ui:IfElseIfBlock.Then>
                           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,279" sap2010:WorkflowViewState.IdRef="Sequence_11">
                             <sap:WorkflowViewStateService.ViewState>
@@ -376,10 +375,7 @@
                 </ui:IfElseIf>
               </Sequence>
               <FlowStep.Next>
-                <FlowDecision x:Name="__ReferenceID4" DisplayName="Existe?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
-                  <FlowDecision.Condition>
-                    <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="out_Item_Existe" />
-                  </FlowDecision.Condition>
+                <FlowDecision x:Name="__ReferenceID4" Condition="[out_Item_Existe]" DisplayName="Existe?" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_2" True="{x:Reference __ReferenceID0}">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -389,9 +385,6 @@
                       <av:PointCollection x:Key="FalseConnector">390,420 390,485</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <FlowDecision.True>
-                    <x:Reference>__ReferenceID0</x:Reference>
-                  </FlowDecision.True>
                   <FlowDecision.False>
                     <FlowStep x:Name="__ReferenceID5">
                       <sap:WorkflowViewStateService.ViewState>
@@ -406,6 +399,15 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Não encontrado dados no master data&quot;]" />
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\NotificaSeSubstituta.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="416,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessBox\Office\NotificaSeSubstituta.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[in_dict_fatura_fields]</InArgument>
+                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_masterdata">True</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                        <Throw Exception="[New Exception(&quot;Dados em MasterData nao encontrados&quot;)]" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
                       </Sequence>
                     </FlowStep>
                   </FlowDecision.False>
@@ -424,7 +426,7 @@
           <av:PointCollection x:Key="ConnectorLocation">275,170 335,170</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Verificando se numero de instalação existe na master data&quot;]">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;Verificando se numero de identificadores existem na master data&quot;]">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

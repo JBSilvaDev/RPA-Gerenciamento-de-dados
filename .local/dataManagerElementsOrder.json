@@ -31,7 +31,8 @@
         "dict_fatura_fields&Sequence_28",
         "list_dict_fatura_table&Sequence_28",
         "varResFisco&Sequence_28",
-        "varMsgAviso&Sequence_28"
+        "varMsgAviso&Sequence_28",
+        "dict_master_data&Sequence_28"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -98,9 +99,6 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder",
         "in_Config",
         "out_user",
         "out_senha"
@@ -129,9 +127,13 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder"
+        "in_TransactionNumber",
+        "in_Config",
+        "out_TransactionItem",
+        "out_TransactionField1",
+        "out_TransactionField2",
+        "out_TransactionID",
+        "io_dt_TransactionData"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -173,10 +175,10 @@
       ],
       "ArgumentsSectionElementsOrder": [
         "in_TransactionItem",
-        "in_Config",
         "in_varUser",
         "in_varSenha",
-        "io_dict_fatura_fields"
+        "io_dict_fatura_fields",
+        "in_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -208,10 +210,7 @@
         "in_TransactionItem",
         "io_RetryNumber",
         "io_TransactionNumber",
-        "io_ConsecutiveSystemExceptions",
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder"
+        "io_ConsecutiveSystemExceptions"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -265,8 +264,14 @@
     {
       "Path": "ProcessBox/Office/NotificaSeSubstituta.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "varLink&Sequence_1",
+        "varDistribuidora&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varInstalacao&Sequence_1"
+      ],
       "ArgumentsSectionElementsOrder": [
+        "in_masterdata",
         "in_Config",
         "in_dict_fatura_fields"
       ],
@@ -295,7 +300,6 @@
       "Path": "ProcessBox/Google/EnviaExtrasaoBQuery.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "varGuid&Sequence_1",
         "insertCommand&Sequence_1",
         "ExtractionResultsFile&Sequence_1",
         "JsonString&Sequence_1",
@@ -303,12 +307,75 @@
         "ExtractionResults&Sequence_1",
         "JsonStringCostType&Sequence_1",
         "CostTypeJson&Sequence_1",
-        "AddItemToQueue&Sequence_1"
+        "AddItemToQueue&Sequence_1",
+        "varGuid&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BigQueryDatabaseConnection",
+        "in_Config",
+        "in_dict_fatura_fields",
+        "in_list_dict_fatura_table"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/DownloadBQueryMasterData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Item_Existe&Sequence_1",
+        "dt_Bquery&Sequence_1",
+        "SQLCommand&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dict_master_data",
+        "in_dict_fatura_fields",
+        "in_Config",
+        "in_BigQueryDatabaseConnection"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "rascunhos/CredenciaisGoogleTESTE.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "out_BigQueryDatabaseConnection"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/ConsultaDadosExistentes.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "varNumID&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_dict_master_data",
+        "in_dict_fatura_fields",
+        "out_Item_Existe",
+        "in_dt_Bquery"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/EnviarDadosFila.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dict_final&Sequence_1",
+        "varPastaExport&Sequence_1",
+        "folderExist&Sequence_1",
+        "varGUIDJson&Sequence_1",
+        "jsonFinalList&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_Config",
         "in_dict_fatura_fields",
-        "in_list_dict_fatura_table"
+        "in_dict_master_data"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
