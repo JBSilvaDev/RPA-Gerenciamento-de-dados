@@ -1,5 +1,5 @@
 INSERT INTO
-    `sz-00009-ws.pagamento_faturas_energia_qa.faturas_fio_servicos_raw` (
+    `sz-00009-ws.datasetGCP.faturas_fio_servicos_raw` (
         `GUID`,
         `descricao`,
         `quantidade`,
