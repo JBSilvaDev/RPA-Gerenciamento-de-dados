@@ -128,7 +128,7 @@
       <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Workflow Used to Send Data to BigQuery in RPA0180 DataSet" DisplayName="SendExtractDataToBigQuery" sap:VirtualizedContainerService.HintSize="1135,2543" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Workflow Used to Send Data to BigQuery in RPA0180 DataSet" DisplayName="SendExtractDataToBigQuery" sap:VirtualizedContainerService.HintSize="1192,2542" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="insertCommand" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="ExtractionResultsFile" />
@@ -146,7 +146,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap2010:Annotation.AnnotationText="Cria GUID que sera o identificador para linkas as tabelas no GCP" sap:VirtualizedContainerService.HintSize="484,145" sap2010:WorkflowViewState.IdRef="Assign_20">
+    <Assign sap2010:Annotation.AnnotationText="Cria GUID que sera o identificador para linkas as tabelas no GCP" sap:VirtualizedContainerService.HintSize="484,144" sap2010:WorkflowViewState.IdRef="Assign_20">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varGuid]</OutArgument>
       </Assign.To>
@@ -171,7 +171,7 @@
       <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\insert_faturas.sql" sap:VirtualizedContainerService.HintSize="416,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_9" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="Leitura arquivo de comando SQL realizada" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,122" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Tentando executar comando SQL para insersão de dados" />
-      <ui:ExecuteNonQuery AffectedRecords="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Run command - Inset Into" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="416,146" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_5" Sql="[SQLCommand]">
+      <ui:ExecuteNonQuery AffectedRecords="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Run command - Inset Into" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="416,146" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_5" Sql="[SQLCommand.Replace(&quot;datasetGCP&quot;,in_Config(&quot;TableGCP&quot;).ToString)]">
         <ui:ExecuteNonQuery.Parameters>
           <InArgument x:TypeArguments="x:String" x:Key="GUID">[varGuid]</InArgument>
           <InArgument x:TypeArguments="x:String" x:Key="nome_cliente">[If(in_dict_fatura_fields.ContainsKey("nome-cliente"), If(in_dict_fatura_fields("nome-cliente") Is Nothing OrElse String.IsNullOrEmpty(in_dict_fatura_fields("nome-cliente").ToString()), "N/A", in_dict_fatura_fields("nome-cliente").ToString()), "N/A")]</InArgument>
@@ -222,7 +222,7 @@
       <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\insert_servicos.sql" sap:VirtualizedContainerService.HintSize="450,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_10" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="Leitura arquivo de comando SQL realizada" />
       <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,122" sap2010:WorkflowViewState.IdRef="WriteLine_5" Text="Tentando executar comando SQL para insersão de dados" />
-      <ui:ForEach x:TypeArguments="scg:Dictionary(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="450,393" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_list_dict_fatura_table]">
+      <ui:ForEach x:TypeArguments="scg:Dictionary(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="For Each currentItem" sap:VirtualizedContainerService.HintSize="450,393" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_list_dict_fatura_table]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
             <ActivityAction.Argument>
@@ -234,7 +234,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Run command - Inset Into" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_6" Sql="[SQLCommand]">
+              <ui:ExecuteNonQuery AffectedRecords="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="False" DisplayName="Run command - Inset Into" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="382,137" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_6" Sql="[SQLCommand.Replace(&quot;datasetGCP&quot;,in_Config(&quot;TableGCP&quot;).ToString)]">
                 <ui:ExecuteNonQuery.Parameters>
                   <InArgument x:TypeArguments="x:String" x:Key="GUID">[varGuid]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="descricao">[If(currentItem.ContainsKey("descricao"), If(currentItem("descricao") Is Nothing OrElse String.IsNullOrEmpty(currentItem("descricao").ToString()), "N/A", currentItem("descricao").ToString()), "N/A")]</InArgument>

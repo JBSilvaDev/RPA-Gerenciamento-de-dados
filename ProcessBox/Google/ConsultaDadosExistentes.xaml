@@ -98,7 +98,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1149,467" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="200,20" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="varNumID" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_Bquery" />
@@ -400,7 +400,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Não encontrado dados no master data:&quot;]" />
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\NotificaSeSubstituta.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="416,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessBox\Office\NotificaSeSubstituta.xaml">
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\NotificaSeSubstituta.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="416,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessBox\Office\NotificaTeams.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[io_Config]</InArgument>
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[in_dict_fatura_fields]</InArgument>
