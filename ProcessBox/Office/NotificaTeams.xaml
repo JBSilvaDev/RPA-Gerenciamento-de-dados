@@ -1,7 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="NotificaSeSubstituta" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uiascb="clr-namespace:UiPath.IntegrationService.Activities.SWEntities.C5C242BF262_normalisedminus_signteams_channels_messagesminus_signv2.Bundle;assembly=C5C242BF262_normalis.kchg1oU0kE1umTrt3J8iB64" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_dict_fatura_fields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictFaturaFields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_masterdata" Type="InArgument(x:Boolean)" />
   </x:Members>
   <VisualBasic.Settings>
@@ -115,7 +115,7 @@
         <OutArgument x:TypeArguments="x:String">[varInstalacao]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[If(in_dict_fatura_fields.ContainsKey("numero-instalacao"), If(String.IsNullOrWhiteSpace(in_dict_fatura_fields("numero-instalacao").ToString), "N/A", in_dict_fatura_fields("numero-instalacao").ToString), "N/A")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("numero-instalacao"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("numero-instalacao").ToString), "N/A", in_dictFaturaFields("numero-instalacao").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="552,114" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -123,7 +123,7 @@
         <OutArgument x:TypeArguments="x:String">[varClienteID]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[If(in_dict_fatura_fields.ContainsKey("numero-cliente"), If(String.IsNullOrWhiteSpace(in_dict_fatura_fields("numero-cliente").ToString), "N/A", in_dict_fatura_fields("numero-cliente").ToString), "N/A")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("numero-cliente"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("numero-cliente").ToString), "N/A", in_dictFaturaFields("numero-cliente").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="552,114" sap2010:WorkflowViewState.IdRef="Assign_4">
@@ -131,7 +131,7 @@
         <OutArgument x:TypeArguments="x:String">[varDistribuidora]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[If(in_dict_fatura_fields.ContainsKey("nome-fornecedor"), If(String.IsNullOrWhiteSpace(in_dict_fatura_fields("nome-fornecedor").ToString), "N/A", in_dict_fatura_fields("nome-fornecedor").ToString), "N/A")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("nome-fornecedor"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("nome-fornecedor").ToString), "N/A", in_dictFaturaFields("nome-fornecedor").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="552,114" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -139,7 +139,7 @@
         <OutArgument x:TypeArguments="x:String">[varLink]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[If(in_dict_fatura_fields.ContainsKey("uri"), If(String.IsNullOrWhiteSpace(in_dict_fatura_fields("uri").ToString), "N/A", in_dict_fatura_fields("uri").ToString), "N/A")]</InArgument>
+        <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("uri"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("uri").ToString), "N/A", in_dictFaturaFields("uri").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="552,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[Environment.NewLine &amp; &quot;Distribuidora: &quot; &amp; If(varDistribuidora &lt;&gt; &quot;N/A&quot;, varDistribuidora &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Cliente ID: &quot; &amp; If(varClienteID &lt;&gt; &quot;N/A&quot;, varClienteID &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Instalação: &quot; &amp; If(varInstalacao &lt;&gt; &quot;N/A&quot;, varInstalacao &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Link: &quot; &amp; If(varLink &lt;&gt; &quot;N/A&quot;, varLink &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;)]" />

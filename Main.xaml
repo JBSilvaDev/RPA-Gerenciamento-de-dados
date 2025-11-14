@@ -180,7 +180,7 @@
                       <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1">[TransactionField1]</OutArgument>
                       <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2">[TransactionField2]</OutArgument>
                       <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID">[TransactionID]</OutArgument>
-                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_TransactionData">[dt_TransactionData]</InOutArgument>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtTransactionData">[dt_TransactionData]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                 </TryCatch.Try>
@@ -254,11 +254,11 @@
                   <TryCatch.Try>
                     <Sequence DisplayName="Process the current TransactionItem" sap:VirtualizedContainerService.HintSize="472,1620" sap2010:WorkflowViewState.IdRef="Sequence_28">
                       <Sequence.Variables>
-                        <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dict_fatura_fields" />
-                        <Variable x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" Default="[New List(Of Dictionary(Of String, Object))()]" Name="list_dict_fatura_table" />
+                        <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dictFaturaFields" />
+                        <Variable x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" Default="[New List(Of Dictionary(Of String, Object))()]" Name="listDictFaturaTable" />
                         <Variable x:TypeArguments="x:String" Name="varResFisco" />
                         <Variable x:TypeArguments="x:String" Name="varMsgAviso" />
-                        <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dict_master_data" />
+                        <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dictMasterData" />
                       </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -277,15 +277,15 @@
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dict_fatura_fields">[dict_fatura_fields]</OutArgument>
-                          <OutArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" x:Key="out_list_dict_fatura_table">[list_dict_fatura_table]</OutArgument>
+                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictFaturaFields">[dictFaturaFields]</OutArgument>
+                          <OutArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" x:Key="out_listDictFaturaTable">[listDictFaturaTable]</OutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\SalvaPDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="ProcessBox\Office\SalvaPDF.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_dict_fatura_fields">[dict_fatura_fields]</InOutArgument>
+                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_dictFaturaFields">[dictFaturaFields]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:MultipleAssign sap2010:Annotation.AnnotationText="Salva os valores de msg aviso e reservado ao fisco, seta &quot;-&quot; se forem vazios" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="438,206" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
@@ -296,7 +296,7 @@
                                 <OutArgument x:TypeArguments="x:String">[varResFisco]</OutArgument>
                               </ui:AssignOperation.To>
                               <ui:AssignOperation.Value>
-                                <InArgument x:TypeArguments="x:String">[If(dict_fatura_fields.ContainsKey("reservado-fisco"), If(dict_fatura_fields("reservado-fisco") Is Nothing OrElse TypeOf dict_fatura_fields("reservado-fisco") Is DBNull, "-", If(String.IsNullOrWhiteSpace(dict_fatura_fields("reservado-fisco").ToString().ToLower()), "-", dict_fatura_fields("reservado-fisco").ToString().ToLower())), "-")]</InArgument>
+                                <InArgument x:TypeArguments="x:String">[If(dictFaturaFields.ContainsKey("reservado-fisco"), If(dictFaturaFields("reservado-fisco") Is Nothing OrElse TypeOf dictFaturaFields("reservado-fisco") Is DBNull, "-", If(String.IsNullOrWhiteSpace(dictFaturaFields("reservado-fisco").ToString().ToLower()), "-", dictFaturaFields("reservado-fisco").ToString().ToLower())), "-")]</InArgument>
                               </ui:AssignOperation.Value>
                             </ui:AssignOperation>
                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -304,7 +304,7 @@
                                 <OutArgument x:TypeArguments="x:String">[varMsgAviso]</OutArgument>
                               </ui:AssignOperation.To>
                               <ui:AssignOperation.Value>
-                                <InArgument x:TypeArguments="x:String">[If(dict_fatura_fields.ContainsKey("mensagem-aviso"), If(dict_fatura_fields("mensagem-aviso") Is Nothing OrElse TypeOf dict_fatura_fields("mensagem-aviso") Is DBNull, "-", If(String.IsNullOrWhiteSpace(dict_fatura_fields("mensagem-aviso").ToString().ToLower()), "-", dict_fatura_fields("mensagem-aviso").ToString().ToLower())), "-")]</InArgument>
+                                <InArgument x:TypeArguments="x:String">[If(dictFaturaFields.ContainsKey("mensagem-aviso"), If(dictFaturaFields("mensagem-aviso") Is Nothing OrElse TypeOf dictFaturaFields("mensagem-aviso") Is DBNull, "-", If(String.IsNullOrWhiteSpace(dictFaturaFields("mensagem-aviso").ToString().ToLower()), "-", dictFaturaFields("mensagem-aviso").ToString().ToLower())), "-")]</InArgument>
                               </ui:AssignOperation.Value>
                             </ui:AssignOperation>
                           </scg:List>
@@ -329,13 +329,13 @@
                                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\NotificaSeSubstituta.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_35" UnSafe="False" WorkflowFileName="ProcessBox\Office\NotificaTeams.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
                                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[dict_fatura_fields]</InArgument>
+                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[dictFaturaFields]</InArgument>
                                       <InArgument x:TypeArguments="x:Boolean" x:Key="in_masterdata">False</InArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                   <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_30">
                                     <Assign.To>
-                                      <OutArgument x:TypeArguments="x:Object">[dict_fatura_fields("obs-gerais")]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:Object">[dictFaturaFields("obs-gerais")]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
                                       <InArgument x:TypeArguments="x:Object">["Fatura com possivel aviso de substituição"]</InArgument>
@@ -355,13 +355,13 @@
                                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\NotificaSeSubstituta.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="434,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="ProcessBox\Office\NotificaTeams.xaml">
                                     <ui:InvokeWorkflowFile.Arguments>
                                       <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[dict_fatura_fields]</InArgument>
+                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[dictFaturaFields]</InArgument>
                                       <InArgument x:TypeArguments="x:Boolean" x:Key="in_masterdata">False</InArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                   <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_31">
                                     <Assign.To>
-                                      <OutArgument x:TypeArguments="x:Object">[dict_fatura_fields("obs-gerais")]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:Object">[dictFaturaFields("obs-gerais")]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
                                       <InArgument x:TypeArguments="x:Object">["Fatura com possivel aviso de substituição"]</InArgument>
@@ -383,21 +383,21 @@
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Google\EnviaExtrasaoBQuery.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="ProcessBox\Google\EnviaExtrasaoBQuery.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[dict_fatura_fields]</InArgument>
-                          <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" x:Key="in_list_dict_fatura_table">[list_dict_fatura_table]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[dictFaturaFields]</InArgument>
+                          <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" x:Key="in_listDictFaturaTable">[listDictFaturaTable]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Google\DownloadBQueryMasterData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="ProcessBox\Google\DownloadBQueryMasterData.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[dict_fatura_fields]</InArgument>
-                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dict_master_data">[dict_master_data]</OutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[dictFaturaFields]</InArgument>
+                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictMasterData">[dictMasterData]</OutArgument>
                           <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[Config]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EnviarDadosFila.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="ProcessBox\EnviarDadosFila.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_master_data">[dict_master_data]</InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[dict_fatura_fields]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictMasterData">[dictMasterData]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[dictFaturaFields]</InArgument>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
@@ -658,10 +658,10 @@
                                             <ui:InvokeWorkflowFile.Arguments>
                                               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                               <OutArgument x:TypeArguments="sd1:Process" x:Key="output_process_FFmpegProcess">[FFmpegProcess]</OutArgument>
-                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_bool_StopRecorderScreen">False</InArgument>
-                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_Bool_FirstRun">True</InArgument>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolStopRecorderScreen">False</InArgument>
+                                              <InArgument x:TypeArguments="x:Boolean" x:Key="in_BoolFirstRun">True</InArgument>
                                               <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxDurationVideoRecorder">[in_MaxDurationVideoRecorder]</InArgument>
-                                              <InArgument x:TypeArguments="sd1:Process" x:Key="in_process_FFmpegProcess">[Nothing]</InArgument>
+                                              <InArgument x:TypeArguments="sd1:Process" x:Key="in_processFFmpegProcess">[Nothing]</InArgument>
                                             </ui:InvokeWorkflowFile.Arguments>
                                             <sap:WorkflowViewStateService.ViewState>
                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -935,10 +935,10 @@
                                         <ui:InvokeWorkflowFile.Arguments>
                                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                           <OutArgument x:TypeArguments="sd1:Process" x:Key="output_process_FFmpegProcess" />
-                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_bool_StopRecorderScreen">True</InArgument>
-                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_Bool_FirstRun">False</InArgument>
+                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_boolStopRecorderScreen">True</InArgument>
+                                          <InArgument x:TypeArguments="x:Boolean" x:Key="in_BoolFirstRun">False</InArgument>
                                           <InArgument x:TypeArguments="x:Int32" x:Key="in_MaxDurationVideoRecorder" />
-                                          <InArgument x:TypeArguments="sd1:Process" x:Key="in_process_FFmpegProcess">[FFmpegProcess]</InArgument>
+                                          <InArgument x:TypeArguments="sd1:Process" x:Key="in_processFFmpegProcess">[FFmpegProcess]</InArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                     </Sequence>
