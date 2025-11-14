@@ -24,9 +24,6 @@
         "dt_TransactionData&StateMachine_1",
         "ConsecutiveSystemExceptions&StateMachine_1",
         "FFmpegProcess&StateMachine_1",
-        "BigQueryDatabaseConnection&StateMachine_1",
-        "varUser&StateMachine_1",
-        "varSenha&StateMachine_1",
         "ShouldStop&Sequence_25",
         "dict_fatura_fields&Sequence_28",
         "list_dict_fatura_table&Sequence_28",
@@ -45,10 +42,11 @@
     {
       "Path": "ProcessBox/AUTENTICACOES/CredenciaisGoogle.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "BigQueryDatabaseConnection&Sequence_4"
+      ],
       "ArgumentsSectionElementsOrder": [
-        "in_Config",
-        "out_BigQueryDatabaseConnection"
+        "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -97,11 +95,12 @@
     {
       "Path": "ProcessBox/AUTENTICACOES/CredenciaisOfficeAzure.xaml",
       "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
+      "VariablesSectionElementsOrder": [
+        "varUser&Sequence_1",
+        "varSenha&Sequence_1"
+      ],
       "ArgumentsSectionElementsOrder": [
-        "in_Config",
-        "out_user",
-        "out_senha"
+        "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -142,6 +141,7 @@
       "Path": "Framework/Process.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varFolderExists&Sequence_5",
         "str_caminho_json&Sequence_1",
         "varPath&Sequence_1",
         "varBname&Sequence_5",
@@ -150,10 +150,10 @@
         "json_str&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_dict_fatura_fields",
-        "out_list_dict_fatura_table",
         "in_TransactionItem",
-        "in_Config"
+        "in_Config",
+        "out_dict_fatura_fields",
+        "out_list_dict_fatura_table"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -162,6 +162,8 @@
       "Path": "ProcessBox/Office/SalvaPDF.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varFolderExists&Sequence_1",
+        "varSecuritPass&Sequence_2",
         "varFileExist&Flowchart_1",
         "iLocalResource_caminho&Flowchart_1",
         "varArquivoOndrive&Sequence_3",
@@ -175,10 +177,8 @@
       ],
       "ArgumentsSectionElementsOrder": [
         "in_TransactionItem",
-        "in_varUser",
-        "in_varSenha",
-        "io_dict_fatura_fields",
-        "in_Config"
+        "in_Config",
+        "io_dict_fatura_fields"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -279,24 +279,6 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "rascunhos/rascunhos.xaml",
-      "SortBy": 0,
-      "VariablesSectionElementsOrder": [
-        "jsontxt&Sequence_1",
-        "JsonObject&Sequence_1",
-        "vardict&Sequence_1",
-        "VARDICTABLE&Sequence_1",
-        "dictItem&Sequence_1",
-        "btn&Sequence_1",
-        "nome&Sequence_5",
-        "texto&Sequence_8",
-        "existe&Sequence_10"
-      ],
-      "ArgumentsSectionElementsOrder": [],
-      "ConstantsSectionElementsOrder": [],
-      "AddedNamespaces": null
-    },
-    {
       "Path": "ProcessBox/Google/EnviaExtrasaoBQuery.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
@@ -311,7 +293,6 @@
         "varGuid&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_BigQueryDatabaseConnection",
         "in_Config",
         "in_dict_fatura_fields",
         "in_list_dict_fatura_table"
@@ -328,20 +309,9 @@
         "SQLCommand&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "io_Config",
         "out_dict_master_data",
-        "in_dict_fatura_fields",
-        "in_Config",
-        "in_BigQueryDatabaseConnection"
-      ],
-      "ConstantsSectionElementsOrder": [],
-      "AddedNamespaces": null
-    },
-    {
-      "Path": "rascunhos/CredenciaisGoogleTESTE.xaml",
-      "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
-      "ArgumentsSectionElementsOrder": [
-        "out_BigQueryDatabaseConnection"
+        "in_dict_fatura_fields"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -350,14 +320,14 @@
       "Path": "ProcessBox/Google/ConsultaDadosExistentes.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "dt_Bquery&Flowchart_1",
         "varNumID&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_Config",
-        "out_dict_master_data",
-        "in_dict_fatura_fields",
         "out_Item_Existe",
-        "in_dt_Bquery"
+        "io_Config",
+        "out_dict_master_data",
+        "in_dict_fatura_fields"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -376,6 +346,34 @@
         "in_Config",
         "in_dict_fatura_fields",
         "in_dict_master_data"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/TakeScreenshot.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Screenshot&Sequence_1",
+        "ScreenshotFileInfo&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Folder",
+        "io_FilePath"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/RetryCurrentTransaction.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "in_SystemException",
+        "in_QueueRetry"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
