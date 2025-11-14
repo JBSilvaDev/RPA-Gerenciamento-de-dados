@@ -129,7 +129,7 @@
       <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1135,3169" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1132,3692" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="varPath" />
       <Variable x:TypeArguments="x:String" Name="str_caminho_json" />
@@ -141,16 +141,17 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="536,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <Sequence DisplayName="Sequence - Json download" sap:VirtualizedContainerService.HintSize="536,902" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence DisplayName="Sequence - Json download" sap:VirtualizedContainerService.HintSize="536,1425" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="varBname" />
+        <Variable x:TypeArguments="x:Boolean" Name="varFolderExists" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -172,8 +173,31 @@
           </scg:List>
         </ui:MultipleAssign.AssignOperations>
       </ui:MultipleAssign>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Baixando arquivo Json&quot;]" />
-      <Assign sap2010:Annotation.AnnotationText="Define caminho e nome do arquivo a ser salvo" sap:VirtualizedContainerService.HintSize="434,144" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Baixando arquivo Json&quot;]" />
+      <ui:FolderExistsX DisplayName="Folder Exists" Exists="[varFolderExists]" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[in_Config(&quot;Local_JSON&quot;).ToString + &quot;\&quot; + System.IO.Path.GetFileName(varPath)]" />
+      <If Condition="[not varFolderExists]" sap:VirtualizedContainerService.HintSize="450,358" sap2010:WorkflowViewState.IdRef="If_1">
+        <If.Then>
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,163" sap2010:WorkflowViewState.IdRef="Sequence_11">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="382,103" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;Local_JSON&quot;).ToString + &quot;\&quot; + System.IO.Path.GetFileName(varPath)]" />
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,25" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Sequence>
+        </If.Else>
+      </If>
+      <Assign sap2010:Annotation.AnnotationText="Define caminho e nome do arquivo a ser salvo" sap:VirtualizedContainerService.HintSize="450,144" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[str_caminho_json]</OutArgument>
         </Assign.To>
@@ -186,8 +210,8 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ucas:DownloadStorageFile TimeoutMS="{x:Null}" ContinueOnError="False" Destination="[str_caminho_json]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath.Substring(0, Math.Min(100, varPath.Length)) + &quot;_Fields.json&quot;]" StorageBucketName="[varBname]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Arquivo Json baixado&quot;]" />
+      <ucas:DownloadStorageFile TimeoutMS="{x:Null}" ContinueOnError="False" Destination="[str_caminho_json]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath.Substring(0, Math.Min(100, varPath.Length)) + &quot;_Fields.json&quot;]" StorageBucketName="[varBname]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Arquivo Json baixado&quot;]" />
     </Sequence>
     <Sequence sap2010:Annotation.AnnotationText="Inicializando argumentos que irão armazenar os dados do Json" sap:VirtualizedContainerService.HintSize="536,342" sap2010:WorkflowViewState.IdRef="Sequence_8">
       <sap:WorkflowViewStateService.ViewState>

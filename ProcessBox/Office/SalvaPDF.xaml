@@ -2,8 +2,6 @@
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_varUser" Type="InArgument(x:String)" />
-    <x:Property Name="in_varSenha" Type="InArgument(ss:SecureString)" />
     <x:Property Name="io_dict_fatura_fields" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
@@ -163,7 +161,7 @@
       <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1152,505.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1149,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="str_caminho_fatura" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="iLocalResource_caminho" />
@@ -204,17 +202,18 @@
               <av:PointCollection x:Key="ConnectorLocation">580,325 580,365</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Download PDF" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Download PDF" sap:VirtualizedContainerService.HintSize="484,1112" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="varPath" />
               <Variable x:TypeArguments="x:String" Name="varBname" />
+              <Variable x:TypeArguments="x:Boolean" Name="varFolderExists" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -236,7 +235,29 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <ui:FolderExistsX DisplayName="Folder Exists" Exists="[varFolderExists]" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[in_Config(&quot;Local_PDF&quot;).ToString + &quot;\&quot; + System.IO.Path.GetFileName(varPath)]" />
+            <If Condition="[not varFolderExists]" sap:VirtualizedContainerService.HintSize="450,422" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,163" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="382,103" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;Local_PDF&quot;).ToString + &quot;\&quot; + System.IO.Path.GetFileName(varPath)]" />
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,89" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </If.Else>
+            </If>
+            <Assign sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[str_caminho_fatura]</OutArgument>
               </Assign.To>
@@ -244,7 +265,7 @@
                 <InArgument x:TypeArguments="x:String">[in_Config("Local_PDF").ToString + "\" + System.IO.Path.GetFileName(varPath)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ucas:DownloadStorageFile TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Download do PDF" Destination="[str_caminho_fatura]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="434,187" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath]" Result="[iLocalResource_caminho]" StorageBucketName="[varBname]">
+            <ucas:DownloadStorageFile TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Download do PDF" Destination="[str_caminho_fatura]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="450,187" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath]" Result="[iLocalResource_caminho]" StorageBucketName="[varBname]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -306,13 +327,24 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Sequence DisplayName="Salvar PDf no Sharepoint" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="ss:SecureString" Name="varSecuritPass" />
+                            </Sequence.Variables>
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[&quot;Tentando conexão com MS365 - Sharepoint&quot;]" />
-                            <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" EmailAddress="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_varUser]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="502,1476" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[in_varSenha]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
+                            <Assign sap:VirtualizedContainerService.HintSize="502,114" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="ss:SecureString">[varSecuritPass]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="ss:SecureString">[DirectCast(in_Config("pass"), SecureString)]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" EmailAddress="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;user&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="502,1476" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[DirectCast(in_Config(&quot;pass&quot;), SecureString)]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
                               <uma:Office365ApplicationScope.AuthenticationScopes>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </uma:Office365ApplicationScope.AuthenticationScopes>
@@ -464,7 +496,7 @@
                                   <av:Size x:Key="ShapeSize">110,70</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Deleta arrquivo local" sap:VirtualizedContainerService.HintSize="450,509" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                              <Sequence DisplayName="Deleta arrquivo local" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_4">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
