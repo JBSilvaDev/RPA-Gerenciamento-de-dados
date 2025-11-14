@@ -6,7 +6,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Permite a adição opcional de informações sobre o item de transação." Name="out_TransactionField1" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Permite a adição opcional de informações sobre o item de transação." Name="out_TransactionField2" Type="OutArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="ID da transação usado para fins de informação e log. Idealmente, o ID deve ser único para cada transação. " Name="out_TransactionID" Type="OutArgument(x:String)" />
-    <x:Property sap2010:Annotation.AnnotationText="Esta variável pode ser usada no caso de transações serem armazenadas em uma DataTable (por exemplo, após serem recuperadas de uma planilha)." Name="io_dt_TransactionData" Type="InOutArgument(sd:DataTable)" />
+    <x:Property sap2010:Annotation.AnnotationText="Esta variável pode ser usada no caso de transações serem armazenadas em uma DataTable (por exemplo, após serem recuperadas de uma planilha)." Name="io_dtTransactionData" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />

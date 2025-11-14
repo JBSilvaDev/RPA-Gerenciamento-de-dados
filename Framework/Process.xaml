@@ -2,8 +2,8 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Item de transação a ser processado." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Estrutura de dicionário para armazenar dados de configuração do processo (configurações, constantes e ativos)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="out_dict_fatura_fields" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="out_list_dict_fatura_table" Type="OutArgument(scg:List(scg:Dictionary(x:String, x:Object)))" />
+    <x:Property Name="out_dictFaturaFields" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_listDictFaturaTable" Type="OutArgument(scg:List(scg:Dictionary(x:String, x:Object)))" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -132,7 +132,7 @@
   <Sequence sap2010:Annotation.AnnotationText="Invoque as etapas principais do processo de negócio, que são geralmente implementadas por vários subfluxos.&#xA;&#xA;Se uma BusinessRuleException for lançada, a transação será ignorada. &#xA;Se outro tipo de exceção ocorrer, a transação atual poderá ser retentada. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1132,3693" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="varPath" />
-      <Variable x:TypeArguments="x:String" Name="str_caminho_json" />
+      <Variable x:TypeArguments="x:String" Name="strCaminhoJson" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -199,7 +199,7 @@
       </If>
       <Assign sap2010:Annotation.AnnotationText="Define caminho e nome do arquivo a ser salvo" sap:VirtualizedContainerService.HintSize="450,145" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[str_caminho_json]</OutArgument>
+          <OutArgument x:TypeArguments="x:String">[strCaminhoJson]</OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:String">[in_Config("Local_JSON").ToString + "\" + System.IO.Path.GetFileName(varPath)]</InArgument>
@@ -210,7 +210,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ucas:DownloadStorageFile TimeoutMS="{x:Null}" ContinueOnError="False" Destination="[str_caminho_json]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath.Substring(0, Math.Min(100, varPath.Length)) + &quot;_Fields.json&quot;]" StorageBucketName="[varBname]" />
+      <ucas:DownloadStorageFile TimeoutMS="{x:Null}" ContinueOnError="False" Destination="[strCaminhoJson]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath.Substring(0, Math.Min(100, varPath.Length)) + &quot;_Fields.json&quot;]" StorageBucketName="[varBname]" />
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,164" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Arquivo Json baixado&quot;]" />
     </Sequence>
     <Sequence sap2010:Annotation.AnnotationText="Inicializando argumentos que irão armazenar os dados do Json" sap:VirtualizedContainerService.HintSize="536,342" sap2010:WorkflowViewState.IdRef="Sequence_8">
@@ -223,7 +223,7 @@
       </sap:WorkflowViewStateService.ViewState>
       <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
         <Assign.To>
-          <OutArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))">[out_list_dict_fatura_table]</OutArgument>
+          <OutArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))">[out_listDictFaturaTable]</OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))">[New List(Of Dictionary(Of String, Object))]</InArgument>
@@ -231,7 +231,7 @@
       </Assign>
       <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_7">
         <Assign.To>
-          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_dict_fatura_fields]</OutArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_dictFaturaFields]</OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(Of String, Object)]</InArgument>
@@ -240,8 +240,8 @@
     </Sequence>
     <Sequence DisplayName="Sequence -Leitura e conversao do Json para dicionarios (fields e table)" sap:VirtualizedContainerService.HintSize="536,1577" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <Sequence.Variables>
-        <Variable x:TypeArguments="njl:JObject" Name="jsonObj_fatura" />
-        <Variable x:TypeArguments="x:String" Name="json_str" />
+        <Variable x:TypeArguments="njl:JObject" Name="jsonObjFatura" />
+        <Variable x:TypeArguments="x:String" Name="jsonStr" />
         <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dict_Item" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
@@ -249,14 +249,14 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadTextFile File="{x:Null}" Content="[json_str]" DisplayName="Read Text File" FileName="[str_caminho_json]" sap:VirtualizedContainerService.HintSize="502,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-      <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="502,172" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObj_fatura]" JsonString="[json_str]" />
+      <ui:ReadTextFile File="{x:Null}" Content="[jsonStr]" DisplayName="Read Text File" FileName="[strCaminhoJson]" sap:VirtualizedContainerService.HintSize="502,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+      <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="502,172" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObjFatura]" JsonString="[jsonStr]" />
       <Assign sap2010:Annotation.AnnotationText="Salva os fields do json em um dicionario" sap:VirtualizedContainerService.HintSize="502,145" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
-          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_dict_fatura_fields]</OutArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_dictFaturaFields]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[jsonObj_fatura("RootDocumentFields")(0).ToObject(Of Dictionary(Of String, Object))()]</InArgument>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[jsonObjFatura("RootDocumentFields")(0).ToObject(Of Dictionary(Of String, Object))()]</InArgument>
         </Assign.Value>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -272,39 +272,39 @@
         </sap:WorkflowViewStateService.ViewState>
         <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
           <Assign.To>
-            <OutArgument x:TypeArguments="x:Object">[out_dict_fatura_fields("tipo-layout")]</OutArgument>
+            <OutArgument x:TypeArguments="x:Object">[out_dictFaturaFields("tipo-layout")]</OutArgument>
           </Assign.To>
           <Assign.Value>
-            <InArgument x:TypeArguments="x:Object">[jsonObj_fatura("DocumentType").ToString]</InArgument>
+            <InArgument x:TypeArguments="x:Object">[jsonObjFatura("DocumentType").ToString]</InArgument>
           </Assign.Value>
         </Assign>
         <Assign sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="Assign_10">
           <Assign.To>
-            <OutArgument x:TypeArguments="x:Object">[out_dict_fatura_fields("tipo-fatura")]</OutArgument>
+            <OutArgument x:TypeArguments="x:Object">[out_dictFaturaFields("tipo-fatura")]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="x:Object" xml:space="preserve">[If(
-    out_dict_fatura_fields.ContainsKey("codigo-barras") AndAlso out_dict_fatura_fields("codigo-barras") _
+    out_dictFaturaFields.ContainsKey("codigo-barras") AndAlso out_dictFaturaFields("codigo-barras") _
 	IsNot Nothing,
-    If(String.IsNullOrEmpty(out_dict_fatura_fields("codigo-barras").ToString()), "Escritura", "Comum"),
+    If(String.IsNullOrEmpty(out_dictFaturaFields("codigo-barras").ToString()), "Escritura", "Comum"),
     "Escritura"
 )]</InArgument>
           </Assign.Value>
         </Assign>
         <Assign sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="Assign_9">
           <Assign.To>
-            <OutArgument x:TypeArguments="x:Object">[out_dict_fatura_fields("tipo-cliente")]</OutArgument>
+            <OutArgument x:TypeArguments="x:Object">[out_dictFaturaFields("tipo-cliente")]</OutArgument>
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="x:Object" xml:space="preserve">[If(
-    System.Text.RegularExpressions.Regex.IsMatch(out_dict_fatura_fields("nome-cliente").ToString.ToLower, in_Config("WordsKeys_Titular").ToString),
+    System.Text.RegularExpressions.Regex.IsMatch(out_dictFaturaFields("nome-cliente").ToString.ToLower, in_Config("WordsKeys_Titular").ToString),
     "Proprio",
     "Terceiro"
 )]</InArgument>
           </Assign.Value>
         </Assign>
       </Sequence>
-      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="502,629" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonObj_fatura(&quot;TableFields&quot;)]">
+      <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="502,629" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[jsonObjFatura(&quot;TableFields&quot;)]">
         <ui:ForEach.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -324,8 +324,8 @@
                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[CType(linha_tabela, Newtonsoft.Json.Linq.JToken).ToObject(Of Dictionary(Of String, Object))()]</InArgument>
                 </Assign.Value>
               </Assign>
-              <uasa:AppendItemToList x:TypeArguments="scg:Dictionary(x:String, x:Object)" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="[dict_Item]" List="[out_list_dict_fatura_table]" />
-              <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="434,103" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[str_caminho_json]" />
+              <uasa:AppendItemToList x:TypeArguments="scg:Dictionary(x:String, x:Object)" ItemIndex="{x:Null}" DisplayName="Append Item to List" sap:VirtualizedContainerService.HintSize="434,165" sap2010:WorkflowViewState.IdRef="AppendItemToList`1_2" ItemToAppend="[dict_Item]" List="[out_listDictFaturaTable]" />
+              <ui:DeleteFileX DisplayName="Delete File" sap:VirtualizedContainerService.HintSize="434,103" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[strCaminhoJson]" />
             </Sequence>
           </ActivityAction>
         </ui:ForEach.Body>
