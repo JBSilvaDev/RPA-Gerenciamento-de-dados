@@ -3,7 +3,7 @@ INSERT INTO
         `GUID`,
         `nome_cliente`,
         `subgrupo_tarifario`,
-        `mesReferencia`,
+        `mes_referencia`,
         `endereco_cliente`,
         `base_calc_cofins`,
         `COFINS`,
