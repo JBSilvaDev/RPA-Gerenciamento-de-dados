@@ -12,9 +12,6 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "listDictFaturaTable&Sequence_28",
-        "dictMasterData&Sequence_28",
-        "dictFaturaFields&Sequence_28",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -28,8 +25,11 @@
         "ConsecutiveSystemExceptions&StateMachine_1",
         "FFmpegProcess&StateMachine_1",
         "ShouldStop&Sequence_25",
+        "dictFaturaFields&Sequence_28",
+        "listDictFaturaTable&Sequence_28",
         "varResFisco&Sequence_28",
-        "varMsgAviso&Sequence_28"
+        "varMsgAviso&Sequence_28",
+        "dictMasterData&Sequence_28"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
