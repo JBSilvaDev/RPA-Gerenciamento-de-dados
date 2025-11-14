@@ -2,10 +2,10 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="output_process_FFmpegProcess" Type="OutArgument(sd:Process)" />
-    <x:Property Name="in_bool_StopRecorderScreen" Type="InArgument(x:Boolean)" />
-    <x:Property Name="in_Bool_FirstRun" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_boolStopRecorderScreen" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_BoolFirstRun" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_MaxDurationVideoRecorder" Type="InArgument(x:Int32)" />
-    <x:Property Name="in_process_FFmpegProcess" Type="InArgument(sd:Process)" />
+    <x:Property Name="in_processFFmpegProcess" Type="InArgument(sd:Process)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -122,7 +122,7 @@
     <ui:IfElseIf DisplayName="Else If: Stop Recorder Screen" sap:VirtualizedContainerService.HintSize="604,1717.6" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-          <ui:IfElseIfBlock BlockType="If" Condition="[in_bool_StopRecorderScreen and Convert.ToBoolean(in_Config(&quot;DesktopVideoRecorder&quot;).ToString)]">
+          <ui:IfElseIfBlock BlockType="If" Condition="[in_boolStopRecorderScreen and Convert.ToBoolean(in_Config(&quot;DesktopVideoRecorder&quot;).ToString)]">
             <ui:IfElseIfBlock.Then>
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="499.2,419.2" sap2010:WorkflowViewState.IdRef="Sequence_13">
                 <sap:WorkflowViewStateService.ViewState>
@@ -139,7 +139,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <da:StopRecording ContinueOnError="{x:Null}" DisplayName="StopRecording: Stop Recording Screen" FFmpegProcess="[in_process_FFmpegProcess]" sap:VirtualizedContainerService.HintSize="333.6,76" sap2010:WorkflowViewState.IdRef="StopRecording_1" />
+                    <da:StopRecording ContinueOnError="{x:Null}" DisplayName="StopRecording: Stop Recording Screen" FFmpegProcess="[in_processFFmpegProcess]" sap:VirtualizedContainerService.HintSize="333.6,76" sap2010:WorkflowViewState.IdRef="StopRecording_1" />
                   </TryCatch.Try>
                   <TryCatch.Catches>
                     <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_2">
@@ -169,7 +169,7 @@
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
-          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Convert.ToBoolean(in_Config(&quot;DesktopVideoRecorder&quot;).ToString) and in_Bool_FirstRun]">
+          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Convert.ToBoolean(in_Config(&quot;DesktopVideoRecorder&quot;).ToString) and in_BoolFirstRun]">
             <ui:IfElseIfBlock.Then>
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,604.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
                 <Sequence.Variables>
@@ -195,7 +195,7 @@
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
-          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_Bool_FirstRun]">
+          <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_BoolFirstRun]">
             <ui:IfElseIfBlock.Then>
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="449.6,246.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
                 <sap:WorkflowViewStateService.ViewState>

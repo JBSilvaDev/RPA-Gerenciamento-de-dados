@@ -119,7 +119,7 @@
           <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField1" />
           <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionField2" />
           <OutArgument x:TypeArguments="x:String" x:Key="out_TransactionID" />
-          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_TransactionData" />
+          <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dtTransactionData" />
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>

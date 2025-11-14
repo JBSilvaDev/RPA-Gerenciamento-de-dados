@@ -12,6 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "dictFaturaFields&Sequence_28",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -25,7 +26,6 @@
         "ConsecutiveSystemExceptions&StateMachine_1",
         "FFmpegProcess&StateMachine_1",
         "ShouldStop&Sequence_25",
-        "dict_fatura_fields&Sequence_28",
         "list_dict_fatura_table&Sequence_28",
         "varResFisco&Sequence_28",
         "varMsgAviso&Sequence_28",
@@ -150,9 +150,9 @@
         "json_str&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
+        "out_dictFaturaFields",
         "in_TransactionItem",
         "in_Config",
-        "out_dict_fatura_fields",
         "out_list_dict_fatura_table"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -162,18 +162,27 @@
       "Path": "ProcessBox/Office/SalvaPDF.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "str_caminho_fatura&Flowchart_1",
+        "iLocalResource_caminho&Flowchart_1",
+        "varFileExist&Flowchart_1",
+        "varPath&Sequence_1",
+        "varBname&Sequence_1",
         "varFolderExists&Sequence_1",
         "varSecuritPass&Sequence_2",
-        "varFileExist&Flowchart_1",
-        "iLocalResource_caminho&Flowchart_1",
-        "str_caminho_fatura&Flowchart_1",
-        "varBname&Sequence_1",
-        "varPath&Sequence_1"
+        "mes_ref&Sequence_3",
+        "distribuidora&Sequence_3",
+        "instalacao&Sequence_3",
+        "varIndriverItem&Sequence_3",
+        "out_renameFile&Sequence_3",
+        "varInstalacao&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varDistribuidora&Sequence_1",
+        "varLink&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_TransactionItem",
         "in_Config",
-        "io_dict_fatura_fields"
+        "io_dictFaturaFields"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -378,6 +387,23 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Office/NotificaTeams.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "varInstalacao&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varDistribuidora&Sequence_1",
+        "varLink&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_dictFaturaFields",
+        "in_Config",
+        "in_masterdata"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }

@@ -1,7 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="ConsultaBQueryMasterData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_dict_fatura_fields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="out_dict_master_data" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_dictFaturaFields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_dictMasterData" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <VisualBasic.Settings>
@@ -105,7 +105,7 @@
   <Sequence DisplayName="ConsultaBQueryMasterData" sap:VirtualizedContainerService.HintSize="1132,1187" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SQLCommand" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dt_Bquery" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtBquery" />
       <Variable x:TypeArguments="x:Boolean" Name="Item_Existe" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -126,7 +126,7 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Baixando MasterData&quot;]" />
                 <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\consulta_masterdata.sql" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dt_bquery]" DisplayName="Run Query" ExistingDbConnection="[CType(io_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="434,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[SQLCommand.Replace(&quot;datasetGCP&quot;,io_Config(&quot;TableGCP&quot;).ToString)]">
+                <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dtBquery]" DisplayName="Run Query" ExistingDbConnection="[CType(io_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="434,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[SQLCommand.Replace(&quot;datasetGCP&quot;,io_Config(&quot;TableGCP&quot;).ToString)]">
                   <ui:ExecuteQuery.Parameters>
                     <scg:Dictionary x:TypeArguments="x:String, Argument" />
                   </ui:ExecuteQuery.Parameters>
@@ -137,7 +137,7 @@
                     <OutArgument x:TypeArguments="x:Object">[io_Config("dt_masterdata")]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:Object">[dt_Bquery]</InArgument>
+                    <InArgument x:TypeArguments="x:Object">[dtBquery]</InArgument>
                   </Assign.Value>
                 </Assign>
               </Sequence>
@@ -155,9 +155,9 @@
     </ui:IfElseIf>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Google\ConsultaDadosExistentes.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="722,136" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ProcessBox\Google\ConsultaDadosExistentes.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_Item_Existe">[Item_Existe]</OutArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[in_dict_fatura_fields]</InArgument>
-        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dict_master_data">[out_dict_master_data]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_ItemExiste">[Item_Existe]</OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[in_dictFaturaFields]</InArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictMasterData">[out_dictMasterData]</OutArgument>
         <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[io_Config]</InOutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
