@@ -1,0 +1,43 @@
+# UiPath Studio specific files and folders
+.local/
+!.local/ProjectSettings.json
+.settings/
+.objects/
+.package/
+.tmh/
+.entities/
+.project/
+.assemblies/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+~$*
+
+# Screenshots taken during exceptions
+Exceptions_Screenshots/*
+!Exceptions_Screenshots/placeholder.txt
+
+# Input, Output and Temp data
+Data/Input/*
+!Data/Input/placeholder.txt
+Data/Output/*
+!Data/Output/placeholder.txt
+Data/Temp/*
+!Data/Temp/placeholder.txt
+
+# Other generated files
+bindings.json
+bindings_v2.json
+Main.xaml.json
+
+# Drafts folder
+rascunhos/
+
+# UiPath specific settings
+UiPath.settings
+
+# Compiled assemblies
+*.dll
+*.exe
