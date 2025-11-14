@@ -12,6 +12,8 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "listDictFaturaTable&Sequence_28",
+        "dictMasterData&Sequence_28",
         "dictFaturaFields&Sequence_28",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
@@ -26,10 +28,8 @@
         "ConsecutiveSystemExceptions&StateMachine_1",
         "FFmpegProcess&StateMachine_1",
         "ShouldStop&Sequence_25",
-        "list_dict_fatura_table&Sequence_28",
         "varResFisco&Sequence_28",
-        "varMsgAviso&Sequence_28",
-        "dict_master_data&Sequence_28"
+        "varMsgAviso&Sequence_28"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -162,22 +162,19 @@
       "Path": "ProcessBox/Office/SalvaPDF.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "str_caminho_fatura&Flowchart_1",
-        "iLocalResource_caminho&Flowchart_1",
+        "mesRef&Sequence_3",
+        "numNf&Sequence_3",
+        "strCaminhoFatura&Flowchart_1",
+        "iLocalResourceCaminho&Flowchart_1",
+        "varArquivoRenomea&Sequence_3",
         "varFileExist&Flowchart_1",
         "varPath&Sequence_1",
         "varBname&Sequence_1",
         "varFolderExists&Sequence_1",
         "varSecuritPass&Sequence_2",
-        "mes_ref&Sequence_3",
         "distribuidora&Sequence_3",
         "instalacao&Sequence_3",
-        "varIndriverItem&Sequence_3",
-        "out_renameFile&Sequence_3",
-        "varInstalacao&Sequence_1",
-        "varClienteID&Sequence_1",
-        "varDistribuidora&Sequence_1",
-        "varLink&Sequence_1"
+        "varIndriverItem&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_TransactionItem",
@@ -297,9 +294,9 @@
         "varGuid&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_Config",
-        "in_dict_fatura_fields",
-        "in_list_dict_fatura_table"
+        "in_dictFaturaFields",
+        "in_listDictFaturaTable",
+        "in_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
