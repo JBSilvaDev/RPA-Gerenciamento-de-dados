@@ -166,7 +166,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1163,467" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1163,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="strCaminhoFatura" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="iLocalResourceCaminho" />
@@ -331,7 +331,7 @@
                               <av:PointCollection x:Key="ConnectorLocation">740,735 740,775</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Salvar PDf no Sharepoint" sap:VirtualizedContainerService.HintSize="581,1968" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Sequence DisplayName="Salvar PDf no Sharepoint" sap:VirtualizedContainerService.HintSize="581,1999" sap2010:WorkflowViewState.IdRef="Sequence_2">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="ss:SecureString" Name="varSecuritPass" />
                             </Sequence.Variables>
@@ -349,7 +349,7 @@
                                 <InArgument x:TypeArguments="ss:SecureString">[DirectCast(in_Config("pass"), SecureString)]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;user&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="547,1621" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[DirectCast(in_Config(&quot;pass&quot;), SecureString)]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
+                            <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;user&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="547,1652" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[DirectCast(in_Config(&quot;pass&quot;), SecureString)]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
                               <uma:Office365ApplicationScope.AuthenticationScopes>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </uma:Office365ApplicationScope.AuthenticationScopes>
@@ -358,13 +358,14 @@
                                   <ActivityAction.Argument>
                                     <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
                                   </ActivityAction.Argument>
-                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="513,1384" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="513,1415" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                     <Sequence.Variables>
-                                      <Variable x:TypeArguments="x:String" Name="mes_ref" />
+                                      <Variable x:TypeArguments="x:String" Name="mesRef" />
                                       <Variable x:TypeArguments="x:String" Name="distribuidora" />
                                       <Variable x:TypeArguments="x:String" Name="instalacao" />
                                       <Variable x:TypeArguments="mg:DriveItem" Name="varIndriverItem" />
                                       <Variable x:TypeArguments="mg:DriveItem" Name="varArquivoRenomea" />
+                                      <Variable x:TypeArguments="x:String" Name="numNf" />
                                     </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -372,15 +373,15 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Salvando fatura de energia no Sharepoint&quot;]" />
-                                    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Seta as demais variaveis para renomear o arquivo, e faz replace de separadores no mes referencia" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,252" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                                    <ui:MultipleAssign sap2010:Annotation.AnnotationText="Seta as demais variaveis para renomear o arquivo, e faz replace de separadores no mes referencia" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,283" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                                       <ui:MultipleAssign.AssignOperations>
                                         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
                                             <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:String">[mes_ref]</OutArgument>
+                                              <OutArgument x:TypeArguments="x:String">[mesRef]</OutArgument>
                                             </ui:AssignOperation.To>
                                             <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[io_dictFaturaFields("mes-referencia").ToString.Replace("/", "_").Replace("\", "_").Replace("-", "_").Replace(".", "_").Replace(" ", "_").Trim()]</InArgument>
+                                              <InArgument x:TypeArguments="x:String">[If(io_dictFaturaFields.ContainsKey("mes-referencia") AndAlso Not String.IsNullOrWhiteSpace(io_dictFaturaFields("mes-referencia").ToString()), io_dictFaturaFields("mes-referencia").ToString().ToLower(), "NF").Replace("/", "_").Replace("\", "_").Replace("-", "_").Replace(".", "_").Replace(" ", "_").Trim()]</InArgument>
                                             </ui:AssignOperation.Value>
                                           </ui:AssignOperation>
                                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -388,7 +389,7 @@
                                               <OutArgument x:TypeArguments="x:String">[distribuidora]</OutArgument>
                                             </ui:AssignOperation.To>
                                             <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[io_dictFaturaFields("nome-fornecedor").ToString.ToLower]</InArgument>
+                                              <InArgument x:TypeArguments="x:String">[If(io_dictFaturaFields.ContainsKey("nome-fornecedor") AndAlso Not String.IsNullOrWhiteSpace(io_dictFaturaFields("nome-fornecedor").ToString()), io_dictFaturaFields("nome-fornecedor").ToString().ToLower(), "NF")]</InArgument>
                                             </ui:AssignOperation.Value>
                                           </ui:AssignOperation>
                                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -396,7 +397,16 @@
                                               <OutArgument x:TypeArguments="x:String">[instalacao]</OutArgument>
                                             </ui:AssignOperation.To>
                                             <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[io_dictFaturaFields("numero-instalacao").ToString.ToLower]</InArgument>
+                                              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(io_dictFaturaFields.ContainsKey("numero-instalacao") AndAlso Not String.IsNullOrWhiteSpace(io_dictFaturaFields("numero-instalacao").ToString()), io_dictFaturaFields("numero-instalacao").ToString().ToLower(), _
+If(io_dictFaturaFields.ContainsKey("numero_cliente") AndAlso Not String.IsNullOrWhiteSpace(io_dictFaturaFields("numero_cliente").ToString()), io_dictFaturaFields("numero_cliente").ToString().ToLower(), "NF"))]</InArgument>
+                                            </ui:AssignOperation.Value>
+                                          </ui:AssignOperation>
+                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                                            <ui:AssignOperation.To>
+                                              <OutArgument x:TypeArguments="x:String">[numNf]</OutArgument>
+                                            </ui:AssignOperation.To>
+                                            <ui:AssignOperation.Value>
+                                              <InArgument x:TypeArguments="x:String">[If(io_dictFaturaFields.ContainsKey("numero-fatura") AndAlso Not String.IsNullOrWhiteSpace(io_dictFaturaFields("numero-fatura").ToString()), io_dictFaturaFields("numero-fatura").ToString().ToLower(), "NF")]</InArgument>
                                             </ui:AssignOperation.Value>
                                           </ui:AssignOperation>
                                         </scg:List>
@@ -408,7 +418,7 @@
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:MultipleAssign>
                                     <umaf:GetItem ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" DriveName="{x:Null}" ItemFriendlyName="{x:Null}" ItemId="{x:Null}" SiteUrl="{x:Null}" AuthScopesInvalid="False" DisplayName="Get File or Folder" sap:VirtualizedContainerService.HintSize="479,138" sap2010:WorkflowViewState.IdRef="GetItem_1" Item="[varIndriverItem]" ItemSelectionMode="ItemUrl" ItemUrl="[in_Config(&quot;URL_Sharepoint&quot;).ToString]" />
-                                    <umaf:UploadFile ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" Metadata="{x:Null}" AuthScopesInvalid="False" Checkin="False" CloudFileName="[mes_ref + &quot; - &quot; + distribuidora + &quot; - &quot; + instalacao]" ConflictBehavior="Replace" Destination="[varIndriverItem]" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="479,281" sap2010:WorkflowViewState.IdRef="UploadFile_2" LocalFilePath="[strCaminhoFatura]" Result="[varArquivoRenomea]" />
+                                    <umaf:UploadFile ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" Metadata="{x:Null}" AuthScopesInvalid="False" Checkin="False" CloudFileName="[mesRef + &quot; - &quot; + distribuidora + &quot; - &quot; + instalacao]" ConflictBehavior="Replace" Destination="[varIndriverItem]" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="479,281" sap2010:WorkflowViewState.IdRef="UploadFile_2" LocalFilePath="[strCaminhoFatura]" Result="[varArquivoRenomea]" />
                                     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="479,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                                       <ui:CommentOut.Body>
                                         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_7">
@@ -460,10 +470,10 @@
                                     </ui:CommentOut>
                                     <Assign sap2010:Annotation.AnnotationText="Remove possiveis caracteres especiais nas letras (acentuação)" sap:VirtualizedContainerService.HintSize="479,145" sap2010:WorkflowViewState.IdRef="Assign_3">
                                       <Assign.To>
-                                        <OutArgument x:TypeArguments="x:String">[mes_ref]</OutArgument>
+                                        <OutArgument x:TypeArguments="x:String">[mesRef]</OutArgument>
                                       </Assign.To>
                                       <Assign.Value>
-                                        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(mes_ref.Normalize(System.Text.NormalizationForm.FormD), "\p{IsCombiningDiacriticalMarks}+", "").ToLower]</InArgument>
+                                        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(mesRef.Normalize(System.Text.NormalizationForm.FormD), "\p{IsCombiningDiacriticalMarks}+", "").ToLower]</InArgument>
                                       </Assign.Value>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">

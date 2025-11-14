@@ -95,9 +95,10 @@
       <AssemblyReference>System.Private.Uri</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="NotificaSeSubstituta" sap:VirtualizedContainerService.HintSize="1132,2848" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="NotificaSeSubstituta" sap:VirtualizedContainerService.HintSize="1146,2848" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="varInstalacao" />
       <Variable x:TypeArguments="x:String" Name="varClienteID" />
@@ -142,11 +143,11 @@
         <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("uri"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("uri").ToString), "N/A", in_dictFaturaFields("uri").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="552,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[Environment.NewLine &amp; &quot;Distribuidora: &quot; &amp; If(varDistribuidora &lt;&gt; &quot;N/A&quot;, varDistribuidora &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Cliente ID: &quot; &amp; If(varClienteID &lt;&gt; &quot;N/A&quot;, varClienteID &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Instalação: &quot; &amp; If(varInstalacao &lt;&gt; &quot;N/A&quot;, varInstalacao &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Link: &quot; &amp; If(varLink &lt;&gt; &quot;N/A&quot;, varLink &amp; &quot; ✔️&quot;, &quot;Não localizado&quot;)]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="552,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[Environment.NewLine &amp; &quot;Distribuidora: &quot; &amp; If(varDistribuidora &lt;&gt; &quot;N/A&quot;, varDistribuidora , &quot;Não localizado&quot;) &amp; &#xD;&#xA;Environment.NewLine &amp; &quot;Cliente ID: &quot; &amp; If(varClienteID &lt;&gt; &quot;N/A&quot;, varClienteID , &quot;Não localizado&quot;) &amp; &#xD;&#xA;Environment.NewLine &amp; &quot;Instalação: &quot; &amp; If(varInstalacao &lt;&gt; &quot;N/A&quot;, varInstalacao, &quot;Não localizado&quot;) &amp; &#xD;&#xA;Environment.NewLine &amp; &quot;Link: &quot; &amp; If(varLink &lt;&gt; &quot;N/A&quot;, varLink, &quot;Não localizado&quot;)]" />
     <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="552,2023" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-          <ui:IfElseIfBlock BlockType="If" Condition="[in_masterdata]">
+          <ui:IfElseIfBlock BlockType="If" Condition="[in_masterdata]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
             <ui:IfElseIfBlock.Then>
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="501,884" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <sap:WorkflowViewStateService.ViewState>
@@ -261,11 +262,11 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </isactr:ConnectorActivity>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada ✔️&quot;]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada&quot;]" />
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
-          <ui:IfElseIfBlock BlockType="Else">
+          <ui:IfElseIfBlock BlockType="Else" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
             <ui:IfElseIfBlock.Then>
               <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="501,884" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
@@ -379,7 +380,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </isactr:ConnectorActivity>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada ✔️&quot;]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada&quot;]" />
               </Sequence>
             </ui:IfElseIfBlock.Then>
           </ui:IfElseIfBlock>
