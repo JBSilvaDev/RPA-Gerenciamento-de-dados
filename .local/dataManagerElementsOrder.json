@@ -1,0 +1,384 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "TransactionField2&StateMachine_1",
+        "TransactionField1&StateMachine_1",
+        "TransactionID&StateMachine_1",
+        "dt_TransactionData&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "FFmpegProcess&StateMachine_1",
+        "BigQueryDatabaseConnection&StateMachine_1",
+        "varUser&StateMachine_1",
+        "varSenha&StateMachine_1",
+        "ShouldStop&Sequence_25",
+        "dict_fatura_fields&Sequence_28",
+        "list_dict_fatura_table&Sequence_28",
+        "varResFisco&Sequence_28",
+        "varMsgAviso&Sequence_28",
+        "dict_master_data&Sequence_28"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_OrchestratorQueueName",
+        "in_OrchestratorQueueFolder",
+        "in_MaxDurationVideoRecorder"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/AUTENTICACOES/CredenciaisGoogle.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_BigQueryDatabaseConnection"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/StartStopScreenRecorder.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "TransactionItem&StateMachine_1",
+        "SystemException&StateMachine_1",
+        "BusinessException&StateMachine_1",
+        "TransactionNumber&StateMachine_1",
+        "Config&StateMachine_1",
+        "RetryNumber&StateMachine_1",
+        "TransactionField2&StateMachine_1",
+        "TransactionField1&StateMachine_1",
+        "TransactionID&StateMachine_1",
+        "dt_TransactionData&StateMachine_1",
+        "ConsecutiveSystemExceptions&StateMachine_1",
+        "FFmpegProcess&StateMachine_1",
+        "BigQueryDatabaseConnection&StateMachine_1",
+        "varUser&StateMachine_1",
+        "varSenha&StateMachine_1",
+        "ShouldStop&Sequence_25",
+        "dict_fatura_fields&Sequence_28",
+        "list_dict_fatura_table&Sequence_28",
+        "varResFisco&Sequence_28",
+        "varMsgAviso&Sequence_28",
+        "RecorderProcessName&Sequence_1",
+        "RecordingFilePath&Sequence_14",
+        "RecorderResolution&Sequence_14"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "output_process_FFmpegProcess",
+        "in_bool_StopRecorderScreen",
+        "in_Bool_FirstRun",
+        "in_process_FFmpegProcess",
+        "in_OrchestratorQueueName",
+        "in_OrchestratorQueueFolder",
+        "in_MaxDurationVideoRecorder"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/AUTENTICACOES/CredenciaisOfficeAzure.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_user",
+        "out_senha"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllSettings.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dt_SettingsAndConstants&Sequence_5",
+        "dt_Assets&Sequence_6",
+        "AssetValue&Sequence_11"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_ConfigFile",
+        "in_ConfigSheets",
+        "out_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/GetTransactionData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionNumber",
+        "in_Config",
+        "out_TransactionItem",
+        "out_TransactionField1",
+        "out_TransactionField2",
+        "out_TransactionID",
+        "io_dt_TransactionData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/Process.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "str_caminho_json&Sequence_1",
+        "varPath&Sequence_1",
+        "varBname&Sequence_5",
+        "jsonObj_fatura&Sequence_3",
+        "dict_Item&Sequence_3",
+        "json_str&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dict_fatura_fields",
+        "out_list_dict_fatura_table",
+        "in_TransactionItem",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Office/SalvaPDF.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "varFileExist&Flowchart_1",
+        "iLocalResource_caminho&Flowchart_1",
+        "varArquivoOndrive&Sequence_3",
+        "mes_ref&Sequence_3",
+        "distribuidora&Sequence_3",
+        "instalacao&Sequence_3",
+        "out_renameFile&Sequence_3",
+        "str_caminho_fatura&Flowchart_1",
+        "varBname&Sequence_1",
+        "varPath&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_TransactionItem",
+        "in_varUser",
+        "in_varSenha",
+        "io_dict_fatura_fields",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllApplications.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/SetTransactionStatus.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "QueueRetry&Sequence_17",
+        "ScreenshotPath&Sequence_17"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_TransactionField1",
+        "in_TransactionField2",
+        "in_TransactionID",
+        "in_SystemException",
+        "in_Config",
+        "in_TransactionItem",
+        "io_RetryNumber",
+        "io_TransactionNumber",
+        "io_ConsecutiveSystemExceptions"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/CloseAllApplications.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "DeserializeJson.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "JsonText&Sequence_1",
+        "JsonObj&Sequence_1",
+        "Age&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "jsontexte.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dictItem&Sequence_1",
+        "VARDICTABLE&Sequence_1",
+        "vardict&Sequence_1",
+        "JsonObject&Sequence_1",
+        "jsontxt&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "DeserializeJson/DeserializeJson.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "JsonText&Sequence_1",
+        "JsonObj&Sequence_1",
+        "Age&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Office/NotificaSeSubstituta.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "varLink&Sequence_1",
+        "varDistribuidora&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varInstalacao&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_masterdata",
+        "in_Config",
+        "in_dict_fatura_fields"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "rascunhos/rascunhos.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "jsontxt&Sequence_1",
+        "JsonObject&Sequence_1",
+        "vardict&Sequence_1",
+        "VARDICTABLE&Sequence_1",
+        "dictItem&Sequence_1",
+        "btn&Sequence_1",
+        "nome&Sequence_5",
+        "texto&Sequence_8",
+        "existe&Sequence_10"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/EnviaExtrasaoBQuery.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "insertCommand&Sequence_1",
+        "ExtractionResultsFile&Sequence_1",
+        "JsonString&Sequence_1",
+        "SQLCommand&Sequence_1",
+        "ExtractionResults&Sequence_1",
+        "JsonStringCostType&Sequence_1",
+        "CostTypeJson&Sequence_1",
+        "AddItemToQueue&Sequence_1",
+        "varGuid&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BigQueryDatabaseConnection",
+        "in_Config",
+        "in_dict_fatura_fields",
+        "in_list_dict_fatura_table"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/DownloadBQueryMasterData.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Item_Existe&Sequence_1",
+        "dt_Bquery&Sequence_1",
+        "SQLCommand&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_dict_master_data",
+        "in_dict_fatura_fields",
+        "in_Config",
+        "in_BigQueryDatabaseConnection"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "rascunhos/CredenciaisGoogleTESTE.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "out_BigQueryDatabaseConnection"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/ConsultaDadosExistentes.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "varNumID&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_dict_master_data",
+        "in_dict_fatura_fields",
+        "out_Item_Existe",
+        "in_dt_Bquery"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/EnviarDadosFila.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "dict_final&Sequence_1",
+        "varPastaExport&Sequence_1",
+        "folderExist&Sequence_1",
+        "varGUIDJson&Sequence_1",
+        "jsonFinalList&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_dict_fatura_fields",
+        "in_dict_master_data"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
