@@ -235,7 +235,7 @@
                 </scg:List>
               </ui:MultipleAssign.AssignOperations>
             </ui:MultipleAssign>
-            <ui:FolderExistsX DisplayName="Folder Exists" Exists="[varFolderExists]" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[in_Config(&quot;Local_PDF&quot;).ToString + &quot;\&quot; + System.IO.Path.GetFileName(varPath)]" />
+            <ui:FolderExistsX DisplayName="Folder Exists" Exists="[varFolderExists]" sap:VirtualizedContainerService.HintSize="450,165" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[in_Config(&quot;Local_PDF&quot;).ToString]" />
             <If Condition="[not varFolderExists]" sap:VirtualizedContainerService.HintSize="450,422" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
                 <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,163" sap2010:WorkflowViewState.IdRef="Sequence_5">
@@ -244,7 +244,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="382,103" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;Local_PDF&quot;).ToString + &quot;\&quot; + System.IO.Path.GetFileName(varPath)]" />
+                  <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="382,103" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_Config(&quot;Local_PDF&quot;).ToString]" />
                 </Sequence>
               </If.Then>
               <If.Else>
