@@ -18,7 +18,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.12.0",
-  "projectVersion": "1.0.3",
+  "projectVersion": "1.0.4",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -98,12 +98,6 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "6ee2843c-8c48-4364-a9d4-174bb496d5f6",
-      "input": [],
-      "output": []
-    },
-    {
-      "filePath": "rascunhos\\rascunhos.xaml",
-      "uniqueId": "359c5cc5-b840-4e3b-87e5-e342ec901a17",
       "input": [],
       "output": []
     }
