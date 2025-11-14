@@ -11,6 +11,8 @@
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
       <x:String>Microsoft.VisualBasic</x:String>
       <x:String>System</x:String>
       <x:String>System.Activities</x:String>
@@ -18,22 +20,22 @@
       <x:String>System.Collections</x:String>
       <x:String>System.Collections.Generic</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
       <x:String>System.Data</x:String>
       <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
       <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
       <x:String>System.Windows.Forms</x:String>
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
-      <x:String>System.ComponentModel</x:String>
-      <x:String>System.ComponentModel</x:String>
       <x:String>UiPath.Database</x:String>
-      <x:String>System.Security</x:String>
-      <x:String>System.Linq.Expressions</x:String>
-      <x:String>System.Drawing</x:String>
-      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -116,7 +118,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="RPA0180&#xD;&#xA;Responsável por:&#xD;&#xA;- Salvar arquivo PDF na pasta do Sharepoint da area de negocios&#xD;&#xA;- Download dos dados extraidos pelo RPA0158 das faturas de energia&#xD;&#xA;- Enviar informações do json com dados das faturas para o GCP&#xD;&#xA;- Concatenar dados das faturas com masterdata e enviar dados para fila do RPA0174&#xD;&#xA;&#xD;&#xA;Author: JB Silva (julianobs@suzano.com.br)&#xD;&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1149,778.04" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="RPA0180&#xA;Responsável por:&#xA;- Salvar arquivo PDF na pasta do Sharepoint da area de negocios&#xA;- Download dos dados extraidos pelo RPA0158 das faturas de energia&#xA;- Enviar informações do json com dados das faturas para o GCP&#xA;- Concatenar dados das faturas com masterdata e enviar dados para fila do RPA0174&#xA;&#xA;Author: JB Silva (julianobs@suzano.com.br)&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="1149,778.04" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -281,15 +283,9 @@
                       </ui:InvokeWorkflowFile>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\SalvaPDF.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="ProcessBox\Office\SalvaPDF.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">
-                            <VisualBasicValue x:TypeArguments="ui:QueueItem" ExpressionText="TransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_dict_fatura_fields">
-                            <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dict_fatura_fields" />
-                          </InOutArgument>
+                          <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_dict_fatura_fields">[dict_fatura_fields]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:MultipleAssign sap2010:Annotation.AnnotationText="Salva os valores de msg aviso e reservado ao fisco, seta &quot;-&quot; se forem vazios" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="438,206" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
@@ -386,28 +382,16 @@
                       </ui:IfElseIf>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Google\EnviaExtrasaoBQuery.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="ProcessBox\Google\EnviaExtrasaoBQuery.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dict_fatura_fields" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" x:Key="in_list_dict_fatura_table">
-                            <VisualBasicValue x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" ExpressionText="list_dict_fatura_table" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[dict_fatura_fields]</InArgument>
+                          <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" x:Key="in_list_dict_fatura_table">[list_dict_fatura_table]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Google\DownloadBQueryMasterData.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="ProcessBox\Google\DownloadBQueryMasterData.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">
-                            <VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dict_fatura_fields" />
-                          </InArgument>
-                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dict_master_data">
-                            <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="dict_master_data" />
-                          </OutArgument>
-                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">
-                            <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InOutArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dict_fatura_fields">[dict_fatura_fields]</InArgument>
+                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dict_master_data">[dict_master_data]</OutArgument>
+                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[Config]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="EnviarDadosFila.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_39" UnSafe="False" WorkflowFileName="ProcessBox\EnviarDadosFila.xaml">
@@ -790,13 +774,11 @@
                                       </sap:WorkflowViewStateService.ViewState>
                                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\AUTENTICACOES\CredenciaisGoogle.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="ProcessBox\AUTENTICACOES\CredenciaisGoogle.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
-                                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">
-                                            <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                          </InOutArgument>
+                                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[Config]</InOutArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                     </Sequence>
-                                    <Sequence sap2010:Annotation.AnnotationText="Salva credeciais de usuario em&#xD;&#xA;io_Config(&quot;user&quot;)&#xD;&#xA;io_Config(&quot;pass&quot;)" DisplayName="Sequence - Office" sap:VirtualizedContainerService.HintSize="450,285" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                    <Sequence sap2010:Annotation.AnnotationText="Salva credeciais de usuario em&#xA;io_Config(&quot;user&quot;)&#xA;io_Config(&quot;pass&quot;)" DisplayName="Sequence - Office" sap:VirtualizedContainerService.HintSize="450,285" sap2010:WorkflowViewState.IdRef="Sequence_40">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -805,9 +787,7 @@
                                       </sap:WorkflowViewStateService.ViewState>
                                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\AUTENTICACOES\CredenciaisOfficeAzure.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="416,136" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="ProcessBox\AUTENTICACOES\CredenciaisOfficeAzure.xaml">
                                         <ui:InvokeWorkflowFile.Arguments>
-                                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">
-                                            <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                          </InOutArgument>
+                                          <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[Config]</InOutArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                     </Sequence>
