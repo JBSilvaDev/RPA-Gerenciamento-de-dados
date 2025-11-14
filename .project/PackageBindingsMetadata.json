@@ -122,6 +122,28 @@
         "DefaultValueSource": "Property"
       }
     ],
+    "UiPath.Core.Activities.EvaluateBusinessRule": [
+      {
+        "Type": "BusinessRule",
+        "PublishNullValues": false,
+        "Key": {
+          "Value": "N/A",
+          "ValueSource": "Property"
+        },
+        "Values": {
+          "folderPath": {
+            "Value": "FolderPath",
+            "ValueSource": "Property"
+          },
+          "name": {
+            "Value": "BusinessRule",
+            "ValueSource": "Property"
+          }
+        },
+        "SubBindings": [],
+        "DefaultValueSource": "Property"
+      }
+    ],
     "UiPath.Core.Activities.GetJobs": [
       {
         "Type": "process",
@@ -4765,123 +4787,6 @@
         "DefaultValueSource": "Property"
       }
     ],
-    "UiPath.MicrosoftOffice365.Activities.Files.RenameItemConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.2",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [
-          {
-            "Type": "Property",
-            "PublishNullValues": false,
-            "Key": {
-              "Value": "ResourceKey",
-              "ValueSource": "Property"
-            },
-            "Values": {
-              "FullName": {
-                "Value": "BrowserItemFriendlyName",
-                "ValueSource": "Property"
-              },
-              "ID": {
-                "Value": "BrowserItemId",
-                "ValueSource": "Property"
-              },
-              "ParentDriveID": {
-                "Value": "BrowserDriveId",
-                "ValueSource": "Property"
-              }
-            },
-            "Arguments": {
-              "ActivityName": {
-                "Value": "DisplayName",
-                "ValueSource": "Property"
-              },
-              "BindingsVersion": {
-                "Value": "2.1",
-                "ValueSource": "Constant"
-              },
-              "ObjectName": {
-                "Value": "CuratedFile",
-                "ValueSource": "Constant"
-              },
-              "DisplayLabel": {
-                "Value": "FullName",
-                "ValueSource": "Constant"
-              }
-            },
-            "SubBindings": [],
-            "DefaultValueSource": "Property"
-          },
-          {
-            "Type": "Property",
-            "PublishNullValues": false,
-            "Key": {
-              "Value": "RelativePathBindingsKey",
-              "ValueSource": "Property"
-            },
-            "Values": {
-              "FullName": {
-                "Value": "BrowserParentItemFriendlyName",
-                "ValueSource": "Property"
-              },
-              "ID": {
-                "Value": "BrowserParentItemId",
-                "ValueSource": "Property"
-              },
-              "ParentDriveID": {
-                "Value": "BrowserParentDriveId",
-                "ValueSource": "Property"
-              }
-            },
-            "Arguments": {
-              "ActivityName": {
-                "Value": "DisplayName",
-                "ValueSource": "Property"
-              },
-              "BindingsVersion": {
-                "Value": "2.1",
-                "ValueSource": "Constant"
-              },
-              "ObjectName": {
-                "Value": "ParentFolderObjectName",
-                "ValueSource": "Property"
-              },
-              "DisplayLabel": {
-                "Value": "FullName",
-                "ValueSource": "Constant"
-              }
-            },
-            "SubBindings": [],
-            "DefaultValueSource": "Property"
-          }
-        ],
-        "DefaultValueSource": "Property"
-      }
-    ],
     "UiPath.MicrosoftOffice365.Activities.Files.ShareItemConnections": [
       {
         "Type": "Connection",
@@ -5777,38 +5682,6 @@
         "DefaultValueSource": "Property"
       }
     ],
-    "UiPath.MicrosoftOffice365.Activities.Mail.GetEmailThreadConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.2",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [],
-        "DefaultValueSource": "Property"
-      }
-    ],
     "UiPath.MicrosoftOffice365.Activities.Mail.GetNewestEmail": [
       {
         "Type": "Connection",
@@ -6438,81 +6311,6 @@
         "DefaultValueSource": "Property"
       }
     ],
-    "UiPath.MicrosoftOffice365.Activities.Sharepoint.BulkAddListItemsConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.2",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [
-          {
-            "Type": "Property",
-            "PublishNullValues": false,
-            "Key": {
-              "Value": "ResourceKey",
-              "ValueSource": "Property"
-            },
-            "Values": {
-              "FullName": {
-                "Value": "BrowserListFriendlyName",
-                "ValueSource": "Property"
-              },
-              "ID": {
-                "Value": "BrowserListId",
-                "ValueSource": "Property"
-              },
-              "SiteID": {
-                "Value": "BrowserSiteUrl",
-                "ValueSource": "Property"
-              }
-            },
-            "Arguments": {
-              "ActivityName": {
-                "Value": "DisplayName",
-                "ValueSource": "Property"
-              },
-              "BindingsVersion": {
-                "Value": "2.1",
-                "ValueSource": "Constant"
-              },
-              "ObjectName": {
-                "Value": "CuratedSharepointList",
-                "ValueSource": "Constant"
-              },
-              "DisplayLabel": {
-                "Value": "FullName",
-                "ValueSource": "Constant"
-              }
-            },
-            "SubBindings": [],
-            "DefaultValueSource": "Property"
-          }
-        ],
-        "DefaultValueSource": "Property"
-      }
-    ],
     "UiPath.MicrosoftOffice365.Activities.Sharepoint.DeleteSharepointListItemsConnections\u00601": [
       {
         "Type": "Connection",
@@ -6585,38 +6383,6 @@
             "DefaultValueSource": "Property"
           }
         ],
-        "DefaultValueSource": "Property"
-      }
-    ],
-    "UiPath.MicrosoftOffice365.Activities.Sharepoint.ForEachListConnections": [
-      {
-        "Type": "Connection",
-        "PublishNullValues": false,
-        "Key": {
-          "Value": "BindingsKey",
-          "ValueSource": "Property"
-        },
-        "Values": {
-          "ConnectionId": {
-            "Value": "ConnectionId",
-            "ValueSource": "Property"
-          }
-        },
-        "Arguments": {
-          "BindingsVersion": {
-            "Value": "2.2",
-            "ValueSource": "Constant"
-          },
-          "Connector": {
-            "Value": "Connector",
-            "ValueSource": "Property"
-          },
-          "UseConnectionService": {
-            "Value": "UseConnectionService",
-            "ValueSource": "Property"
-          }
-        },
-        "SubBindings": [],
         "DefaultValueSource": "Property"
       }
     ],

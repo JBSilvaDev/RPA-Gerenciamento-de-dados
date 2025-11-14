@@ -166,11 +166,6 @@
         "varSecuritPass&Sequence_2",
         "varFileExist&Flowchart_1",
         "iLocalResource_caminho&Flowchart_1",
-        "varArquivoOndrive&Sequence_3",
-        "mes_ref&Sequence_3",
-        "distribuidora&Sequence_3",
-        "instalacao&Sequence_3",
-        "out_renameFile&Sequence_3",
         "str_caminho_fatura&Flowchart_1",
         "varBname&Sequence_1",
         "varPath&Sequence_1"
@@ -375,6 +370,14 @@
         "in_SystemException",
         "in_QueueRetry"
       ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Sequence.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
