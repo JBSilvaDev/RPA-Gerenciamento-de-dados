@@ -98,7 +98,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="200,20" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1104,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="varNumID" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtBquery" />
@@ -131,7 +131,7 @@
         <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="535,998" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
           <ui:IfElseIf.ConditionBlocks>
             <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-              <ui:IfElseIfBlock BlockType="If" Condition="[not in_dictFaturaFields.ContainsKey(&quot;numero-instalacao&quot;)]">
+              <ui:IfElseIfBlock BlockType="If" Condition="[not in_dictFaturaFields.ContainsKey(&quot;numero-instalacao&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
                 <ui:IfElseIfBlock.Then>
                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,173" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
@@ -143,7 +143,7 @@
                   </Sequence>
                 </ui:IfElseIfBlock.Then>
               </ui:IfElseIfBlock>
-              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dictFaturaFields(&quot;numero-instalacao&quot;).ToString.TrimStart(&quot;0&quot;c)))]">
+              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dictFaturaFields(&quot;numero-instalacao&quot;).ToString.TrimStart(&quot;0&quot;c)))]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
                 <ui:IfElseIfBlock.Then>
                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,279" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
@@ -170,7 +170,7 @@
                   </Sequence>
                 </ui:IfElseIfBlock.Then>
               </ui:IfElseIfBlock>
-              <ui:IfElseIfBlock BlockType="Else">
+              <ui:IfElseIfBlock BlockType="Else" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
                 <ui:IfElseIfBlock.Then>
                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,165" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <sap:WorkflowViewStateService.ViewState>
@@ -240,7 +240,7 @@
                         <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="672,614" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
                           <ui:IfElseIf.ConditionBlocks>
                             <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                              <ui:IfElseIfBlock BlockType="If" Condition="[CurrentRow(&quot;inst_cont&quot;).ToString.ToLower.Contains(varNumID)]">
+                              <ui:IfElseIfBlock BlockType="If" Condition="[CurrentRow(&quot;inst_cont&quot;).ToString.ToLower.Contains(varNumID)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_4">
                                 <ui:IfElseIfBlock.Then>
                                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="621,395" sap2010:WorkflowViewState.IdRef="Sequence_16">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -307,7 +307,7 @@
                 <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="519,998" sap2010:WorkflowViewState.IdRef="IfElseIf_3">
                   <ui:IfElseIf.ConditionBlocks>
                     <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-                      <ui:IfElseIfBlock BlockType="If" Condition="[not in_dictFaturaFields.ContainsKey(&quot;numero-cliente&quot;)]">
+                      <ui:IfElseIfBlock BlockType="If" Condition="[not in_dictFaturaFields.ContainsKey(&quot;numero-cliente&quot;)]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_5">
                         <ui:IfElseIfBlock.Then>
                           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,173" sap2010:WorkflowViewState.IdRef="Sequence_10">
                             <sap:WorkflowViewStateService.ViewState>
@@ -319,7 +319,7 @@
                           </Sequence>
                         </ui:IfElseIfBlock.Then>
                       </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dictFaturaFields(&quot;numero-cliente&quot;).ToString.TrimStart(&quot;0&quot;c)))]">
+                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dictFaturaFields(&quot;numero-cliente&quot;).ToString.TrimStart(&quot;0&quot;c)))]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
                         <ui:IfElseIfBlock.Then>
                           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,279" sap2010:WorkflowViewState.IdRef="Sequence_11">
                             <sap:WorkflowViewStateService.ViewState>
@@ -346,7 +346,7 @@
                           </Sequence>
                         </ui:IfElseIfBlock.Then>
                       </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="Else">
+                      <ui:IfElseIfBlock BlockType="Else" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_7">
                         <ui:IfElseIfBlock.Then>
                           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,165" sap2010:WorkflowViewState.IdRef="Sequence_12">
                             <sap:WorkflowViewStateService.ViewState>
@@ -393,20 +393,13 @@
                           <av:Size x:Key="ShapeSize">110,70</av:Size>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Notificar area de negocios" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <Sequence DisplayName="Notificar area de negocios" sap:VirtualizedContainerService.HintSize="450,346" sap2010:WorkflowViewState.IdRef="Sequence_13">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Error]" Message="[&quot;Não encontrado dados no master data:&quot;]" />
-                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ProcessBox\Office\NotificaSeSubstituta.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="416,145" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessBox\Office\NotificaTeams.xaml">
-                          <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[io_Config]</InArgument>
-                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[in_dictFaturaFields]</InArgument>
-                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_masterdata">True</InArgument>
-                          </ui:InvokeWorkflowFile.Arguments>
-                        </ui:InvokeWorkflowFile>
                         <Throw Exception="[New Exception(&quot;Dados em MasterData nao encontrados&quot;)]" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
                       </Sequence>
                     </FlowStep>
