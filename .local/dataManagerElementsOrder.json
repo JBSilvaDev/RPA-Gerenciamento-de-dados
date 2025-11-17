@@ -315,8 +315,6 @@
         "SQLCommand&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_Config",
-        "in_listDictFaturaTable",
         "in_dictFaturaFields",
         "out_dictMasterData",
         "io_Config"
@@ -332,6 +330,7 @@
         "varNumID&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "out_ItemExiste",
         "in_dictFaturaFields",
         "out_dictMasterData",
         "io_Config"
