@@ -91,7 +91,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CredenciaisOfficeAzure" sap:VirtualizedContainerService.HintSize="1132,1209" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CredenciaisOfficeAzure" sap:VirtualizedContainerService.HintSize="1192,1209" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -124,7 +124,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:DatabaseConnect sap2010:Annotation.AnnotationText="Faz a conexao com GCP trazendo a base de dados&#xA;" DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="382,125" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="[&quot;Dsn=&quot;+ io_Config(&quot;GCPDataSet&quot;).ToString]" DatabaseConnection="[BigQueryDatabaseConnection]">
+                    <ui:DatabaseConnect sap2010:Annotation.AnnotationText="Faz a conexao com GCP trazendo a base de dados&#xA;" DisplayName="Connect to Database" sap:VirtualizedContainerService.HintSize="382,125" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.Odbc" ConnectionString="Dsn=RPA0180" DatabaseConnection="[BigQueryDatabaseConnection]">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
