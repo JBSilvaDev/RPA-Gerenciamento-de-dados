@@ -324,14 +324,14 @@
                       <av:PointCollection x:Key="ConnectorLocation">635,480 560,480 560,565</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Sequence - Substituta" sap:VirtualizedContainerService.HintSize="450,629" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence DisplayName="Sequence - Substituta" sap:VirtualizedContainerService.HintSize="450,680" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Warn" Message="[&quot;Notificação em caso de fatura substituta&quot;]" />
-                    <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACu1ZbW8bNxL+K8TigCSFXmz5LRWQD5WcXJSLYyOykw+1YVDLkcR6tdySXDs6QUB/SPvn+ktuhtzVrqSVrLgpergeAge7XA45nHnm4cxoFryREAnTVbHlMgYdtGdBH7gOx3wQgf8YtH+8qQXvpO3FSWrdGE37wCcQtGn8NlZ6wiNpQNQt8Im5RfE4hsjcTsAYPgJTv28FteBUmiTi00zyzH+jcTChlomVKi7GmaTtmBr8BKHFSZfThKSu5AW340YvtjDSnET6oO9lCI0fQivvpZVgGv3Pr2PrH7tH3dZhq/Omddwq6TmRcWpujRzFGxQuJty3Gp00FhE0niheY1U6NO7C8WhfXe3dvd5PJ5faHrx7KTvHhzX2CbTBY73ab+zRPxRPI5tqeBVDajWPauwiHUQy/BdML9UdxK/iNIrQQB/h5xSMDdpDHhnw71IDOsvqFN+d596r0BnNe+7cGdf5FRfoGRzK/Esi81rwlpurWA4lCDK/yZcqkEDoWGCBjHErxZqnL3Gc9U7XPN2HCLdndgyMRNlQq4l7E1olQj3ETGmWcGP8595pA/9YyGM2AKbBagn3IAoxlVoHmSH7/Zdf/wmWuY0HU0Z6/P7LbwWKDMrGI3zvK23PtSDk79eC90rdpQmh21umdC4T5J8/8SilUXdQAiM+N5enkBxZxs8RJWPczJ0REBi0y19ujsxPeAoLmnSYlZSdszqbSTF3x+KiMz2FIUcs5ii4UEZmql9oOeF6GuDpHCwoFlWcUcdjQHQ2JPidgR0rccE1bo765Chc4CsLsyqIdf2nKpSRy1maWMUOGK6geYhrGzILGSlGeYbfTGH8bJuFtfP3rzd4rtWuEGxth2C7nRPNDmBszrJwnDfXpLbgk9wToYEKSPxj6AZesdDfEua5VZF6AP28JPiilg8+m/n582cvXgRb0P7f5pY/FAo981YKAfESxIsgmAX+OXN9f6weiLDTyHlhhhEydBJrPNoz3QivY4qdjNV75rPSd0O09esvicbrxllzQfl+HYcK5+DvkHGQc1YUQGXhqxXIT7pxf9zoZkdWWNHH7fGnWOQ8zle6SgS3kB9jV0v9T7vqmxHzQIlpg+gBYrspz2M0aZ2cKbC9YB76WQ5F0Y/xbPySW0jzoMwx1ej7CCZB4MGmg3a8audxl8f33ORGWjkgFxzVvocu16K74bA/ZHOQjrRg7/rnH9aOfOFucDyoPwyxEFrgHrSlN/owAkzFEayLBbac/rB8+sdpJ3MGXQWLR8Se8HSWp+Q3WwBHprg16eC22hw7ojD/hoLG8thm99j24KxmFzQPfLGdSIV3S9noypn8tCfY318kY2sT024281OTf01DqqZw1gfdbLBTDKbQRlO6nyywn4yKGZYOoNm125wNUhnh63WwuMQQGTxZ2ug6KOzEQEircH5AzPA3cO+GwOyZ0tGRhkiXVQ7CrAPWwrE3qaow3SjDi56H4wkxj6eaNInwbsejLQIuW7MUbkePk83qGc7Q8jLh2q4zzC7cWqjZE+bH727Wzoj5GmACZNhzl0219hipbV5UE4+KMSHSbKI0sD6mXXChJFpgmC8iY4yGyYTXDaDOLgiGVLLaqnzqOqB0yimAa75RBbivgytnTffR4BhfVOde8EyGWhk1tOzg+Ai/Jzy8y8J0M9kdf731d6L2NZt2Nt1Vvh2R32WrqhbKLSeEj6DicRCQ+ynqGxWlz1n2zdc+mUroUxjhQrix854fOqAuzE6XYdXe2YOj0Y1KZJOwRHWzVi30RzcH0UgN6Ea5ZnlMF4QwybBMxtUWf6Jq21y0olHZY99cD/qvhxDERtjU7bGrVjITYpnU0xRENj93RLHeJ6q0kE/6qup3DDus79azQ0wNBdZ7CV64+IbE5ereBqsWeLQ+TPLoY896p89y8T5tkheMuZZIcPm4XQxmDDd9tMuUsRX273ILLnhjXtXGW7Z2/t5NHTtvcoK3/Vbme4DBlY7WXPEZBuzq4/s1PxTj2zsYf81hvn0fOnd6Jvv/FvRTWtDbmWKTXyt60ZT/llvRXTVJcBn8laJoSlOqGcLiFsXVZkHWTcfNXD8d98KcNMY7XGkXgEGKt7Ad1yd5PuKhg/Oy3xM8dyIcMojWlhtzu2LuLdYP/panfEWhkfBAZIpI/htEvle2aBXpkOaYCIIoNf7cCfMOABFsj1Y/eRm2vj8ZHtcPj/ZE/fD4SNQ5DL+vHx+cvNwX/FicnJwUUdBVUTpx9cTugkiiSkvOBLDXWPqMJKeaou/4wOcbq4sHs33XQ9ubr8Vf1XI4dSdl6JYpdYXbhMN5bqiOVg90B1pAfzo6Kpg3735SSekzzzJQWvvLSMmZYpGzXmYYWcwoSx82DvYXMFk+64cFWvxllTcx6Q72aGGfWk+F2HlCVWtGXhqo27WKu/P+ZalPvLpwRcu4OSvMO2+W9msKjcVhUzrjIpJ5PEoJpe0Ak16sPvmXC3ztI7ixaNpzvyR1UKc7RAgB2xWmWaz/Pcr3/wAundcqbB0AAA==" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,396" sap2010:WorkflowViewState.IdRef="ConnectorActivity_4" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+                    <isactr:ConnectorActivity Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,447" sap2010:WorkflowViewState.IdRef="ConnectorActivity_4" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
                       <isactr:ConnectorActivity.FieldObjects>
                         <isactr:FieldObject Name="team_id" Type="FieldArgument">
                           <isactr:FieldObject.Value>
@@ -346,6 +346,83 @@
                         <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
                           <isactr:FieldObject.Value>
                             <InArgument x:TypeArguments="x:String" />
+                          </isactr:FieldObject.Value>
+                        </isactr:FieldObject>
+                        <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
+                          <isactr:FieldObject.Value>
+                            <OutArgument x:TypeArguments="x:String" />
+                          </isactr:FieldObject.Value>
+                        </isactr:FieldObject>
+                        <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
+                          <isactr:FieldObject.Value>
+                            <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+&lt;html lang='pt-BR'&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F4F4F4;
+      margin: 0;
+      padding: 20px;
+      color: #333; 
+    }
+
+    .container {
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      border-left: 8px solid #005B7F; /* Azul Suzano */
+    }
+
+    h1 {
+      color: #005B7F; /* Azul Suzano */
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #7A5C3D; /* Tom terroso */
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div Class='container'&gt;
+    &lt;h1&gt;Dados nao encontrados na Master Data&lt;/h1&gt;
+	&lt;h3&gt;Favor verificar informações na tabela&lt;/h3&gt;
+ &lt;br&gt;
+    &lt;div Class='info'&gt;" +
+      "&lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Distribuidora: &lt;/span&gt;&lt;/b&gt;"  &amp;  varDistribuidora &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Instalação: &lt;/span&gt;&lt;/b&gt;"  &amp;  varInstalacao &amp; "&lt;/p&gt;
+	  &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;ClienteID: &lt;/span&gt;&lt;/b&gt;"  &amp;  varClienteID &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Link PDF: &lt;/span&gt;&lt;/b&gt; &lt;a href="&amp;  varLink &amp;"&gt;Click aqui&lt;/a&gt; &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div Class='footer'&gt;
+      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180. &lt;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"]</InArgument>
+                          </isactr:FieldObject.Value>
+                        </isactr:FieldObject>
+                        <isactr:FieldObject Name="out_id" Type="FieldArgument">
+                          <isactr:FieldObject.Value>
+                            <OutArgument x:TypeArguments="x:String" />
                           </isactr:FieldObject.Value>
                         </isactr:FieldObject>
                       </isactr:ConnectorActivity.FieldObjects>

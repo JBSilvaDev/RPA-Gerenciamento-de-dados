@@ -305,11 +305,14 @@
       "Path": "ProcessBox/Google/DownloadBQueryMasterData.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "dtBquery&Sequence_1",
         "Item_Existe&Sequence_1",
         "dt_Bquery&Sequence_1",
         "SQLCommand&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_dictFaturaFields",
+        "out_dictMasterData",
         "io_Config",
         "out_dict_master_data",
         "in_dict_fatura_fields"
@@ -391,14 +394,34 @@
       "Path": "ProcessBox/Office/NotificaTeams.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varInstalacao&Flowchart_1",
+        "varClienteID&Flowchart_1",
+        "varDistribuidora&Flowchart_1",
+        "varLink&Flowchart_1",
+        "dt_SettingsAndConstants&Sequence_5",
+        "dt_Assets&Sequence_6",
+        "AssetValue&Sequence_11"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_masterData",
+        "in_dictFaturaFields",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "rascunhos/NotificaTeams.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
         "varInstalacao&Sequence_1",
         "varClienteID&Sequence_1",
         "varDistribuidora&Sequence_1",
         "varLink&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_dictFaturaFields",
         "in_Config",
+        "in_dictFaturaFields",
         "in_masterdata"
       ],
       "ConstantsSectionElementsOrder": [],
