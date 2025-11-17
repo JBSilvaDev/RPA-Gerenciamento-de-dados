@@ -321,14 +321,14 @@
       "Path": "ProcessBox/Google/ConsultaDadosExistentes.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "dt_Bquery&Flowchart_1",
+        "dtBquery&Flowchart_1",
         "varNumID&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_Item_Existe",
-        "io_Config",
-        "out_dict_master_data",
-        "in_dict_fatura_fields"
+        "out_ItemExiste",
+        "in_dictFaturaFields",
+        "out_dictMasterData",
+        "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
