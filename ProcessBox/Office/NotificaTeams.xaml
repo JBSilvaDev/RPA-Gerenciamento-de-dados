@@ -98,7 +98,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="NotificaSeSubstituta" sap:VirtualizedContainerService.HintSize="1146,2848" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="NotificaSeSubstituta" sap:VirtualizedContainerService.HintSize="1264,3010" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="varInstalacao" />
       <Variable x:TypeArguments="x:String" Name="varClienteID" />
@@ -110,8 +110,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="552,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Efetuando notificação via teams&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="552,114" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="622,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Efetuando notificação via teams&quot;]" />
+    <Assign sap:VirtualizedContainerService.HintSize="622,114" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varInstalacao]</OutArgument>
       </Assign.To>
@@ -119,7 +119,7 @@
         <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("numero-instalacao"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("numero-instalacao").ToString), "N/A", in_dictFaturaFields("numero-instalacao").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="552,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="622,114" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varClienteID]</OutArgument>
       </Assign.To>
@@ -127,7 +127,7 @@
         <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("numero-cliente"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("numero-cliente").ToString), "N/A", in_dictFaturaFields("numero-cliente").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="552,114" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="622,114" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varDistribuidora]</OutArgument>
       </Assign.To>
@@ -135,7 +135,7 @@
         <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("nome-fornecedor"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("nome-fornecedor").ToString), "N/A", in_dictFaturaFields("nome-fornecedor").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="552,114" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="622,114" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[varLink]</OutArgument>
       </Assign.To>
@@ -143,39 +143,47 @@
         <InArgument x:TypeArguments="x:String">[If(in_dictFaturaFields.ContainsKey("uri"), If(String.IsNullOrWhiteSpace(in_dictFaturaFields("uri").ToString), "N/A", in_dictFaturaFields("uri").ToString), "N/A")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="552,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[Environment.NewLine &amp; &quot;Distribuidora: &quot; &amp; If(varDistribuidora &lt;&gt; &quot;N/A&quot;, varDistribuidora , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Cliente ID: &quot; &amp; If(varClienteID &lt;&gt; &quot;N/A&quot;, varClienteID , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Instalação: &quot; &amp; If(varInstalacao &lt;&gt; &quot;N/A&quot;, varInstalacao, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Link: &quot; &amp; If(varLink &lt;&gt; &quot;N/A&quot;, varLink, &quot;Não localizado&quot;)]" />
-    <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="552,2023" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
-      <ui:IfElseIf.ConditionBlocks>
-        <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-          <ui:IfElseIfBlock BlockType="If" Condition="[in_masterdata]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
-            <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="501,884" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Notificação por ausencia de dados na MasterData&quot;]" />
-                <isactr:ConnectorActivity sap2010:Annotation.AnnotationText="Notifica caso seja substitução" Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="382,487" sap2010:WorkflowViewState.IdRef="ConnectorActivity_3" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
-                  <isactr:ConnectorActivity.FieldObjects>
-                    <isactr:FieldObject Name="team_id" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="channel_id" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="622,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Trace]" Message="[Environment.NewLine &amp; &quot;Distribuidora: &quot; &amp; If(varDistribuidora &lt;&gt; &quot;N/A&quot;, varDistribuidora , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Cliente ID: &quot; &amp; If(varClienteID &lt;&gt; &quot;N/A&quot;, varClienteID , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Instalação: &quot; &amp; If(varInstalacao &lt;&gt; &quot;N/A&quot;, varInstalacao, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Link: &quot; &amp; If(varLink &lt;&gt; &quot;N/A&quot;, varLink, &quot;Não localizado&quot;)]" />
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="622,2185" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="586,2083" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="552,2023" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+            <ui:IfElseIf.ConditionBlocks>
+              <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                <ui:IfElseIfBlock BlockType="If" Condition="[in_masterdata]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
+                  <ui:IfElseIfBlock.Then>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="501,884" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Notificação por ausencia de dados na MasterData&quot;]" />
+                      <isactr:ConnectorActivity sap2010:Annotation.AnnotationText="Notifica caso seja substitução" Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="382,487" sap2010:WorkflowViewState.IdRef="ConnectorActivity_3" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+                        <isactr:ConnectorActivity.FieldObjects>
+                          <isactr:FieldObject Name="team_id" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="channel_id" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
 &lt;html lang='pt-BR'&gt;
 &lt;head&gt;
   &lt;style&gt;
@@ -238,63 +246,63 @@
   &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;"]</InArgument>
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="out_id" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <OutArgument x:TypeArguments="x:String" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <OutArgument x:TypeArguments="x:String" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="Jit_normalisedminus_signteams_channels_messagesminus_signv2" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <OutArgument x:TypeArguments="uiascb:normalisedminus_signteams_channels_messagesminus_signv2" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                  </isactr:ConnectorActivity.FieldObjects>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </isactr:ConnectorActivity>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada&quot;]" />
-              </Sequence>
-            </ui:IfElseIfBlock.Then>
-          </ui:IfElseIfBlock>
-          <ui:IfElseIfBlock BlockType="Else" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
-            <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="501,884" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Notificação em caso de fatura substituta&quot;]" />
-                <isactr:ConnectorActivity sap2010:Annotation.AnnotationText="Notifica caso seja substitução" Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="382,487" sap2010:WorkflowViewState.IdRef="ConnectorActivity_1" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
-                  <isactr:ConnectorActivity.FieldObjects>
-                    <isactr:FieldObject Name="team_id" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="channel_id" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="out_id" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <OutArgument x:TypeArguments="x:String" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <OutArgument x:TypeArguments="x:String" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="Jit_normalisedminus_signteams_channels_messagesminus_signv2" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <OutArgument x:TypeArguments="uiascb:normalisedminus_signteams_channels_messagesminus_signv2" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                        </isactr:ConnectorActivity.FieldObjects>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </isactr:ConnectorActivity>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada&quot;]" />
+                    </Sequence>
+                  </ui:IfElseIfBlock.Then>
+                </ui:IfElseIfBlock>
+                <ui:IfElseIfBlock BlockType="Else" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                  <ui:IfElseIfBlock.Then>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="501,884" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,173" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Notificação em caso de fatura substituta&quot;]" />
+                      <isactr:ConnectorActivity sap2010:Annotation.AnnotationText="Notifica caso seja substitução" Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="382,487" sap2010:WorkflowViewState.IdRef="ConnectorActivity_1" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+                        <isactr:ConnectorActivity.FieldObjects>
+                          <isactr:FieldObject Name="team_id" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="channel_id" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
 &lt;html lang='pt-BR'&gt;
 &lt;head&gt;
   &lt;style&gt;
@@ -356,36 +364,45 @@
   &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;"]</InArgument>
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="out_id" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <OutArgument x:TypeArguments="x:String" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <OutArgument x:TypeArguments="x:String" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                    <isactr:FieldObject Name="Jit_normalisedminus_signteams_channels_messagesminus_signv2" Type="FieldArgument">
-                      <isactr:FieldObject.Value>
-                        <OutArgument x:TypeArguments="uiascb:normalisedminus_signteams_channels_messagesminus_signv2" />
-                      </isactr:FieldObject.Value>
-                    </isactr:FieldObject>
-                  </isactr:ConnectorActivity.FieldObjects>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </isactr:ConnectorActivity>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada&quot;]" />
-              </Sequence>
-            </ui:IfElseIfBlock.Then>
-          </ui:IfElseIfBlock>
-        </sc:BindingList>
-      </ui:IfElseIf.ConditionBlocks>
-    </ui:IfElseIf>
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="out_id" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <OutArgument x:TypeArguments="x:String" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <OutArgument x:TypeArguments="x:String" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                          <isactr:FieldObject Name="Jit_normalisedminus_signteams_channels_messagesminus_signv2" Type="FieldArgument">
+                            <isactr:FieldObject.Value>
+                              <OutArgument x:TypeArguments="uiascb:normalisedminus_signteams_channels_messagesminus_signv2" />
+                            </isactr:FieldObject.Value>
+                          </isactr:FieldObject>
+                        </isactr:ConnectorActivity.FieldObjects>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </isactr:ConnectorActivity>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Enviada&quot;]" />
+                    </Sequence>
+                  </ui:IfElseIfBlock.Then>
+                </ui:IfElseIfBlock>
+              </sc:BindingList>
+            </ui:IfElseIf.ConditionBlocks>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:IfElseIf>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
   </Sequence>
 </Activity>
