@@ -166,7 +166,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1163,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1217,505.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="strCaminhoFatura" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="iLocalResourceCaminho" />
@@ -406,7 +406,7 @@ If(io_dictFaturaFields.ContainsKey("numero_cliente") AndAlso Not String.IsNullOr
                                               <OutArgument x:TypeArguments="x:String">[numNf]</OutArgument>
                                             </ui:AssignOperation.To>
                                             <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[If(io_dictFaturaFields.ContainsKey("numero-fatura") AndAlso Not String.IsNullOrWhiteSpace(io_dictFaturaFields("numero-fatura").ToString()), io_dictFaturaFields("numero-fatura").ToString().ToLower(), "NF")]</InArgument>
+                                              <InArgument x:TypeArguments="x:String">[If(io_dictFaturaFields.ContainsKey("numero-fatura") AndAlso Not String.IsNullOrWhiteSpace(io_dictFaturaFields("numero-fatura").ToString()), io_dictFaturaFields("numero-fatura").ToString().ToLower(), "NA")]</InArgument>
                                             </ui:AssignOperation.Value>
                                           </ui:AssignOperation>
                                         </scg:List>
@@ -418,7 +418,7 @@ If(io_dictFaturaFields.ContainsKey("numero_cliente") AndAlso Not String.IsNullOr
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:MultipleAssign>
                                     <umaf:GetItem ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" DriveName="{x:Null}" ItemFriendlyName="{x:Null}" ItemId="{x:Null}" SiteUrl="{x:Null}" AuthScopesInvalid="False" DisplayName="Get File or Folder" sap:VirtualizedContainerService.HintSize="479,138" sap2010:WorkflowViewState.IdRef="GetItem_1" Item="[varIndriverItem]" ItemSelectionMode="ItemUrl" ItemUrl="[in_Config(&quot;URL_Sharepoint&quot;).ToString]" />
-                                    <umaf:UploadFile ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" Metadata="{x:Null}" AuthScopesInvalid="False" Checkin="False" CloudFileName="[mesRef + &quot; - &quot; + distribuidora + &quot; - &quot; + instalacao]" ConflictBehavior="Replace" Destination="[varIndriverItem]" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="479,281" sap2010:WorkflowViewState.IdRef="UploadFile_2" LocalFilePath="[strCaminhoFatura]" Result="[varArquivoRenomea]" />
+                                    <umaf:UploadFile ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" Metadata="{x:Null}" AuthScopesInvalid="False" Checkin="False" CloudFileName="[mesRef + &quot; - &quot; + distribuidora + &quot; - &quot; + instalacao+ &quot; - NF_&quot; + numNf]" ConflictBehavior="Replace" Destination="[varIndriverItem]" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="479,281" sap2010:WorkflowViewState.IdRef="UploadFile_2" LocalFilePath="[strCaminhoFatura]" Result="[varArquivoRenomea]" />
                                     <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="479,57" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                                       <ui:CommentOut.Body>
                                         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,224" sap2010:WorkflowViewState.IdRef="Sequence_7">
