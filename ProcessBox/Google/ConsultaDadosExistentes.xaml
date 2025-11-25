@@ -97,9 +97,10 @@
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>C5C242BF262_normalis.y3NWM43jz4F1cmCnodtEuH2</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1209,803.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1217,554" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="varNumID" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtBquery" />
@@ -211,7 +212,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowDecision.True>
-            <FlowStep x:Name="__ReferenceID0">
+            <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">155,405</av:Point>
@@ -225,8 +226,8 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="740,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;Obtendo linha correspondente&quot;]" />
-                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtBquery]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="740,823" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="740,173" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Obtendo linha correspondente&quot;]" />
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtBquery]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="740,870" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                   <ui:ForEachRow.Body>
                     <ActivityAction x:TypeArguments="sd:DataRow">
                       <ActivityAction.Argument>
@@ -257,7 +258,7 @@
                                         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[CurrentRow.Table.Columns.Cast(Of DataColumn).ToDictionary(Function(c) c.ColumnName, Function(c) CurrentRow(c))]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Dados da master data encontrados correspondente ao identificador &quot; + varNumID]" />
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Dados da master data encontrados correspondente ao identificador &quot; + varNumID]" />
                                     <ui:Continue sap:VirtualizedContainerService.HintSize="434,48" sap2010:WorkflowViewState.IdRef="Continue_1" />
                                   </Sequence>
                                 </ui:IfElseIfBlock.Then>
@@ -269,10 +270,10 @@
                     </ActivityAction>
                   </ui:ForEachRow.Body>
                 </ui:ForEachRow>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="740,164" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Saindo da consulta, dados salvos&quot;]" />
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="740,164" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Saindo da consulta, dados salvos&quot;]" />
               </Sequence>
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID6">
+                <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">75,635</av:Point>
@@ -291,7 +292,7 @@
             </FlowStep>
           </FlowDecision.True>
           <FlowDecision.False>
-            <FlowStep x:Name="__ReferenceID3">
+            <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">485,405</av:Point>
@@ -387,7 +388,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <FlowDecision.False>
-                    <FlowStep x:Name="__ReferenceID5">
+                    <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <av:Point x:Key="ShapeLocation">325,635</av:Point>
@@ -406,6 +407,7 @@
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[io_Config]</InArgument>
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[in_dictFaturaFields]</InArgument>
                             <InArgument x:TypeArguments="x:Boolean" x:Key="in_masterData">True</InArgument>
+                            <InArgument x:TypeArguments="x:Boolean" x:Key="in_rateio">False</InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                         <Throw Exception="[New Exception(&quot;Dados em MasterData nao encontrados&quot;)]" sap:VirtualizedContainerService.HintSize="416,113" sap2010:WorkflowViewState.IdRef="Throw_1" />
@@ -435,7 +437,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID7">
+        <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">325,135</av:Point>

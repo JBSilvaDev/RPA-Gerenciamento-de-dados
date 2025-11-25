@@ -12,6 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "ResultadoFio&Sequence_28",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -55,38 +56,16 @@
       "Path": "Framework/StartStopScreenRecorder.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "TransactionItem&StateMachine_1",
-        "SystemException&StateMachine_1",
-        "BusinessException&StateMachine_1",
-        "TransactionNumber&StateMachine_1",
-        "Config&StateMachine_1",
-        "RetryNumber&StateMachine_1",
-        "TransactionField2&StateMachine_1",
-        "TransactionField1&StateMachine_1",
-        "TransactionID&StateMachine_1",
-        "dt_TransactionData&StateMachine_1",
-        "ConsecutiveSystemExceptions&StateMachine_1",
-        "FFmpegProcess&StateMachine_1",
-        "BigQueryDatabaseConnection&StateMachine_1",
-        "varUser&StateMachine_1",
-        "varSenha&StateMachine_1",
-        "ShouldStop&Sequence_25",
-        "dict_fatura_fields&Sequence_28",
-        "list_dict_fatura_table&Sequence_28",
-        "varResFisco&Sequence_28",
-        "varMsgAviso&Sequence_28",
         "RecorderProcessName&Sequence_1",
         "RecordingFilePath&Sequence_14",
         "RecorderResolution&Sequence_14"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_boolStopRecorderScreen",
+        "in_BoolFirstRun",
+        "in_processFFmpegProcess",
         "in_Config",
         "output_process_FFmpegProcess",
-        "in_bool_StopRecorderScreen",
-        "in_Bool_FirstRun",
-        "in_process_FFmpegProcess",
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
         "in_MaxDurationVideoRecorder"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -285,7 +264,7 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "ProcessBox/Google/EnviaExtrasaoBQuery.xaml",
+      "Path": "ProcessBox/Google/EnviaExtracaoBQuery.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "insertCommand&Sequence_1",
@@ -343,16 +322,14 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "dictFinal&Sequence_1",
-        "dict_final&Sequence_1",
         "varPastaExport&Sequence_1",
         "folderExist&Sequence_1",
         "varGUIDJson&Sequence_1",
         "jsonFinalList&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_ItemExiste",
-        "out_dictMasterData",
-        "io_Config",
+        "in_dictMasterData",
+        "in_Config",
         "in_dictFaturaFields"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -401,15 +378,14 @@
         "varInstalacao&Flowchart_1",
         "varClienteID&Flowchart_1",
         "varDistribuidora&Flowchart_1",
-        "varLink&Flowchart_1",
-        "dt_SettingsAndConstants&Sequence_5",
-        "dt_Assets&Sequence_6",
-        "AssetValue&Sequence_11"
+        "varLink&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_masterData",
+        "in_duplicidade",
+        "in_Config",
         "in_dictFaturaFields",
-        "in_Config"
+        "in_masterData",
+        "in_rateio"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -427,6 +403,25 @@
         "in_Config",
         "in_dictFaturaFields",
         "in_masterdata"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/ConsultaFaturaFio.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "queryConsultaFio&Sequence_1",
+        "varNF&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varInstalacao&Sequence_1",
+        "dtBquery&Sequence_1",
+        "SQLCommand&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_ResultadoFio",
+        "in_dictFaturaFields",
+        "in_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null

@@ -3,6 +3,8 @@
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_dictFaturaFields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_masterData" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_rateio" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_duplicidade" Type="InArgument(x:Boolean)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -94,9 +96,10 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>C5C242BF262_normalis.y3NWM43jz4F1cmCnodtEuH2</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="NotificaTeams" sap:VirtualizedContainerService.HintSize="1104,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="NotificaTeams" sap:VirtualizedContainerService.HintSize="1217,778.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="varInstalacao" />
       <Variable x:TypeArguments="x:String" Name="varClienteID" />
@@ -112,14 +115,14 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID5</x:Reference>
+      <x:Reference>__ReferenceID9</x:Reference>
     </Flowchart.StartNode>
-    <FlowStep x:Name="__ReferenceID5">
+    <FlowStep x:Name="__ReferenceID9">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">495,125</av:Point>
           <av:Size x:Key="ShapeSize">110,70</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">550,195 550,235</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">550,195 550,255</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message - Inicial" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Efetuando notificação via teams&quot;]">
@@ -130,12 +133,12 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID1">
+        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">495,235</av:Point>
+              <av:Point x:Key="ShapeLocation">495,255</av:Point>
               <av:Size x:Key="ShapeSize">110,70</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">550,305 550,350</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">550,325 550,400</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Sequence DisplayName="Sequence - Variaveis" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -179,33 +182,36 @@
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[Environment.NewLine &amp; &quot;Distribuidora: &quot; &amp; If(varDistribuidora &lt;&gt; &quot;N/A&quot;, varDistribuidora , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Cliente ID: &quot; &amp; If(varClienteID &lt;&gt; &quot;N/A&quot;, varClienteID , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Instalação: &quot; &amp; If(varInstalacao &lt;&gt; &quot;N/A&quot;, varInstalacao, &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Link: &quot; &amp; If(varLink &lt;&gt; &quot;N/A&quot;, varLink, &quot;Não localizado&quot;)]" />
           </Sequence>
           <FlowStep.Next>
-            <FlowDecision x:Name="__ReferenceID4" Condition="[in_masterData]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+            <FlowDecision x:Name="__ReferenceID7" DisplayName="Duplicidade" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+              <FlowDecision.Condition>
+                <VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="in_duplicidade" />
+              </FlowDecision.Condition>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <av:Point x:Key="ShapeLocation">520,350</av:Point>
+                  <av:Point x:Key="ShapeLocation">520,400</av:Point>
                   <av:Size x:Key="ShapeSize">60,60</av:Size>
-                  <av:PointCollection x:Key="TrueConnector">520,380 335,380 335,480 365,480</av:PointCollection>
-                  <av:PointCollection x:Key="FalseConnector">580,380 775,380 775,480 745,480</av:PointCollection>
+                  <av:PointCollection x:Key="TrueConnector">520,430 490,430 490,410 445,410</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">550,460 550,520</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <FlowDecision.True>
-                <FlowStep x:Name="__ReferenceID2">
+                <FlowStep x:Name="__ReferenceID8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">365,445</av:Point>
+                      <av:Point x:Key="ShapeLocation">335,375</av:Point>
                       <av:Size x:Key="ShapeSize">110,70</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">475,480 560,480 560,565</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">335,410 305,410 305,890 505,890</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Sequence - MasterData" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Sequence - Duplicidade" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_10">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[&quot;Notificação por ausencia de dados na MasterData&quot;]" />
-                    <isactr:ConnectorActivity Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,447" sap2010:WorkflowViewState.IdRef="ConnectorActivity_3" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Warn" Message="[&quot;Notificação por duplicidade&quot;]" />
+                    <isactr:ConnectorActivity Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,445" sap2010:WorkflowViewState.IdRef="ConnectorActivity_6" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
                       <isactr:ConnectorActivity.FieldObjects>
                         <isactr:FieldObject Name="team_id" Type="FieldArgument">
                           <isactr:FieldObject.Value>
@@ -272,8 +278,8 @@
 &lt;/head&gt;
 &lt;body&gt;
   &lt;div Class='container'&gt;
-    &lt;h1&gt;Dados nao encontrados na Master Data&lt;/h1&gt;
-	&lt;h3&gt;Favor verificar informações na tabela&lt;/h3&gt;
+    &lt;h1&gt;Duplicidade identificada no banco de dados&lt;/h1&gt;
+	&lt;h3&gt;Verificação realizada por instalação/Cliente + NFe&lt;/h3&gt;
  &lt;br&gt;
     &lt;div Class='info'&gt;" +
       "&lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Distribuidora: &lt;/span&gt;&lt;/b&gt;"  &amp;  varDistribuidora &amp; "&lt;/p&gt;
@@ -306,7 +312,7 @@
                     <FlowStep x:Name="__ReferenceID0">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <av:Point x:Key="ShapeLocation">505,565</av:Point>
+                          <av:Point x:Key="ShapeLocation">505,855</av:Point>
                           <av:Size x:Key="ShapeSize">110,70</av:Size>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -316,46 +322,181 @@
                 </FlowStep>
               </FlowDecision.True>
               <FlowDecision.False>
-                <FlowStep x:Name="__ReferenceID3">
+                <FlowDecision x:Name="__ReferenceID5" Condition="[in_rateio]" DisplayName="Rateio" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">635,445</av:Point>
-                      <av:Size x:Key="ShapeSize">110,70</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">635,480 560,480 560,565</av:PointCollection>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">520,520</av:Point>
+                      <av:Size x:Key="ShapeSize">60,60</av:Size>
+                      <av:PointCollection x:Key="TrueConnector">580,550 610,550 610,540 665,540</av:PointCollection>
+                      <av:PointCollection x:Key="FalseConnector">550,580 550,640</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Sequence - Substituta" sap:VirtualizedContainerService.HintSize="450,680" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Warn" Message="[&quot;Notificação em caso de fatura substituta&quot;]" />
-                    <isactr:ConnectorActivity Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,447" sap2010:WorkflowViewState.IdRef="ConnectorActivity_4" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
-                      <isactr:ConnectorActivity.FieldObjects>
-                        <isactr:FieldObject Name="team_id" Type="FieldArgument">
-                          <isactr:FieldObject.Value>
-                            <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
-                          </isactr:FieldObject.Value>
-                        </isactr:FieldObject>
-                        <isactr:FieldObject Name="channel_id" Type="FieldArgument">
-                          <isactr:FieldObject.Value>
-                            <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
-                          </isactr:FieldObject.Value>
-                        </isactr:FieldObject>
-                        <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
-                          <isactr:FieldObject.Value>
-                            <InArgument x:TypeArguments="x:String" />
-                          </isactr:FieldObject.Value>
-                        </isactr:FieldObject>
-                        <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
-                          <isactr:FieldObject.Value>
-                            <OutArgument x:TypeArguments="x:String" />
-                          </isactr:FieldObject.Value>
-                        </isactr:FieldObject>
-                        <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
-                          <isactr:FieldObject.Value>
-                            <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+                  <FlowDecision.True>
+                    <FlowStep x:Name="__ReferenceID6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">665,505</av:Point>
+                          <av:Size x:Key="ShapeSize">110,70</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">775,540 805,540 805,890 615,890</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="Sequence - Rateio" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Warn" Message="[&quot;Notificação por necessidade de rateio&quot;]" />
+                        <isactr:ConnectorActivity Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,445" sap2010:WorkflowViewState.IdRef="ConnectorActivity_5" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+                          <isactr:ConnectorActivity.FieldObjects>
+                            <isactr:FieldObject Name="team_id" Type="FieldArgument">
+                              <isactr:FieldObject.Value>
+                                <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
+                              </isactr:FieldObject.Value>
+                            </isactr:FieldObject>
+                            <isactr:FieldObject Name="channel_id" Type="FieldArgument">
+                              <isactr:FieldObject.Value>
+                                <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
+                              </isactr:FieldObject.Value>
+                            </isactr:FieldObject>
+                            <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
+                              <isactr:FieldObject.Value>
+                                <InArgument x:TypeArguments="x:String" />
+                              </isactr:FieldObject.Value>
+                            </isactr:FieldObject>
+                            <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
+                              <isactr:FieldObject.Value>
+                                <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+&lt;html lang='pt-BR'&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F4F4F4;
+      margin: 0;
+      padding: 20px;
+      color: #333; 
+    }
+
+    .container {
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      border-left: 8px solid #005B7F; /* Azul Suzano */
+    }
+
+    h1 {
+      color: #005B7F; /* Azul Suzano */
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #7A5C3D; /* Tom terroso */
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div Class='container'&gt;
+    &lt;h1&gt;Indicação de rateio em MasterData&lt;/h1&gt;
+	&lt;h3&gt;Favor efetuar lançamento manual&lt;/h3&gt;
+ &lt;br&gt;
+    &lt;div Class='info'&gt;" +
+      "&lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Distribuidora: &lt;/span&gt;&lt;/b&gt;"  &amp;  varDistribuidora &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Instalação: &lt;/span&gt;&lt;/b&gt;"  &amp;  varInstalacao &amp; "&lt;/p&gt;
+	  &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;ClienteID: &lt;/span&gt;&lt;/b&gt;"  &amp;  varClienteID &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Link PDF: &lt;/span&gt;&lt;/b&gt; &lt;a href="&amp;  varLink &amp;"&gt;Click aqui&lt;/a&gt; &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div Class='footer'&gt;
+      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180. &lt;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"]</InArgument>
+                              </isactr:FieldObject.Value>
+                            </isactr:FieldObject>
+                            <isactr:FieldObject Name="out_id" Type="FieldArgument">
+                              <isactr:FieldObject.Value>
+                                <OutArgument x:TypeArguments="x:String" />
+                              </isactr:FieldObject.Value>
+                            </isactr:FieldObject>
+                            <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
+                              <isactr:FieldObject.Value>
+                                <OutArgument x:TypeArguments="x:String" />
+                              </isactr:FieldObject.Value>
+                            </isactr:FieldObject>
+                          </isactr:ConnectorActivity.FieldObjects>
+                        </isactr:ConnectorActivity>
+                      </Sequence>
+                      <FlowStep.Next>
+                        <x:Reference>__ReferenceID0</x:Reference>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </FlowDecision.True>
+                  <FlowDecision.False>
+                    <FlowDecision x:Name="__ReferenceID4" Condition="[in_masterData]" DisplayName="Flow Decision" sap:VirtualizedContainerService.HintSize="60,60" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <av:Point x:Key="ShapeLocation">520,640</av:Point>
+                          <av:Size x:Key="ShapeSize">60,60</av:Size>
+                          <av:PointCollection x:Key="TrueConnector">520,670 335,670 335,770 365,770</av:PointCollection>
+                          <av:PointCollection x:Key="FalseConnector">580,670 775,670 775,770 745,770</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <FlowDecision.True>
+                        <FlowStep x:Name="__ReferenceID2">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">365,735</av:Point>
+                              <av:Size x:Key="ShapeSize">110,70</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">475,770 560,770 560,855</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="Sequence - MasterData" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Warn" Message="[&quot;Notificação por ausencia de dados na MasterData&quot;]" />
+                            <isactr:ConnectorActivity Configuration="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" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,447" sap2010:WorkflowViewState.IdRef="ConnectorActivity_3" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+                              <isactr:ConnectorActivity.FieldObjects>
+                                <isactr:FieldObject Name="team_id" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="channel_id" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String" />
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
 &lt;html lang='pt-BR'&gt;
 &lt;head&gt;
   &lt;style&gt;
@@ -418,20 +559,147 @@
   &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;"]</InArgument>
-                          </isactr:FieldObject.Value>
-                        </isactr:FieldObject>
-                        <isactr:FieldObject Name="out_id" Type="FieldArgument">
-                          <isactr:FieldObject.Value>
-                            <OutArgument x:TypeArguments="x:String" />
-                          </isactr:FieldObject.Value>
-                        </isactr:FieldObject>
-                      </isactr:ConnectorActivity.FieldObjects>
-                    </isactr:ConnectorActivity>
-                  </Sequence>
-                  <FlowStep.Next>
-                    <x:Reference>__ReferenceID0</x:Reference>
-                  </FlowStep.Next>
-                </FlowStep>
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="out_id" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <OutArgument x:TypeArguments="x:String" />
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <OutArgument x:TypeArguments="x:String" />
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                              </isactr:ConnectorActivity.FieldObjects>
+                            </isactr:ConnectorActivity>
+                          </Sequence>
+                          <FlowStep.Next>
+                            <x:Reference>__ReferenceID0</x:Reference>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowDecision.True>
+                      <FlowDecision.False>
+                        <FlowStep x:Name="__ReferenceID3">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">635,735</av:Point>
+                              <av:Size x:Key="ShapeSize">110,70</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">635,770 560,770 560,855</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence DisplayName="Sequence - Substituta" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,173" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Warn" Message="[&quot;Notificação em caso de fatura substituta&quot;]" />
+                            <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACu1Z6W4bNxB+FWJRIEmhw5avVEB+VHLSKI1jI7KTH7VhULsjifVquSW5dlRBQB+kfbk+SWfIvSStjrgpWrRF4GCXyyHn+ObUzHslIAx0V0aGiwiU1555feDKH/NBCO6j1/7hpua9EaYXxYmxa7TtHZ+A16b120iqCQ+FhqBugE/0LZJHEYT6dgJa8xHo+n3Lq3mnQschn6aUZ+4brYP2lYiNkFGxzgRdx+TgR/ANbrqcxkR1JS64GTd6kYGR4kTSB3UvfGh86xtxL4wA3eh/fBkZ99g96rYOW51XreNWic+JiBJ9q8UoWsNwseG+1egkURBC45HkNVbFQ+POH4/25dXe3cv9ZHKpzMGb56JzfFhjH0BpFOvFfmOP/iF5EppEwYsIEqN4WGMXySAU/vcwvZR3EL2IkjBEBb2HnxLQxmsPeajBvQsFaCyjEny3lnsrfas0Z7lzq1xrVzygp3EptS+RzGvea66vIjEUEJD6dXZUgQRCR44FUsatCFYsfYnrrHe6Yuk+hHg9M2NgRMqGSk7sW6BkHMiHiEnFYq61+9w7beAf83nEBsAUGCXgHoKCTCbGQmbIfv/l1+/AMHvxYMqIj99/+a1AkUbaaITvfanMuQoI+fs1762Ud0lM6HaaKcmlvezzBx4mtGoFJTDic3NxC9GRZtyeoKSMm7lVAgKDbvnb1ZHaCaUwoIiHWYnZOauzmQjmViwedKanMOSIxQwFF1KLlPULJSZcTT2UzsKCfFFGaejYBkSrQ4LfGZixDC64wsuRnwyFOb5SN6uCWNd9qkIZmZwlsZHsgOEJivt4tia1kJIipGf4TRfKT6/JtZ29f77CM652hWBrMwTb7SzQ7ADG5ix1x3lzhWoDPsk8ISqogMRXQ7vwgvkuS+inRobyAdTTEuGzWrb4ZOb2z588e+ZtQPs/zSx/yhV6+rUIAogWIF44wcxzz6np+2P5QAE7Ca0VZughQ0uxEkd7uhtiOibfSaN6T3+U6m6Iun75KVaYbqw285DvzrGosAb+GiMOxpwlBpBZ+GwGMknX3o8X3ewYFZb4sXf8JRo5j7KTruKAG8jE2FVT/2pTfbHAPJDBtEHhASKzrs5jtGk1OJNjO8LM9dMairwf/Vm7IzcEzYNyjKlG33vQMQIP1gnacaydR10e3XNdLR8POHJ9D12ugu4aWb9N92A0UgF70z9/tyLxhU3gKKeThYIQKuAelKE3+jACrMQRq/kBG4Q/LAu/PeqktqBMkD8i9AIXzbKK/GYD3kgVtzoZ3FarY0cQZt+QUBsemTSNbfbN6uCC6oFPphNK/26hGF2SyW17hP5dHhkbE+t2s5lJTfbVDSGbgdU+qGaDnaIv+SacUnoywH7UMmLYOYBi1/ZyNkhEiK/XXp7DEBk8Xrjo2iv0xCAQRuJ+jwLDf8C8a/yyp0uiYxQiXpZdFIsOWHHH3qSqwbSrDPM898cTCjwu0iRxiKkdRcsdLj2z5G5H22PNsgxnqHkRc2UWAkyeIraF1oLNXqB/+PpmRUYs1wDrH82e2mKqtceIbf2sOvDICOshxSZSAetj1QUXUqAGhtkhIkJvmEx4XQPybJ1gSB2rqSqnrj2qpiwDeOYrWYD72ruy2rQfNa7xvDl3hGfCV1LLoWEHx0f4Peb+Xeqm64Pd8edrfyWyu/S3GNpXdNpZl6rcNCJLZcusFswt1oNbULEdBGR+8vpGRedzln5zrU/KEtoURngQXmyt55YOaAizUy6sujt9sGF0LRPpJuxQ7a5lDf3ZyyFoJBpUo9yybOMFIUw0LKWxrcVfyNomEy1xVLbYF+eD/ushBHEONrV37MqVSIlYSvU4BjGan9tAsTomqtSQq/mq2nd0O2zvVotDrAwDbPdiTLj4hoHLtr0NVk2wtT2MM+9jT3qnTzLyPl2S9YsZlxjgsnWTL6YRbrp1yJRGKxzfZRrM48a8aoq3qO3svZvY6LzOCE73m2raBxhcqXDFEh9hwK7ev10xQ7G+eX7xt8jy5YfQmclT2v/nz4+ZP2+OExVmzauipUE0Vb/lOXRXTmI8Bn+iKCbSVGj6kOdQPG3mpaN0vMwO0/EurEgjzOBSWffzEszBZlyfZNWIgw7uS39McJET4ZAitLY4ldsVc6+xe3A5nqoViUpCgUgVofgZguyu9NCqkEOcYxkIQWnqZyXM2n8Krz06/eS53/rmZHhcPzzaC+qHx0dBncPwm/rxwcnz/YAfBycnJ4UXdGWYTGw3sTshhlCpBGcBsJfY+IwEp46ib8OBqzaWD/dm+3aAtjdf8b+q43DrTsxQjimNhNuEw3mmqI6SD5QBDaA9bTQq4m42+qSG0tWdZaC09heRkkWKvGK9TDGS7yhTHzYO9nOYLMr6LkeLS1XZBJMysEML+9B6LMTOY+pZ0+ClgEZdy7g771+WhsTLB1fMi5uzQr3zZum+ZqCwNWwKq1xEMo9GCaG07WHJi70n/3SBr30EN7ZMe/ZnpA7ydIcIIWDbtjT19f9G8/4HiKYHRmkdAAA=" ConnectionId="8bf678d8-160a-4c79-8aa6-695c242bf262" DisplayName="Send Channel Message" sap:VirtualizedContainerService.HintSize="416,447" sap2010:WorkflowViewState.IdRef="ConnectorActivity_4" UiPathActivityTypeId="5db80592-ff66-39b4-b0f2-20bc9d93b7e4">
+                              <isactr:ConnectorActivity.FieldObjects>
+                                <isactr:FieldObject Name="team_id" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String">78c297f6-450d-465d-aef9-63781da6d777</InArgument>
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="channel_id" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String">[in_Config("TeamID").ToString]</InArgument>
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="body_sub_adaptiveCardContent" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String" />
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="out_webUrl" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <OutArgument x:TypeArguments="x:String" />
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="body_sub_content" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <InArgument x:TypeArguments="x:String" xml:space="preserve">["&lt;!DOCTYPE html&gt;
+&lt;html lang='pt-BR'&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #F4F4F4;
+      margin: 0;
+      padding: 20px;
+      color: #333; 
+    }
+
+    .container {
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      border-left: 8px solid #005B7F; /* Azul Suzano */
+    }
+
+    h1 {
+      color: #005B7F; /* Azul Suzano */
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #7A5C3D; /* Tom terroso */
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div Class='container'&gt;
+    &lt;h1&gt;Dados nao encontrados na Master Data&lt;/h1&gt;
+	&lt;h3&gt;Favor verificar informações na tabela&lt;/h3&gt;
+ &lt;br&gt;
+    &lt;div Class='info'&gt;" +
+      "&lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Distribuidora: &lt;/span&gt;&lt;/b&gt;"  &amp;  varDistribuidora &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Instalação: &lt;/span&gt;&lt;/b&gt;"  &amp;  varInstalacao &amp; "&lt;/p&gt;
+	  &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;ClienteID: &lt;/span&gt;&lt;/b&gt;"  &amp;  varClienteID &amp; "&lt;/p&gt;
+      &lt;b&gt;&lt;p&gt;&lt;span Class='label'&gt;Link PDF: &lt;/span&gt;&lt;/b&gt; &lt;a href="&amp;  varLink &amp;"&gt;Click aqui&lt;/a&gt; &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div Class='footer'&gt;
+      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180. &lt;/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;"]</InArgument>
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                                <isactr:FieldObject Name="out_id" Type="FieldArgument">
+                                  <isactr:FieldObject.Value>
+                                    <OutArgument x:TypeArguments="x:String" />
+                                  </isactr:FieldObject.Value>
+                                </isactr:FieldObject>
+                              </isactr:ConnectorActivity.FieldObjects>
+                            </isactr:ConnectorActivity>
+                          </Sequence>
+                          <FlowStep.Next>
+                            <x:Reference>__ReferenceID0</x:Reference>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowDecision.False>
+                    </FlowDecision>
+                  </FlowDecision.False>
+                </FlowDecision>
               </FlowDecision.False>
             </FlowDecision>
           </FlowStep.Next>
@@ -443,5 +711,9 @@
     <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
     <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
   </Flowchart>
 </Activity>
