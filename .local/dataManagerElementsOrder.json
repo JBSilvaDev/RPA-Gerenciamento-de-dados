@@ -12,6 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "ResultadoFio&Sequence_28",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -311,10 +312,7 @@
         "out_ItemExiste",
         "in_dictFaturaFields",
         "out_dictMasterData",
-        "io_Config",
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder"
+        "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -383,6 +381,7 @@
         "varLink&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_duplicidade",
         "in_Config",
         "in_dictFaturaFields",
         "in_masterData",
@@ -404,6 +403,25 @@
         "in_Config",
         "in_dictFaturaFields",
         "in_masterdata"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/Google/ConsultaFaturaFio.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "queryConsultaFio&Sequence_1",
+        "varNF&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varInstalacao&Sequence_1",
+        "dtBquery&Sequence_1",
+        "SQLCommand&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_ResultadoFio",
+        "in_dictFaturaFields",
+        "in_Config"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
