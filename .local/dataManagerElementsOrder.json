@@ -12,7 +12,6 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "ResultadoFio&Sequence_28",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -30,7 +29,8 @@
         "listDictFaturaTable&Sequence_28",
         "varResFisco&Sequence_28",
         "varMsgAviso&Sequence_28",
-        "dictMasterData&Sequence_28"
+        "dictMasterData&Sequence_28",
+        "ResultadoFio&Sequence_28"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -155,12 +155,6 @@
         "varIndriverItem&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_TransactionNumber",
-        "out_TransactionItem",
-        "out_TransactionField1",
-        "out_TransactionField2",
-        "out_TransactionID",
-        "io_dtTransactionData",
         "in_TransactionItem",
         "in_Config",
         "io_dictFaturaFields"
