@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ConsultaBQueryMasterData" sap:VirtualizedContainerService.HintSize="1200,1219" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ConsultaBQueryMasterData" sap:VirtualizedContainerService.HintSize="1566,1217" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SQLCommand" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtBquery" />
@@ -113,26 +113,26 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:IfElseIf sap2010:Annotation.AnnotationText="Verifica se os dados da tabela ja existem localmente, se nao faz a consulta" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="722,1028" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+    <ui:IfElseIf sap2010:Annotation.AnnotationText="Verifica se os dados da tabela ja existem localmente, se nao faz a consulta" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="722,1026" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
           <ui:IfElseIfBlock BlockType="If" Condition="[Not io_Config.ContainsKey(&quot;dt_masterdata&quot;) OrElse io_Config(&quot;dt_masterdata&quot;) Is Nothing OrElse CType(io_Config(&quot;dt_masterdata&quot;), System.Data.DataTable).Rows.Count = 0]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
             <ui:IfElseIfBlock.Then>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="671,769" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="671,768" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Baixando MasterData&quot;]" />
-                <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\consulta_faturas_fio.sql" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+                <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\consulta_masterdata.sql" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
                 <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dtBquery]" DisplayName="Run Query" ExistingDbConnection="[CType(io_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="434,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[SQLCommand.Replace(&quot;datasetGCP&quot;,io_Config(&quot;TableGCP&quot;).ToString)]">
                   <ui:ExecuteQuery.Parameters>
                     <scg:Dictionary x:TypeArguments="x:String, Argument" />
                   </ui:ExecuteQuery.Parameters>
                 </ui:ExecuteQuery>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Download concluido MasterData&quot;]" />
-                <Assign sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_1">
+                <Assign sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="Assign_1">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Object">[io_Config("dt_masterdata")]</OutArgument>
                   </Assign.To>
