@@ -109,13 +109,13 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EnviarJsonStorageBucket" sap:VirtualizedContainerService.HintSize="1059,814" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EnviarJsonStorageBucket" sap:VirtualizedContainerService.HintSize="1287,778.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Default="[New Dictionary(Of String, Object)()]" Name="dictFinal" />
       <Variable x:TypeArguments="x:String" Name="jsonFinalList" />
-      <Variable x:TypeArguments="x:String" Name="varGUIDJson" />
       <Variable x:TypeArguments="x:Boolean" Name="folderExist" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="varPastaExport" />
     </Sequence.Variables>
@@ -125,15 +125,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Enviando dados para fila RPA0174&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_4">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[varGUIDJson]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[System.Guid.NewGuid().ToString()]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[dictFinal]</OutArgument>
       </Assign.To>
@@ -141,7 +133,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[in_dictFaturaFields.Concat(in_dictMasterData).ToDictionary(Function(x) x.Key, Function(x) x.Value)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="434,226" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;QueueName&quot;).ToString]" Reference="[varGUIDJson]">
+    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="434,226" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;QueueName&quot;).ToString]" Reference="[in_Config(&quot;varGuid&quot;).ToString]">
       <ui:AddQueueItem.ItemInformation>
         <InArgument x:TypeArguments="x:String" x:Key="fields">[Newtonsoft.Json.JsonConvert.SerializeObject(dictFinal)]</InArgument>
       </ui:AddQueueItem.ItemInformation>
