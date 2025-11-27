@@ -128,6 +128,10 @@
         "dict_Item&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
+        "out_ItemExiste",
+        "in_dictFaturaFields",
+        "out_dictMasterData",
+        "io_Config",
         "out_listDictFaturaTable",
         "out_dictFaturaFields",
         "in_TransactionItem",
@@ -375,11 +379,11 @@
         "varLink&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_duplicidade",
         "in_Config",
         "in_dictFaturaFields",
         "in_masterData",
-        "in_rateio"
+        "in_rateio",
+        "in_duplicidade"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
