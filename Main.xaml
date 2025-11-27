@@ -241,9 +241,9 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Processa uma única transação. &#xA;O resultado do processamento pode ser: 1) Sucesso, 2) Exceção de Negócio, 3) Exceção de Sistema. &#xA;No caso de uma exceção de sistema, a transação pode ser automaticamente retentada." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="670,5805" sap2010:WorkflowViewState.IdRef="State_3">
+            <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Processa uma única transação. &#xA;O resultado do processamento pode ser: 1) Sucesso, 2) Exceção de Negócio, 3) Exceção de Sistema. &#xA;No caso de uma exceção de sistema, a transação pode ser automaticamente retentada." DisplayName="Process Transaction" sap:VirtualizedContainerService.HintSize="670,6009" sap2010:WorkflowViewState.IdRef="State_3">
               <State.Entry>
-                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="624,5333" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                <TryCatch DisplayName="Try to process transaction" sap:VirtualizedContainerService.HintSize="624,5537" sap2010:WorkflowViewState.IdRef="TryCatch_9">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -251,7 +251,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <Sequence DisplayName="Process the current TransactionItem" sap:VirtualizedContainerService.HintSize="586,5083" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                    <Sequence DisplayName="Process the current TransactionItem" sap:VirtualizedContainerService.HintSize="586,5287" sap2010:WorkflowViewState.IdRef="Sequence_28">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Default="[New Dictionary(Of String, Object)]" Name="dictFaturaFields" />
                         <Variable x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" Default="[New List(Of Dictionary(Of String, Object))()]" Name="listDictFaturaTable" />
@@ -398,16 +398,16 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
-                      <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Verifica se os dados para esta instalação + NFe sao vazios no GCP, caso seja, salva o novo, caso nao, entao é duplicaidade" Condition="[not ResultadoFio]" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="552,2635" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
+                      <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Verifica se os dados para esta instalação + NFe sao vazios no GCP, caso seja, salva o novo, caso nao, entao é duplicaidade" Condition="[not ResultadoFio]" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="552,2839" sap2010:WorkflowViewState.IdRef="IfElseIfV2_2">
                         <ui:IfElseIfV2.Else>
-                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="518,1801" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="518,2005" sap2010:WorkflowViewState.IdRef="Sequence_49">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="Adiciona dados da fatura no GCP e item na fila do 174 caso ja nao exista" DisplayName="Sequence - Se dados nao existirem, segue demais detapas" sap:VirtualizedContainerService.HintSize="484,1741" sap2010:WorkflowViewState.IdRef="Sequence_50">
+                            <Sequence sap2010:Annotation.AnnotationText="Adiciona dados da fatura no GCP e item na fila do 174 caso ja nao exista" DisplayName="Sequence - Se dados nao existirem, segue demais detapas" sap:VirtualizedContainerService.HintSize="484,1945" sap2010:WorkflowViewState.IdRef="Sequence_50">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:Boolean" Name="bollRateioMasterData" />
                               </Sequence.Variables>
@@ -420,17 +420,23 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Enviar dados fatura para GCP" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_37" UnSafe="False" WorkflowFileName="ProcessBox\Google\EnviaExtracaoBQuery.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[dictFaturaFields]</InArgument>
                                   <InArgument x:TypeArguments="scg:List(scg:Dictionary(x:String, x:Object))" x:Key="in_listDictFaturaTable">[listDictFaturaTable]</InArgument>
+                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[Config]</InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ConsultaDadosExistentes - Invoke Workflow File (ProcessBox\Google\ConsultaDadosExistentes.xaml)" sap:VirtualizedContainerService.HintSize="450,177" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_50" UnSafe="False" WorkflowFileName="ProcessBox\Google\ConsultaDadosExistentes.xaml">
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_42" Level="Info" Message="[&quot;Item: &quot; + Config(&quot;varGuid&quot;).ToString + &quot; enviado para o BQuey&quot;]" />
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Consulta dados existentes em MasterData" DisplayName="ConsultaDadosExistentes - Invoke Workflow File (ProcessBox\Google\ConsultaDadosExistentes.xaml)" sap:VirtualizedContainerService.HintSize="450,208" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_50" UnSafe="False" WorkflowFileName="ProcessBox\Google\ConsultaDadosExistentes.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
                                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_dictFaturaFields">[dictFaturaFields]</InArgument>
                                   <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_dictMasterData">[dictMasterData]</OutArgument>
                                   <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[Config]</InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </ui:InvokeWorkflowFile>
                               <Assign sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="Assign_33">
                                 <Assign.To>

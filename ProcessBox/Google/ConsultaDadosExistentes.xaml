@@ -99,7 +99,7 @@
       <AssemblyReference>C5C242BF262_normalis.y3NWM43jz4F1cmCnodtEuH2</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1583,467" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="ConsultaDadosExistentes" sap:VirtualizedContainerService.HintSize="1287,467" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="varNumID" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtBquery" />
@@ -145,7 +145,7 @@
                   </Sequence>
                 </ui:IfElseIfBlock.Then>
               </ui:IfElseIfBlock>
-              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dictFaturaFields(&quot;numero-instalacao&quot;).ToString.TrimStart(&quot;0&quot;c)))]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+              <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(If(in_dictFaturaFields(&quot;numero-instalacao&quot;).ToString.TrimStart(&quot;0&quot;c).Contains(&quot;-&quot;), in_dictFaturaFields(&quot;numero-instalacao&quot;).ToString.TrimStart(&quot;0&quot;c).Split(&quot;-&quot;)(0), in_dictFaturaFields(&quot;numero-instalacao&quot;).ToString.TrimStart(&quot;0&quot;c))))]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
                 <ui:IfElseIfBlock.Then>
                   <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="484,279" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
@@ -166,7 +166,7 @@
                         <OutArgument x:TypeArguments="x:String">[varNumID]</OutArgument>
                       </Assign.To>
                       <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[in_dictFaturaFields("numero-instalacao").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:String">[in_dictFaturaFields("numero-instalacao").ToString.Split("-")(0)]</InArgument>
                       </Assign.Value>
                     </Assign>
                   </Sequence>
@@ -321,7 +321,7 @@
                           </Sequence>
                         </ui:IfElseIfBlock.Then>
                       </ui:IfElseIfBlock>
-                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(in_dictFaturaFields(&quot;numero-cliente&quot;).ToString.TrimStart(&quot;0&quot;c)))]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
+                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[dtBquery.AsEnumerable.Any(Function(r) r(&quot;inst_cont&quot;).ToString().ToLower().Contains(If(in_dictFaturaFields(&quot;numero-cliente&quot;).ToString.TrimStart(&quot;0&quot;c).Contains(&quot;-&quot;), in_dictFaturaFields(&quot;numero-cliente&quot;).ToString.TrimStart(&quot;0&quot;c).Split(&quot;-&quot;)(0), in_dictFaturaFields(&quot;numero-cliente&quot;).ToString.TrimStart(&quot;0&quot;c))))]" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_6">
                         <ui:IfElseIfBlock.Then>
                           <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="468,279" sap2010:WorkflowViewState.IdRef="Sequence_11">
                             <sap:WorkflowViewStateService.ViewState>
@@ -342,7 +342,7 @@
                                 <OutArgument x:TypeArguments="x:String">[varNumID]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:String">[in_dictFaturaFields("numero-cliente").ToString]</InArgument>
+                                <InArgument x:TypeArguments="x:String">[in_dictFaturaFields("numero-cliente").ToString.Split("-")(0)]</InArgument>
                               </Assign.Value>
                             </Assign>
                           </Sequence>
@@ -446,7 +446,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:LogMessage>
       <FlowStep.Next>
-        <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+        <FlowStep x:Name="__ReferenceID7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">325,135</av:Point>
@@ -454,14 +454,29 @@
               <av:PointCollection x:Key="ConnectorLocation">380,205 380,265</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Salvando dt em variavel" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Assign_18">
-            <Assign.To>
-              <OutArgument x:TypeArguments="sd:DataTable">[dtBquery]</OutArgument>
-            </Assign.To>
-            <Assign.Value>
-              <InArgument x:TypeArguments="sd:DataTable">[CType(io_Config("dt_masterdata"), System.Data.DataTable)]</InArgument>
-            </Assign.Value>
-          </Assign>
+          <Sequence DisplayName="Salvando dt em variavel" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_17">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Salvando dt em variavel" sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_20">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[dtBquery]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[CType(io_Config("dt_masterdata"), System.Data.DataTable)]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <Assign DisplayName="Salvando dt em variavel" sap:VirtualizedContainerService.HintSize="434,105" sap2010:WorkflowViewState.IdRef="Assign_21">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_dictMasterData]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(Of String, Object)]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </Sequence>
           <FlowStep.Next>
             <x:Reference>__ReferenceID1</x:Reference>
           </FlowStep.Next>
