@@ -12,6 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "bollRateioMasterData&Sequence_50",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -128,10 +129,6 @@
         "dict_Item&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_ItemExiste",
-        "in_dictFaturaFields",
-        "out_dictMasterData",
-        "io_Config",
         "out_listDictFaturaTable",
         "out_dictFaturaFields",
         "in_TransactionItem",
@@ -272,13 +269,12 @@
         "ExtractionResults&Sequence_1",
         "JsonStringCostType&Sequence_1",
         "CostTypeJson&Sequence_1",
-        "AddItemToQueue&Sequence_1",
-        "varGuid&Sequence_1"
+        "AddItemToQueue&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "io_Config",
         "in_dictFaturaFields",
-        "in_listDictFaturaTable",
-        "in_Config"
+        "in_listDictFaturaTable"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -288,12 +284,9 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
         "dtBquery&Sequence_1",
-        "Item_Existe&Sequence_1",
         "SQLCommand&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_dictFaturaFields",
-        "out_dictMasterData",
         "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -303,11 +296,11 @@
       "Path": "ProcessBox/Google/ConsultaDadosExistentes.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "ItemExiste&Flowchart_1",
         "dtBquery&Flowchart_1",
         "varNumID&Flowchart_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_ItemExiste",
         "in_dictFaturaFields",
         "out_dictMasterData",
         "io_Config"
@@ -322,7 +315,6 @@
         "dictFinal&Sequence_1",
         "varPastaExport&Sequence_1",
         "folderExist&Sequence_1",
-        "varGUIDJson&Sequence_1",
         "jsonFinalList&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
