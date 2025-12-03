@@ -3,6 +3,7 @@
     <x:Property Name="in_dictMasterData" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_dictFaturaFields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -110,9 +111,12 @@
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
       <AssemblyReference>UiPath.CodedWorkflows</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EnviarJsonStorageBucket" sap:VirtualizedContainerService.HintSize="1287,778.04" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EnviarJsonStorageBucket" sap:VirtualizedContainerService.HintSize="969,700" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Default="[New Dictionary(Of String, Object)()]" Name="dictFinal" />
       <Variable x:TypeArguments="x:String" Name="jsonFinalList" />
@@ -125,7 +129,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Enviando dados para fila RPA0174&quot;]" />
-    <Assign sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[dictFinal]</OutArgument>
       </Assign.To>

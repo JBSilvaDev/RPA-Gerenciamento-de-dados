@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ConsultaFaturaFio" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ConsultaFaturaFio" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_dictFaturaFields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -44,6 +44,8 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>Microsoft.Graph</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -100,24 +102,28 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph.Core</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ConsultaFaturaFio" sap:VirtualizedContainerService.HintSize="1270,1876" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ConsultaFaturaFio" sap:VirtualizedContainerService.HintSize="969,2865" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SQLCommand" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtBquery" />
       <Variable x:TypeArguments="x:String" Name="varInstalacao" />
       <Variable x:TypeArguments="x:String" Name="varClienteID" />
       <Variable x:TypeArguments="x:String" Name="varNF" />
-      <Variable x:TypeArguments="x:String" Name="queryConsultaFio" />
+      <Variable x:TypeArguments="x:String" Name="querySQL" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\consulta_faturas_fio.sql" sap:VirtualizedContainerService.HintSize="502,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <Sequence DisplayName="Sequence - Variaveis" sap:VirtualizedContainerService.HintSize="502,712" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\consulta_faturas_fio.sql" sap:VirtualizedContainerService.HintSize="590,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <Sequence DisplayName="Sequence - Variaveis" sap:VirtualizedContainerService.HintSize="590,712" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -150,7 +156,7 @@
       </Assign>
       <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_8">
         <Assign.To>
-          <OutArgument x:TypeArguments="x:String">[queryConsultaFio]</OutArgument>
+          <OutArgument x:TypeArguments="x:String">[querySQL]</OutArgument>
         </Assign.To>
         <Assign.Value>
           <InArgument x:TypeArguments="x:String">[SQLCommand.Replace("datasetGCP",in_Config("TableGCP").ToString).Replace("instNum",varInstalacao.ToString).Replace("clientNum", varClienteID.ToString).Replace("nfNum",varNF.ToString)]</InArgument>
@@ -158,21 +164,24 @@
       </Assign>
       <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[Environment.NewLine &amp; &quot;Nota Fiscal: &quot; &amp; If(varNF &lt;&gt; &quot;N/A&quot;, varNF , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Cliente ID: &quot; &amp; If(varClienteID &lt;&gt; &quot;N/A&quot;, varClienteID , &quot;Não localizado&quot;) &amp; &#xA;Environment.NewLine &amp; &quot;Instalação: &quot; &amp; If(varInstalacao &lt;&gt; &quot;N/A&quot;, varInstalacao, &quot;Não localizado&quot;)]" />
     </Sequence>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="502,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Query de consulta realizada: &quot; + Environment.NewLine + queryConsultaFio]" />
-    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dtBquery]" DisplayName="Run Query" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="502,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[queryConsultaFio]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="590,173" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Query de consulta realizada: &quot; + Environment.NewLine + querySQL]" />
+    <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dtBquery]" DisplayName="Run Query" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="590,146" sap2010:WorkflowViewState.IdRef="ExecuteQuery_1" Sql="[querySQL]">
       <ui:ExecuteQuery.Parameters>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:ExecuteQuery.Parameters>
     </ui:ExecuteQuery>
-    <ui:IfElseIfV2 Condition="[dtBquery Is Nothing OrElse dtBquery.Rows.Count = 0]" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="502,710" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
+    <ui:IfElseIfV2 sap2010:Annotation.AnnotationText="Valida se o resultado da consulta possui dados, se sim, é duplicado, se nao, é item novo" Condition="[dtBquery Is Nothing OrElse dtBquery.Rows.Count = 0]" DisplayName="Else If" sap:VirtualizedContainerService.HintSize="590,1699" sap2010:WorkflowViewState.IdRef="IfElseIfV2_1">
       <ui:IfElseIfV2.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="468,164" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="556,1121" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="GUID_item" />
+          </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="434,104" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign sap:VirtualizedContainerService.HintSize="522,114" sap2010:WorkflowViewState.IdRef="Assign_7">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[out_ResultadoFio]</OutArgument>
             </Assign.To>
@@ -180,19 +189,106 @@
               <InArgument x:TypeArguments="x:Boolean">False</InArgument>
             </Assign.Value>
           </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="522,114" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[GUID_item]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[dtBquery.Rows(0)("GUID").ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="522,122" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="remover essa remoção de itens por duplicidade" />
+          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="522,711" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch.Try>
+              <Sequence sap:VirtualizedContainerService.HintSize="484,460" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,173" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Removendo item duplicado do BQuery, área de negocios deve enviar novo arquivo PDF&quot;]" />
+                <Sequence DisplayName="Sequence - Remove item da tabela principal" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\exclui_fatura_fio.sql" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+                  <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[querySQL]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[SQLCommand.Replace("datasetGCP", in_Config("TableGCP").ToString).Replace("GUID_item", GUID_item)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dtBquery]" DisplayName="Run Query" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="434,137" sap2010:WorkflowViewState.IdRef="ExecuteQuery_2" Sql="[querySQL]">
+                    <ui:ExecuteQuery.Parameters>
+                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                    </ui:ExecuteQuery.Parameters>
+                  </ui:ExecuteQuery>
+                </Sequence>
+                <Sequence DisplayName="Sequence - Remove itens da tabela serviços" sap:VirtualizedContainerService.HintSize="450,57" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ReadTextFile File="{x:Null}" Content="[SQLCommand]" DisplayName="Read Text File - SQL Command" FileName="ProcessBox\Google\SQL\exclui_fatura_fio_servico.sql" sap:VirtualizedContainerService.HintSize="434,112" sap2010:WorkflowViewState.IdRef="ReadTextFile_3" />
+                  <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_10">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[querySQL]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[SQLCommand.Replace("datasetGCP", in_Config("TableGCP").ToString).Replace("GUID_item", GUID_item)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" DataTable="[dtBquery]" DisplayName="Run Query" ExistingDbConnection="[CType(in_Config(&quot;BigQueryDatabaseConnection&quot;), DatabaseConnection)]" sap:VirtualizedContainerService.HintSize="434,137" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[querySQL]">
+                    <ui:ExecuteQuery.Parameters>
+                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                    </ui:ExecuteQuery.Parameters>
+                  </ui:ExecuteQuery>
+                </Sequence>
+                <Throw Exception="[New Exception(&quot;Item removido&quot;)]" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="488,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Rethrow sap:VirtualizedContainerService.HintSize="394,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
         </Sequence>
       </ui:IfElseIfV2.Else>
       <ui:IfElseIfV2.ElseIfs>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True" />
       </ui:IfElseIfV2.ElseIfs>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <ui:IfElseIfV2.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="468,337" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="556,338" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[out_ResultadoFio]</OutArgument>
             </Assign.To>

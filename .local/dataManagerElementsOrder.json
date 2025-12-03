@@ -12,7 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "bollRateioMasterData&Sequence_50",
+        "ItemSharepoint&Sequence_28",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -31,7 +31,8 @@
         "varResFisco&Sequence_28",
         "varMsgAviso&Sequence_28",
         "dictMasterData&Sequence_28",
-        "ResultadoFio&Sequence_28"
+        "ResultadoFio&Sequence_28",
+        "bollRateioMasterData&Sequence_50"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -141,11 +142,11 @@
       "Path": "ProcessBox/Office/SalvaPDF.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varArquivoRenomeado&Sequence_3",
         "mesRef&Sequence_3",
         "numNf&Sequence_3",
         "strCaminhoFatura&Flowchart_1",
         "iLocalResourceCaminho&Flowchart_1",
-        "varArquivoRenomea&Sequence_3",
         "varFileExist&Flowchart_1",
         "varPath&Sequence_1",
         "varBname&Sequence_1",
@@ -156,6 +157,7 @@
         "varIndriverItem&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
+        "out_ItemSharepoint",
         "in_TransactionItem",
         "in_Config",
         "io_dictFaturaFields"
@@ -296,6 +298,11 @@
       "Path": "ProcessBox/Google/ConsultaDadosExistentes.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "querySQL&Sequence_21",
+        "SQLCommand&Sequence_21",
+        "querySQL&Sequence_20",
+        "GUID_item&Sequence_19",
+        "SQLCommand&Sequence_20",
         "ItemExiste&Flowchart_1",
         "dtBquery&Flowchart_1",
         "varNumID&Flowchart_1"
@@ -354,17 +361,10 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Sequence.xaml",
-      "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
-      "ArgumentsSectionElementsOrder": [],
-      "ConstantsSectionElementsOrder": [],
-      "AddedNamespaces": null
-    },
-    {
       "Path": "ProcessBox/Office/NotificaTeams.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varNFe&Flowchart_1",
         "varInstalacao&Flowchart_1",
         "varClienteID&Flowchart_1",
         "varDistribuidora&Flowchart_1",
@@ -401,7 +401,8 @@
       "Path": "ProcessBox/Google/ConsultaFaturaFio.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "queryConsultaFio&Sequence_1",
+        "GUID_item&Sequence_4",
+        "querySQL&Sequence_1",
         "varNF&Sequence_1",
         "varClienteID&Sequence_1",
         "varInstalacao&Sequence_1",
@@ -413,6 +414,16 @@
         "in_dictFaturaFields",
         "in_Config"
       ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Sequence.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "strTexto&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
