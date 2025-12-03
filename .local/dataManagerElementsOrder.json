@@ -12,7 +12,7 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "ItemSharepoint&Sequence_28",
+        "bollMLMasterData&Sequence_50",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -32,6 +32,7 @@
         "varMsgAviso&Sequence_28",
         "dictMasterData&Sequence_28",
         "ResultadoFio&Sequence_28",
+        "Nome_PDF&Sequence_28",
         "bollRateioMasterData&Sequence_50"
       ],
       "ArgumentsSectionElementsOrder": [
@@ -157,7 +158,7 @@
         "varIndriverItem&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_ItemSharepoint",
+        "out_Nome_PDF",
         "in_TransactionItem",
         "in_Config",
         "io_dictFaturaFields"
@@ -325,6 +326,8 @@
         "jsonFinalList&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_NomeItemFila",
+        "in_TransactionItem",
         "in_dictMasterData",
         "in_Config",
         "in_dictFaturaFields"
@@ -401,13 +404,13 @@
       "Path": "ProcessBox/Google/ConsultaFaturaFio.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "GUID_item&Sequence_4",
-        "querySQL&Sequence_1",
-        "varNF&Sequence_1",
-        "varClienteID&Sequence_1",
-        "varInstalacao&Sequence_1",
+        "SQLCommand&Sequence_1",
         "dtBquery&Sequence_1",
-        "SQLCommand&Sequence_1"
+        "varInstalacao&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varNF&Sequence_1",
+        "querySQL&Sequence_1",
+        "GUID_item&Sequence_4"
       ],
       "ArgumentsSectionElementsOrder": [
         "out_ResultadoFio",
@@ -418,10 +421,11 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Sequence.xaml",
+      "Path": "rascunhos/Sequence1.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "strTexto&Sequence_1"
+        "messageId&Sequence_1",
+        "webUrl&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
