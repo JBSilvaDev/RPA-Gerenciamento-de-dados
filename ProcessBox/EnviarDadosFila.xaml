@@ -4,6 +4,7 @@
     <x:Property Name="in_dictFaturaFields" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
+    <x:Property Name="in_NomeItemFila" Type="InArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -137,7 +138,7 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[in_dictFaturaFields.Concat(in_dictMasterData).ToDictionary(Function(x) x.Key, Function(x) x.Value)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="434,226" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;QueueName&quot;).ToString]" Reference="[in_Config(&quot;varGuid&quot;).ToString]">
+    <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="434,226" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_Config(&quot;QueueName&quot;).ToString]" Reference="[in_Config(&quot;varGuid&quot;).ToString + &quot;_&quot; + in_NomeItemFila]">
       <ui:AddQueueItem.ItemInformation>
         <InArgument x:TypeArguments="x:String" x:Key="fields">[Newtonsoft.Json.JsonConvert.SerializeObject(dictFinal)]</InArgument>
       </ui:AddQueueItem.ItemInformation>

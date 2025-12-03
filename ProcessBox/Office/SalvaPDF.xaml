@@ -3,6 +3,7 @@
     <x:Property Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_dictFaturaFields" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_Nome_PDF" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -168,7 +169,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="1076,505.04" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart DisplayName="SalvaPDF" sap:VirtualizedContainerService.HintSize="986,160.22400000000002" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="strCaminhoFatura" />
       <Variable x:TypeArguments="upr:ILocalResource" Name="iLocalResourceCaminho" />
@@ -209,7 +210,7 @@
               <av:PointCollection x:Key="ConnectorLocation">580,325 580,365</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Download PDF" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Download PDF" sap:VirtualizedContainerService.HintSize="513,1241" sap2010:WorkflowViewState.IdRef="Sequence_1">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="varPath" />
               <Variable x:TypeArguments="x:String" Name="varBname" />
@@ -272,7 +273,7 @@
                 <InArgument x:TypeArguments="x:String">[in_Config("Local_PDF").ToString + "\" + System.IO.Path.GetFileName(varPath)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ucas:DownloadStorageFile TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Download do PDF" Destination="[strCaminhoFatura]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="479,187" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath]" Result="[iLocalResourceCaminho]" StorageBucketName="[varBname]">
+            <ucas:DownloadStorageFile TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Download do PDF" Destination="[strCaminhoFatura]" DisplayName="Download Storage File" sap:VirtualizedContainerService.HintSize="479,196" sap2010:WorkflowViewState.IdRef="DownloadStorageFile_2" Path="[varPath]" Result="[iLocalResourceCaminho]" StorageBucketName="[varBname]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -280,6 +281,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ucas:DownloadStorageFile>
+            <Assign sap:VirtualizedContainerService.HintSize="479,105" sap2010:WorkflowViewState.IdRef="Assign_7">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_Nome_PDF]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[System.IO.Path.GetFileNameWithoutExtension(strCaminhoFatura)]</InArgument>
+              </Assign.Value>
+            </Assign>
           </Sequence>
           <FlowStep.Next>
             <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_1">
@@ -333,7 +342,7 @@
                               <av:PointCollection x:Key="ConnectorLocation">740,735 740,775</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Salvar PDf no Sharepoint" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Sequence DisplayName="Salvar PDf no Sharepoint" sap:VirtualizedContainerService.HintSize="628,2941" sap2010:WorkflowViewState.IdRef="Sequence_2">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="ss:SecureString" Name="varSecuritPass" />
                             </Sequence.Variables>
@@ -351,7 +360,7 @@
                                 <InArgument x:TypeArguments="ss:SecureString">[DirectCast(in_Config("pass"), SecureString)]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;user&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="594,2480" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[DirectCast(in_Config(&quot;pass&quot;), SecureString)]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
+                            <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" Account="Please select an account." ApplicationId="[in_Config(&quot;AzureApp_ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;user&quot;).ToString]" AuthenticationType="ApplicationIdAndSecret" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="594,2457" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" SecureApplicationSecret="[DirectCast(in_Config(&quot;pass&quot;), SecureString)]" TenantId="[in_Config(&quot;AzureApp_Tenant&quot;).ToString]" UseConnectionService="False">
                               <uma:Office365ApplicationScope.AuthenticationScopes>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </uma:Office365ApplicationScope.AuthenticationScopes>
@@ -366,7 +375,7 @@
                                       <Variable x:TypeArguments="x:String" Name="distribuidora" />
                                       <Variable x:TypeArguments="x:String" Name="instalacao" />
                                       <Variable x:TypeArguments="mg:DriveItem" Name="varIndriverItem" />
-                                      <Variable x:TypeArguments="mg:DriveItem" Name="varArquivoRenomea" />
+                                      <Variable x:TypeArguments="mg:DriveItem" Name="varArquivoRenomeado" />
                                       <Variable x:TypeArguments="x:String" Name="numNf" />
                                     </Sequence.Variables>
                                     <sap:WorkflowViewStateService.ViewState>
@@ -448,7 +457,7 @@ If(io_dictFaturaFields.ContainsKey("numero_cliente") AndAlso Not String.IsNullOr
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
                                               <umaf:GetItem ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" DriveName="{x:Null}" ItemFriendlyName="{x:Null}" ItemId="{x:Null}" SiteUrl="{x:Null}" AuthScopesInvalid="False" DisplayName="Get File or Folder" sap:VirtualizedContainerService.HintSize="416,138" sap2010:WorkflowViewState.IdRef="GetItem_1" Item="[varIndriverItem]" ItemSelectionMode="ItemUrl" ItemUrl="[in_Config(&quot;URL_Sharepoint&quot;).ToString]" />
-                                              <umaf:UploadFile ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" Metadata="{x:Null}" AuthScopesInvalid="False" Checkin="False" CloudFileName="[mesRef.Replace(&quot;.&quot;,&quot;&quot;).Replace(&quot;__&quot;,&quot;_&quot;).Replace(&quot;___&quot;,&quot;_&quot;) + &quot; - &quot; + distribuidora.Replace(&quot;.&quot;,&quot;&quot;) + &quot; - &quot; + instalacao.Replace(&quot;.&quot;,&quot;&quot;) + &quot; - NF_&quot; + numNf.Replace(&quot;.&quot;,&quot;&quot;)]" ConflictBehavior="Rename" Destination="[varIndriverItem]" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="416,272" sap2010:WorkflowViewState.IdRef="UploadFile_2" LocalFilePath="[strCaminhoFatura]" Result="[varArquivoRenomea]" />
+                                              <umaf:UploadFile ContinueOnError="{x:Null}" DriveMetadata="{x:Null}" Metadata="{x:Null}" AuthScopesInvalid="False" Checkin="False" CloudFileName="[mesRef.Replace(&quot;.&quot;,&quot;&quot;).Replace(&quot;__&quot;,&quot;_&quot;).Replace(&quot;___&quot;,&quot;_&quot;) + &quot; - &quot; + distribuidora.Replace(&quot;.&quot;,&quot;&quot;) + &quot; - &quot; + instalacao.Replace(&quot;.&quot;,&quot;&quot;) + &quot; - NF_&quot; + numNf.Replace(&quot;.&quot;,&quot;&quot;)]" ConflictBehavior="Rename" Destination="[varIndriverItem]" DisplayName="Upload File" sap:VirtualizedContainerService.HintSize="416,272" sap2010:WorkflowViewState.IdRef="UploadFile_2" LocalFilePath="[strCaminhoFatura]" Result="[varArquivoRenomeado]" />
                                             </Sequence>
                                           </Sequence>
                                         </ActivityAction>
@@ -506,13 +515,13 @@ If(io_dictFaturaFields.ContainsKey("numero_cliente") AndAlso Not String.IsNullOr
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:CommentOut>
-                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Arquivo salvo como: &quot; + varArquivoRenomea.Name]" />
+                                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526,173" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Arquivo salvo como: &quot; + varArquivoRenomeado.Name]" />
                                     <Assign sap:VirtualizedContainerService.HintSize="526,114" sap2010:WorkflowViewState.IdRef="Assign_4">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:Object">[io_dictFaturaFields("uri")]</OutArgument>
                                       </Assign.To>
                                       <Assign.Value>
-                                        <InArgument x:TypeArguments="x:Object">[varArquivoRenomea.WebUrl]</InArgument>
+                                        <InArgument x:TypeArguments="x:Object">[varArquivoRenomeado.WebUrl]</InArgument>
                                       </Assign.Value>
                                     </Assign>
                                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="526,173" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Limpando variaveis para proxima iteração&quot;]" />
@@ -553,7 +562,7 @@ If(io_dictFaturaFields.ContainsKey("numero_cliente") AndAlso Not String.IsNullOr
                                           </ui:AssignOperation>
                                           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
                                             <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="mg:DriveItem">[varArquivoRenomea]</OutArgument>
+                                              <OutArgument x:TypeArguments="mg:DriveItem">[varArquivoRenomeado]</OutArgument>
                                             </ui:AssignOperation.To>
                                             <ui:AssignOperation.Value>
                                               <InArgument x:TypeArguments="mg:DriveItem">[Nothing]</InArgument>
