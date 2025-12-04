@@ -494,7 +494,7 @@
                               <av:PointCollection x:Key="ConnectorLocation">475,770 560,770 560,855</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Sequence - MasterData" sap:VirtualizedContainerService.HintSize="110,70" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Sequence DisplayName="Sequence - MasterData" sap:VirtualizedContainerService.HintSize="450,678" sap2010:WorkflowViewState.IdRef="Sequence_5">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -593,6 +593,7 @@
 &lt;/table&gt;
     &lt;/div&gt;
     &lt;div Class='footer'&gt;
+	  &lt;b&gt;Este item não ficará disponivel no GCP até que os dados MasterData sejam disponibilizados&lt;/b&gt;
       &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180.&lt;/&gt;
     &lt;/div&gt;
   &lt;/div&gt;
