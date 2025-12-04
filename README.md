@@ -86,4 +86,7 @@ O arquivo `Data/Config.xlsx` é o principal ponto de configuração do robô. Ne
 
 4.  **Finalização:**
     *   `CloseAllApplications.xaml`: Realiza o logout de todas as aplicações.
+*   
+
+![](Gif_OTO_2.png)
 

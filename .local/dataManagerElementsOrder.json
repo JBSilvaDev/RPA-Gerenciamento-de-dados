@@ -12,7 +12,6 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "bollRateioMasterData&Sequence_50",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -31,7 +30,10 @@
         "varResFisco&Sequence_28",
         "varMsgAviso&Sequence_28",
         "dictMasterData&Sequence_28",
-        "ResultadoFio&Sequence_28"
+        "ResultadoFio&Sequence_28",
+        "Nome_PDF&Sequence_28",
+        "bollRateioMasterData&Sequence_50",
+        "bollMLMasterData&Sequence_50"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -80,9 +82,6 @@
         "varSenha&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder",
         "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -109,9 +108,13 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder"
+        "in_TransactionNumber",
+        "in_Config",
+        "out_TransactionItem",
+        "out_TransactionField1",
+        "out_TransactionField2",
+        "out_TransactionID",
+        "io_dtTransactionData"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
@@ -141,11 +144,11 @@
       "Path": "ProcessBox/Office/SalvaPDF.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varArquivoRenomeado&Sequence_3",
         "mesRef&Sequence_3",
         "numNf&Sequence_3",
         "strCaminhoFatura&Flowchart_1",
         "iLocalResourceCaminho&Flowchart_1",
-        "varArquivoRenomea&Sequence_3",
         "varFileExist&Flowchart_1",
         "varPath&Sequence_1",
         "varBname&Sequence_1",
@@ -156,6 +159,7 @@
         "varIndriverItem&Sequence_3"
       ],
       "ArgumentsSectionElementsOrder": [
+        "out_Nome_PDF",
         "in_TransactionItem",
         "in_Config",
         "io_dictFaturaFields"
@@ -296,6 +300,11 @@
       "Path": "ProcessBox/Google/ConsultaDadosExistentes.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "querySQL&Sequence_21",
+        "SQLCommand&Sequence_21",
+        "querySQL&Sequence_20",
+        "GUID_item&Sequence_19",
+        "SQLCommand&Sequence_20",
         "ItemExiste&Flowchart_1",
         "dtBquery&Flowchart_1",
         "varNumID&Flowchart_1"
@@ -318,6 +327,8 @@
         "jsonFinalList&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_NomeItemFila",
+        "in_TransactionItem",
         "in_dictMasterData",
         "in_Config",
         "in_dictFaturaFields"
@@ -354,17 +365,10 @@
       "AddedNamespaces": null
     },
     {
-      "Path": "Sequence.xaml",
-      "SortBy": 0,
-      "VariablesSectionElementsOrder": [],
-      "ArgumentsSectionElementsOrder": [],
-      "ConstantsSectionElementsOrder": [],
-      "AddedNamespaces": null
-    },
-    {
       "Path": "ProcessBox/Office/NotificaTeams.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "varNFe&Flowchart_1",
         "varInstalacao&Flowchart_1",
         "varClienteID&Flowchart_1",
         "varDistribuidora&Flowchart_1",
@@ -401,18 +405,30 @@
       "Path": "ProcessBox/Google/ConsultaFaturaFio.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "queryConsultaFio&Sequence_1",
-        "varNF&Sequence_1",
-        "varClienteID&Sequence_1",
-        "varInstalacao&Sequence_1",
+        "SQLCommand&Sequence_1",
         "dtBquery&Sequence_1",
-        "SQLCommand&Sequence_1"
+        "varInstalacao&Sequence_1",
+        "varClienteID&Sequence_1",
+        "varNF&Sequence_1",
+        "querySQL&Sequence_1",
+        "GUID_item&Sequence_4"
       ],
       "ArgumentsSectionElementsOrder": [
         "out_ResultadoFio",
         "in_dictFaturaFields",
         "in_Config"
       ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "rascunhos/Sequence1.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "messageId&Sequence_1",
+        "webUrl&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
