@@ -707,7 +707,7 @@
 &lt;/head&gt;
 &lt;body&gt;
   &lt;div Class='container'&gt;
-    &lt;h1&gt;Dados nao encontrados na Master Data&lt;/h1&gt;
+    &lt;h1&gt;Identificado possível fatura SUBSTITUTA, favor verificar&lt;/h1&gt;
 	&lt;h3&gt;Favor verificar informações na tabela&lt;/h3&gt;
 &lt;table border=""1""&gt;
   &lt;tr&gt;

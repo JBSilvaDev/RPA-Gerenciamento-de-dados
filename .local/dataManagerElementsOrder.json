@@ -12,7 +12,6 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "bollMLMasterData&Sequence_50",
         "TransactionItem&StateMachine_1",
         "SystemException&StateMachine_1",
         "BusinessException&StateMachine_1",
@@ -33,7 +32,8 @@
         "dictMasterData&Sequence_28",
         "ResultadoFio&Sequence_28",
         "Nome_PDF&Sequence_28",
-        "bollRateioMasterData&Sequence_50"
+        "bollRateioMasterData&Sequence_50",
+        "bollMLMasterData&Sequence_50"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -82,9 +82,6 @@
         "varSenha&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder",
         "io_Config"
       ],
       "ConstantsSectionElementsOrder": [],
@@ -111,9 +108,13 @@
       "SortBy": 0,
       "VariablesSectionElementsOrder": [],
       "ArgumentsSectionElementsOrder": [
-        "in_OrchestratorQueueName",
-        "in_OrchestratorQueueFolder",
-        "in_MaxDurationVideoRecorder"
+        "in_TransactionNumber",
+        "in_Config",
+        "out_TransactionItem",
+        "out_TransactionField1",
+        "out_TransactionField2",
+        "out_TransactionID",
+        "io_dtTransactionData"
       ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
