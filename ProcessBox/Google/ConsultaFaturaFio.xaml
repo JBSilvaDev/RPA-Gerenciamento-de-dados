@@ -108,7 +108,7 @@
       <AssemblyReference>netstandard</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ConsultaFaturaFio" sap:VirtualizedContainerService.HintSize="969,2178" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ConsultaFaturaFio" sap:VirtualizedContainerService.HintSize="1192,2178" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="SQLCommand" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtBquery" />
