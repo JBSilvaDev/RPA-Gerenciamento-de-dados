@@ -425,8 +425,9 @@
       "Path": "rascunhos/Sequence1.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "messageId&Sequence_1",
-        "webUrl&Sequence_1"
+        "dtBquery&Sequence_1",
+        "Valor2&Sequence_1",
+        "Valor&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [],
       "ConstantsSectionElementsOrder": [],
