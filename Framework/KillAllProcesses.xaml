@@ -87,35 +87,35 @@
       <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-    <Sequence sap2010:Annotation.AnnotationText="Mate todos os processos Windows fornecidos. Esse workflow é invocado quando há uma exceção de sistema e o framework tenta reiniciar as aplicações. Se o fechamento gracioso não funcionar, o processo é encerrado à força." DisplayName="Kill All Processes" sap:VirtualizedContainerService.HintSize="400,279.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Mate todos os processos Windows fornecidos. Esse workflow é invocado quando há uma exceção de sistema e o framework tenta reiniciar as aplicações. Se o fechamento gracioso não funcionar, o processo é encerrado à força." DisplayName="Kill All Processes" sap:VirtualizedContainerService.HintSize="969,1036" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Kill processes)" sap:VirtualizedContainerService.HintSize="488,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Killing processes...&quot;]" />
-    <If Condition="[in_ProcessesNamesWithoutExtension.Any]" DisplayName="If: Processes Names has given" sap:VirtualizedContainerService.HintSize="488,916.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <ui:LogMessage DisplayName="Log message (Kill processes)" sap:VirtualizedContainerService.HintSize="518,173" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Killing processes...&quot;]" />
+    <If Condition="[in_ProcessesNamesWithoutExtension.Any]" DisplayName="If: Processes Names has given" sap:VirtualizedContainerService.HintSize="518,798" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="454.4,501.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="484,413" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="411.2,412" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_ProcessesNamesWithoutExtension]">
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each ProcessName" sap:VirtualizedContainerService.HintSize="450,353" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_ProcessesNamesWithoutExtension]">
             <ui:ForEach.Body>
               <ActivityAction x:TypeArguments="x:String">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:String" Name="ProcessName" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="377.6,224" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="416,216" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:KillProcess Process="{x:Null}" AppliesTo="OnlyCurrentSession" ContinueOnError="True" DisplayName="Kill Process: Kill by Process Name" sap:VirtualizedContainerService.HintSize="334.4,134.4" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="[ProcessName.Trim]">
+                  <ui:KillProcess Process="{x:Null}" AppliesTo="OnlyCurrentSession" ContinueOnError="True" DisplayName="Kill Process: Kill by Process Name" sap:VirtualizedContainerService.HintSize="382,156" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="[ProcessName.Trim]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,13 +136,13 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="377.6,232" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="484,224" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log message (Kill processes No Process)" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;There's no process to be killed...&quot;]" />
+          <ui:LogMessage DisplayName="Log message (Kill processes No Process)" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[&quot;There's no process to be killed...&quot;]" />
         </Sequence>
       </If.Else>
     </If>
