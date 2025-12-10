@@ -27,13 +27,13 @@
         "ShouldStop&Sequence_25",
         "dictFaturaFields&Sequence_28",
         "listDictFaturaTable&Sequence_28",
-        "varResFisco&Sequence_28",
-        "varMsgAviso&Sequence_28",
         "dictMasterData&Sequence_28",
         "ResultadoFio&Sequence_28",
         "Nome_PDF&Sequence_28",
-        "bollRateioMasterData&Sequence_50",
-        "bollMLMasterData&Sequence_50"
+        "boolAplicaRegex&Sequence_28",
+        "boolSubst&Sequence_28",
+        "boolRateioMasterData&Sequence_50",
+        "boolMLMasterData&Sequence_50"
       ],
       "ArgumentsSectionElementsOrder": [
         "in_OrchestratorQueueName",
@@ -405,15 +405,16 @@
       "Path": "ProcessBox/Google/ConsultaFaturaFio.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "GUID_item&Sequence_1",
         "SQLCommand&Sequence_1",
         "dtBquery&Sequence_1",
         "varInstalacao&Sequence_1",
         "varClienteID&Sequence_1",
         "varNF&Sequence_1",
-        "querySQL&Sequence_1",
-        "GUID_item&Sequence_4"
+        "querySQL&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [
+        "in_aplicaRegex",
         "out_ResultadoFio",
         "in_dictFaturaFields",
         "in_Config"
@@ -425,10 +426,48 @@
       "Path": "rascunhos/Sequence1.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
-        "messageId&Sequence_1",
-        "webUrl&Sequence_1"
+        "dtBquery&Sequence_1",
+        "Valor2&Sequence_1",
+        "Valor&Sequence_1"
       ],
       "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/KillAllProcesses.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_ProcessesNamesWithoutExtension"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "rascunhos/Sequence.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "texto&Sequence_1"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ProcessBox/ValidadorRegex.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "outresultadofio&Flowchart_1",
+        "varMsgAviso&Flowchart_1",
+        "varResFisco&Flowchart_1"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_boolSubst",
+        "io_dictFaturaFields",
+        "in_Config",
+        "in_aplicaRegex"
+      ],
       "ConstantsSectionElementsOrder": [],
       "AddedNamespaces": null
     }
