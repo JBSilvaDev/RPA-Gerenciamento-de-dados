@@ -1,8 +1,8 @@
-# RPA0180 - Tratamento e Roteamento de Dados de Faturas
+Tratamento e Roteamento de Dados de Faturas
 
 ## Visão Geral
 
-Este robô (RPA) atua como um processador e roteador de dados. Ele foi desenvolvido para ler informações de faturas de uma fila do UiPath Orchestrator, enriquecer esses dados com informações de uma base mestre no Google Cloud Platform (GCP), e direcionar os dados consolidados para o próximo robô no fluxo do processo (RPA0174).
+Este robô (RPA) atua como um processador e roteador de dados. Ele foi desenvolvido para ler informações de faturas de uma fila do UiPath Orchestrator, enriquecer esses dados com informações de uma base mestre no Google Cloud Platform (GCP), e direcionar os dados consolidados para o próximo robô.
 
 ---
 
@@ -19,7 +19,7 @@ O principal objetivo deste robô é orquestrar dados entre diferentes sistemas e
 5.  **Notificações via Microsoft Teams:** Envia alertas em duas situações críticas:
     *   Quando uma fatura é identificada como "substituta".
     *   Quando as informações necessárias não são encontradas na base de dados mestre do GCP.
-6.  **Envio para o Próximo Processo:** Cria um novo item de fila, contendo os dados já consolidados e enriquecidos, e o envia para a fila do robô **RPA0174**, que dará continuidade ao processo.
+6.  **Envio para o Próximo Processo:** Cria um novo item de fila, contendo os dados já consolidados e enriquecidos, e o envia para a fila no orquestrador, que dará continuidade ao processo.
 
 ### Entradas e Saídas
 
@@ -27,7 +27,7 @@ O principal objetivo deste robô é orquestrar dados entre diferentes sistemas e
 *   **Saída:**
     *   Dados da fatura salvos em duas tabelas no Google BigQuery.
     *   Notificações em um canal do Microsoft Teams (em casos de exceção).
-    *   Novos itens de fila, com dados enriquecidos, enviados para o processo RPA0174.
+    *   Novos itens de fila, com dados enriquecidos, enviados para ser processado.
 
 ---
 
@@ -60,7 +60,7 @@ Este projeto é baseado no **UiPath Robotic Enterprise Framework (REFramework)**
 
 O arquivo `Data/Config.xlsx` é o principal ponto de configuração do robô. Nele, você pode ajustar:
 
-*   **Nomes das Filas do Orchestrator:** Fila de entrada (de onde o RPA0180 lê) e fila de saída (para o RPA0174).
+*   **Nomes das Filas do Orchestrator:** Fila de entrada e fila de saída.
 *   **Detalhes do Projeto GCP:** ID do projeto, nomes dos datasets e das tabelas de destino.
 *   **Configurações de Notificação:** URL do Webhook do Microsoft Teams e mensagens padrão.
 
@@ -82,7 +82,7 @@ O arquivo `Data/Config.xlsx` é o principal ponto de configuração do robô. Ne
         *   Se a fatura é do tipo "substituta", uma notificação é enviada.
     *   Os dados da fila e do GCP são vinculados.
     *   O robô executa os `INSERT`s (`insert_faturas.sql`, `insert_servicos.sql`) para salvar os dados brutos nas tabelas do BigQuery.
-    *   `EnviarDadosFila.xaml`: Um novo item de fila é criado com os dados consolidados e enviado para a fila do RPA0174.
+    *   `EnviarDadosFila.xaml`: Um novo item de fila é criado com os dados consolidados e enviado para a fila seguinte.
 
 4.  **Finalização:**
     *   `CloseAllApplications.xaml`: Realiza o logout de todas as aplicações.
