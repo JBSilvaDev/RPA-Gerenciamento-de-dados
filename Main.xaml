@@ -124,7 +124,7 @@
       <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="RPA0180&#xA;Responsável por:&#xA;- Salvar arquivo PDF na pasta do Sharepoint da area de negocios&#xA;- Download dos dados extraidos pelo RPA0158 das faturas de energia&#xA;- Enviar informações do json com dados das faturas para o GCP&#xA;- Concatenar dados das faturas com masterdata e enviar dados para fila do RPA0174&#xA;&#xA;Author: JB Silva (julianobs@suzano.com.br)&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="986,778.04" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="RPA0000&#xA;Responsável por:&#xA;- Salvar arquivo PDF na pasta do Sharepoint da area de negocios&#xA;- Download dos dados extraidos pelo RPA0002 das faturas de energia&#xA;- Enviar informações do json com dados das faturas para o GCP&#xA;- Concatenar dados das faturas com masterdata e enviar dados para fila do RPA0001&#xA;&#xA;Author: JB Silva (julianobs@suzano.com.br)&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="986,778.04" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -281,7 +281,7 @@
                           <InArgument x:TypeArguments="ui:BusinessRuleException">[Nothing]</InArgument>
                         </Assign.Value>
                       </Assign>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Aqui baixa o json contendo os dados da fatura lida pela RPA0158" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="552,219" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Aqui baixa o json contendo os dados da fatura lida pela RPA0002" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="552,219" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
@@ -307,7 +307,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:InvokeWorkflowFile>
-                      <Sequence sap2010:Annotation.AnnotationText="Aqui verifica se o item é  reenvio, faturas que conteu no corpo palavras chave de substituta ou nao.&#xD;&#xA;Se for e-mail padrao ira verificar se é ou nao substituta e notificar a area&#xD;&#xA;Se for reenvio passa esta verificação e envia para fila do RPA0174" DisplayName="Sequence - REGEX" sap:VirtualizedContainerService.HintSize="552,488" sap2010:WorkflowViewState.IdRef="Sequence_53">
+                      <Sequence sap2010:Annotation.AnnotationText="Aqui verifica se o item é  reenvio, faturas que conteu no corpo palavras chave de substituta ou nao.&#xD;&#xA;Se for e-mail padrao ira verificar se é ou nao substituta e notificar a area&#xD;&#xA;Se for reenvio passa esta verificação e envia para fila do RPA0001" DisplayName="Sequence - REGEX" sap:VirtualizedContainerService.HintSize="552,488" sap2010:WorkflowViewState.IdRef="Sequence_53">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -466,7 +466,7 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Warn" Message="[&quot;Item pertence do Mercado livre e não sera incluido a fila do RPA0174&quot;]" />
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_43" Level="Warn" Message="[&quot;Item pertence do Mercado livre e não sera incluido a fila do RPA0001&quot;]" />
                                         </Sequence>
                                       </ui:IfElseIfBlock.Then>
                                     </ui:IfElseIfBlock>
@@ -478,7 +478,7 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Warn" Message="[&quot;Identificado fatura substitura, item não sera incluido a fila do RPA0174&quot;]" />
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="382,164" sap2010:WorkflowViewState.IdRef="LogMessage_44" Level="Warn" Message="[&quot;Identificado fatura substitura, item não sera incluido a fila do RPA0001&quot;]" />
                                         </Sequence>
                                       </ui:IfElseIfBlock.Then>
                                     </ui:IfElseIfBlock>

@@ -5,6 +5,7 @@
 .objects/
 .package/
 .tmh/
+.vscode/
 .entities/
 .project/
 .assemblies/

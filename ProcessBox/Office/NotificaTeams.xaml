@@ -304,7 +304,7 @@
   &lt;/tr&gt;
 &lt;/table&gt;
     &lt;div Class='footer'&gt;
-      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180. &lt;/&gt;
+      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0000. &lt;/&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/body&gt;
@@ -450,7 +450,7 @@
   &lt;/tr&gt;
 &lt;/table&gt;
     &lt;div Class='footer'&gt;
-      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180. &lt;/&gt;
+      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0000. &lt;/&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/body&gt;
@@ -595,7 +595,7 @@
     &lt;/div&gt;
     &lt;div Class='footer'&gt;
 	  &lt;b&gt;Este item não ficará disponivel no GCP até que os dados MasterData sejam disponibilizados&lt;/b&gt;
-      &lt;p&gt;&lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180.&lt;/i&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0000.&lt;/i&gt;&lt;/p&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/body&gt;
@@ -730,7 +730,7 @@
   Caso varifique que esta fatura não se enquadra nos parametros de substituta, disponibilizar novo e-mail na pasta designada contendo no assunto: &lt;b&gt;" &amp; in_Config("Validacao_Substituta").ToString &amp;
 "&lt;/b&gt;&lt;/p&gt;
     &lt;div Class='footer'&gt;
-      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0180. &lt;/&gt;
+      &lt;i&gt;Esta mensagem foi gerada automaticamente pelo RPA0000. &lt;/&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/body&gt;

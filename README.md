@@ -53,7 +53,7 @@ Este projeto é baseado no **UiPath Robotic Enterprise Framework (REFramework)**
     *   `Google/`: Workflows para interação com o Google BigQuery (consulta e inserção).
         *   `SQL/`: Scripts SQL para `SELECT` na base mestre e `INSERT` nas tabelas de faturas e serviços.
     *   `Office/`: Contém o workflow `NotificaSeSubstituta.xaml`, responsável por enviar alertas para o Microsoft Teams.
-    *   `EnviarDadosFila.xaml`: Workflow para enviar o novo item para a fila do RPA0174.
+    *   `EnviarDadosFila.xaml`: Workflow para enviar o novo item para a fila do RPA0001.
 *   `Data/Config.xlsx`: Arquivo de configuração principal do robô.
 
 ### Configuração
